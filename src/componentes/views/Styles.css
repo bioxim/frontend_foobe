@@ -1,0 +1,293 @@
+/* Default Todos */
+h1, h2, h3, h4, h5, h6, p, a {
+    font-family: 'Poppins', sans-serif;
+    color: #646c9a;
+}
+html {
+    
+    box-sizing: border-box;
+}
+*, *:before, *:after {
+    box-sizing: inherit;
+}
+
+/* Contacto */
+.overlay {
+    position: relative;
+}
+.overlay-60::before {
+    opacity: .6;
+}
+.overlay-black::before {
+    background-color: #161c2d;
+}
+.overlay::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    border-radius: inherit;
+}
+.bg-cover {
+    background: no-repeat center center/cover;
+}
+.background-contacto-image {
+    background-image: url(./img/contacto-cover.jpg);
+}
+.background-productores-image {
+    background-image: url(./img/productores-cover.jpg);
+}
+.background-invitation-image {
+    background-image: url(./img/invitation-cover.jpg);
+}
+.background-success-image {
+    background-image: url(./img/success-cover.jpg);
+}
+.background-cancel-image {
+    background-image: url(./img/cancelation-cover.jpg);
+}
+.background-map-image {
+    background-image: url(./img/map-cover.png);
+}
+.text-white-75 {
+    color: rgba(255,255,255,.75)!important;
+}
+@media (min-width: 768px) {
+    .pb-md-14, .py-md-14 {
+        padding-bottom: 12rem!important;
+    }
+}
+@media (min-width: 768px) {
+    .pt-md-14, .py-md-14 {
+        padding-top: 12rem!important;
+    }
+}
+.position-relative {
+    position: relative!important;
+}
+.shape:not([class*=shape-blur]) {
+    overflow: hidden;
+}
+.shape-bottom {
+    right: 0;
+    bottom: 0;
+    left: 0;
+}
+.shape {
+    position: absolute;
+    pointer-events: none;
+}
+.text-light {
+    color: #f9fbfd!important;
+}
+.shape:not([class*=shape-blur])>* {
+    -webkit-transform: scale(2);
+    transform: scale(2);
+}
+.shape-fluid-x>* {
+    width: 100%;
+    height: auto;
+}
+.shape-bottom>* {
+    -webkit-transform-origin: top center;
+    transform-origin: top center;
+}
+.shape>* {
+    display: block;
+}
+svg {
+    overflow: hidden;
+    vertical-align: middle;
+}
+.outline-outline {
+    outline: none!important;
+}
+.border-gray-300 {
+    border-color: #d9e2ef!important;
+}
+@media (min-width: 768px) {
+    .pb-md-9, .py-md-9 {
+        padding-bottom: 4rem!important;
+    }
+}
+@media (min-width: 768px) {
+    .pt-md-9, .py-md-9 {
+        padding-top: 4rem!important;
+    }
+}
+.btn:not([class*=btn-outline]) {
+    border-color: transparent!important;
+}
+.btn-white {
+    background-color: #fff!important;
+    color: #335eea!important;
+}
+.btn-white:focus, .btn-white:hover {
+    background-color: #fff;
+    color: #1c4ce8;
+}
+.btn-rounded-circle {
+    padding-left: .8125rem!important;
+    padding-right: .8125rem!important;
+    border-radius: 50rem!important;
+}
+@media (min-width: 768px) {
+    .mt-md-n13, .my-md-n13 {
+        margin-top: -10rem!important;
+    }
+}
+.mt-n11, .my-n11 {
+    margin-top: -6rem!important;
+}
+
+/* Términos y condiciones */
+@media (min-width: 768px) {
+    .pb-md-14, .py-md-14 {
+        padding-bottom: 12rem!important;
+    }
+}
+@media (min-width: 768px) {
+    .pt-md-11, .py-md-11 {
+        padding-top: 6rem!important;
+    }
+}
+@media (min-width: 768px) {
+    .col-md {
+        flex-basis: 0;
+        -webkit-box-flex: 1;
+        flex-grow: 1;
+        max-width: 100%;
+    }
+}
+.display-4 {
+    letter-spacing: -.02em;
+    font-size: 2.6875rem;
+    font-weight: 400;
+}
+.font-size-lg {
+    font-size: 1.1875rem!important;
+}
+@media (min-width: 768px) {
+    .mb-md-0, .my-md-0 {
+        margin-bottom: 0!important;
+    }
+}
+.shadow-light-lg {
+    box-shadow: 0 1.5rem 4rem rgba(22,28,45,.05)!important;
+}
+.card {
+    background-clip: border-box;
+    border: 0 solid #f1f4f8;
+    border-radius: .375rem;
+}
+
+/* SIGN UP */
+.font-size-sm {
+    font-size: .9375rem!important;
+}
+.background-signup-image {
+    background-image: url(./img/sign-up.jpg);
+}
+.no-gutters>.col, .no-gutters>[class*=col-] {
+    padding-right: 0;
+    padding-left: 0;
+}
+.align-self-stretch {
+    align-self: stretch!important;
+}
+@media (min-width: 992px){
+    .d-lg-block {
+        display: block!important;
+    }
+}
+@media (min-width: 992px) {
+    .offset-lg-1 {
+        margin-left: 8.33333%;
+    }
+}
+@media (min-width: 992px) {
+    .col-lg-7 {
+        -webkit-box-flex: 0;
+        flex: 0 0 58.33333%;
+        max-width: 58.33333%;
+    }
+}
+.h-100 {
+    height: 100%!important;
+}
+
+@media (min-width: 1200px){
+    .w-cover {
+        width: calc(100% + (100vw - 1040px)/ 2 + 40px);
+    }
+}
+@media (min-width: 992px){
+    .w-cover {
+        width: calc(100% + (100vw - 960px)/ 2 + 40px);
+    }
+}
+@media (min-width: 768px) {
+    .w-cover {
+        width: calc(100% + (100vw - 720px)/ 2 + 40px);
+    }
+}
+@media (min-width: 576px) {
+    .w-cover {
+        width: calc(100% + (100vw - 540px)/ 2 + 40px);
+    }
+}
+.shape-left {
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+}
+.shape-left {
+    top:0;
+    right:0;
+    bottom:0;
+    left:0
+}
+.shape-left>* {
+    position:inherit;
+    top:inherit;
+    bottom:inherit;
+    left:inherit;
+    -webkit-transform-origin:center right;
+    transform-origin:center right
+}
+.shape-fluid-y>* {
+    width:auto;
+    height:100%
+}
+
+/* PARA EL CALENDARIO */
+.card-border {
+    position:relative;
+}
+.card-border::after {
+    content:"";
+    position:absolute;
+    top:0;
+    right:0;
+    width:100%;
+    border-top-width:2px;
+    border-bottom-width:calc(.375rem - 2px);
+    border-top-style:solid;
+    border-bottom-style:solid;
+    border-top-color:#6610f2;
+    border-bottom-color:transparent;
+    border-top-left-radius:.375rem;
+    border-top-right-radius:.375rem;
+}
+.badge-danger-soft {
+    background-color:rgba(223,71,89,.1);
+    color: #6610f2;
+    font-size: 1.2rem;
+}
+.superficiegrafico {
+    width: 100%;
+    height: auto;
+}
