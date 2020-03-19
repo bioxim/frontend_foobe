@@ -8,7 +8,7 @@ import Navegacion from '../layout/auth/Navegacion';
 import Bienvenida from './navbar/Bienvenida';
 import moment from 'moment';
 
-//import Currenciesw from './Currenciesw';
+import Currenciesw from './Currenciesw';
 
 // importar el Context
 import { CRMContext } from '../../context/CRMContext';
@@ -120,7 +120,7 @@ const Dashboard = (props) => {
 								))}
 							</div>
 							
-							
+							<Currenciesw />
 							
 						</div>
 					</div>

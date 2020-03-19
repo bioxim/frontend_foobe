@@ -1,6 +1,6 @@
 import React, { Fragment, useContext } from 'react';
 
-/* LAYOUT NO AUTH  AUTH*/
+/* LAYOUT NO AUTH*/
 import Header from './componentes/layout/notauth/Header';
 import Main from './componentes/layout/notauth/Main';
 import Footer from './componentes/layout/notauth/Footer';

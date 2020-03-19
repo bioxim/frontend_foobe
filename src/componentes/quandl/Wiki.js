@@ -5,8 +5,11 @@ import Navegacion from '../layout/auth/Navegacion';
 import Bienvenida from '../dashboard/navbar/Bienvenida';
 import '../views/Styles.css';
 
-import WikiMGEXIH1 from './WikiMGEXIH1';
-import WikiMGEXIP1 from './WikiMGEXIP1';
+import WikiMGEXIH1 from './WikiMGEXIH1'; // Hard Red Wheat
+import WikiMGEXIP1 from './WikiMGEXIP1'; // Hard Red Spring Wheat
+import WikiMGEXIS1 from './WikiMGEXIS1'; // Soybeans
+import WikiMGEXIW1 from './WikiMGEXIW1'; // Soft Red Wheat
+import WikiMGEXIC1 from './WikiMGEXIC1'; // Corn
 
 const Wiki = (props) => {
 
@@ -49,27 +52,38 @@ const Wiki = (props) => {
 								</div>
 							</div>
 
-							<div className="row">
+							<div className="row mb-5">
 								<div className="col-md-4 col-xl-3">
 									<div className="card">
 										<div className="card-header bg-light">
 											<small className="card-title mb-0 text-dark text-uppercase">Select Commodity</small>
 										</div>
 										<div className="list-group list-group-flush" role="tablist">
+											<a className="list-group-item list-group-item-action" data-toggle="list" href="#corn" role="tab">
+							                    <small>Corn</small>
+							                </a>
+											<a className="list-group-item list-group-item-action" data-toggle="list" href="#wheatspring" role="tab">
+							                    <small>Hard Red Spring Wheat</small>
+							                </a>
 											<a className="list-group-item list-group-item-action" data-toggle="list" href="#wheat" role="tab">
 							                    <small>Hard Red Wheat</small>
 							                </a>
-							                <a className="list-group-item list-group-item-action" data-toggle="list" href="#wheatspring" role="tab">
-							                    <small>Hard Red Spring Wheat</small>
+							                <a className="list-group-item list-group-item-action" data-toggle="list" href="#softwheat" role="tab">
+							                    <small>Soft Red Wheat</small>
+							                </a>
+							                <a className="list-group-item list-group-item-action" data-toggle="list" href="#soybeans" role="tab">
+							                    <small>Soybeans</small>
 							                </a>
 										</div>
 									</div>
 								</div>
 								<div className="col-md-8 col-xl-9">
 									<div className="tab-content">
-										<div className="tab-pane fade show" id="wheat" role="tabpanel">
+										<div className="tab-pane fade show" id="corn" role="tabpanel">
 											<div className="card">
-												<WikiMGEXIH1 />
+												<div className="card-header">
+													<WikiMGEXIC1 />
+												</div>
 											</div>
 										</div>
 										<div className="tab-pane fade show" id="wheatspring" role="tabpanel">
@@ -77,6 +91,21 @@ const Wiki = (props) => {
 												<div className="card-header">
 													<WikiMGEXIP1 />
 												</div>
+											</div>
+										</div>
+										<div className="tab-pane fade show" id="wheat" role="tabpanel">
+											<div className="card">
+												<WikiMGEXIH1 />
+											</div>
+										</div>
+										<div className="tab-pane fade show" id="softwheat" role="tabpanel">
+											<div className="card">
+												<WikiMGEXIW1 />
+											</div>
+										</div>
+										<div className="tab-pane fade show" id="soybeans" role="tabpanel">
+											<div className="card">
+												<WikiMGEXIS1 />
 											</div>
 										</div>
 									</div>

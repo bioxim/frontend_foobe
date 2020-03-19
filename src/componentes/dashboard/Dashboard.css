@@ -39,7 +39,6 @@
 .background-libros-image {
     background-image: url(./img/ver-libros.jpg);
 }
-
 .splash {
   	pointer-events: none;
   	-webkit-user-select: none;
