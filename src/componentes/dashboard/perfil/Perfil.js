@@ -33,12 +33,10 @@ const Perfil = (props) => {
 
 	const clienteId = clientes.map(
 		cliente => (
-			(cliente.email === email) ? cliente._id : null
+			(cliente.email === email) ? cliente._id : ''
 		));
 
-	const id = clienteId.splice(0, 1); //Extraido el id
-
-	const capturoId = id[0]; //Extraigo el valor
+	const id = clienteId.filter(Boolean);
 
 	const [miembro, guardarMiembro] = useState({
 		nombre: '',
@@ -51,12 +49,12 @@ const Perfil = (props) => {
 	useEffect(() => {
     	
 	        const consultarAPI = async () => {
-	            const miembroConsulta = await clienteAxios.get(`/clientes/${capturoId}`);
+	            const miembroConsulta = await clienteAxios.get(`/clientes/${id}`);
 	            guardarMiembro(miembroConsulta.data);
 	        }
 
 	        consultarAPI();
-    }, [capturoId]);
+    }, [id]);
 
     const { nombre, tagline, imagen, registro } = miembro;
 
