@@ -5,6 +5,7 @@ import Navegacion from '../layout/auth/Navegacion';
 import Bienvenida from '../dashboard/navbar/Bienvenida';
 import '../views/Styles.css';
 
+import WikiASXWM2 from './WikiASXWM2'; // Australian Wheat
 import WikiMGEXIH1 from './WikiMGEXIH1'; // Hard Red Wheat
 import WikiMGEXIP1 from './WikiMGEXIP1'; // Hard Red Spring Wheat
 import WikiMGEXIS1 from './WikiMGEXIS1'; // Soybeans
@@ -59,6 +60,9 @@ const Wiki = (props) => {
 											<small className="card-title mb-0 text-dark text-uppercase">Select Commodity</small>
 										</div>
 										<div className="list-group list-group-flush" role="tablist">
+											<a className="list-group-item list-group-item-action" data-toggle="list" href="#australianwheat" role="tab">
+							                    <small>Australian Wheat</small>
+							                </a>
 											<a className="list-group-item list-group-item-action" data-toggle="list" href="#corn" role="tab">
 							                    <small>Corn</small>
 							                </a>
@@ -79,6 +83,13 @@ const Wiki = (props) => {
 								</div>
 								<div className="col-md-8 col-xl-9">
 									<div className="tab-content">
+										<div className="tab-pane fade show" id="australianwheat" role="tabpanel">
+											<div className="card">
+												<div className="card-header">
+													<WikiASXWM2 />
+												</div>
+											</div>
+										</div>
 										<div className="tab-pane fade show" id="corn" role="tabpanel">
 											<div className="card">
 												<div className="card-header">

@@ -53,6 +53,9 @@ import Tipo from './componentes/perfiles/Tipo';
 /* APIS DE QUANDL DE MERCADOS FINANCIEROS */
 import Wiki from './componentes/quandl/Wiki';
 
+/* CONVERSOR DE MONEDAS TOOL */
+import Currencies from './componentes/converter/Currencies';
+
 // Routing
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
@@ -112,6 +115,8 @@ function App() {
                         <Route exact path="/users-country" component={Pais} />
 
                         <Route exact path="/wiki/continuousfutures" component={Wiki} />
+
+                        <Route exact path="/currencies" component={Currencies} />
                         
         			</Switch>
         		</main>

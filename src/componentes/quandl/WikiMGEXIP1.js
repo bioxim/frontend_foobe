@@ -14,6 +14,7 @@ const Wiki = (props) => {
 	const [ datosTres, guardarDatosTres ] = useState([]);
 	const [ datosCuatro, guardarDatosCuatro ] = useState([]);
 	const [ datosCinco, guardarDatosCinco ] = useState([]);
+	const [ datosSeis, guardarDatosSeis ] = useState([]);
 
 	const [auth, guardarAuth] = useContext(CRMContext);
 
@@ -43,15 +44,19 @@ const Wiki = (props) => {
       		const datosConsulta5 = await clienteAxios.get('https://www.quandl.com/api/v3/datasets/CHRIS/MGEX_MW2.json?start_date=2020-02-15&end_date=2020-05-17&api_key=PaVTvJcxhxsypQDK-1Fn');
       		const respuesta5 = await datosConsulta5.data.dataset;
 
+      		const datosConsulta6 = await clienteAxios.get('https://www.quandl.com/api/v3/datasets/CHRIS/MGEX_MW1.json?start_date=2020-02-15&end_date=2020-05-17&api_key=PaVTvJcxhxsypQDK-1Fn');
+      		const respuesta6 = await datosConsulta6.data.dataset;
+
 			guardarDatos(respuesta);
 			guardarDatosUno(respuesta1);
 			guardarDatosDos(respuesta2);
 			guardarDatosTres(respuesta3);
 			guardarDatosCuatro(respuesta4);
 			guardarDatosCinco(respuesta5);
+			guardarDatosSeis(respuesta6);
 		}
 		consultarAPI();
-	}, [datos, datosUno, datosDos, datosTres, datosCuatro, datosCinco, guardarAuth]);
+	}, [datos, datosUno, datosDos, datosTres, datosCuatro, datosCinco, datosSeis, guardarAuth]);
 
 	return (
 		<div className="accordion" id="accordionExample">
@@ -460,6 +465,81 @@ const Wiki = (props) => {
 											</td>
 											<td>
 												<small>{dato[4]}</small>
+											</td>
+										</tr>
+									)): null }	
+								</tbody>
+							</table>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div className="card">
+				<div className="card-header" id="headingSeven">
+					<button 
+						className="btn btn-success" 
+						type="button" 
+						data-toggle="collapse" 
+						data-target="#collapseSeven" 
+						aria-expanded="true" 
+						aria-controls="collapseSeven"
+					>
+						<h6 className="text-dark text-uppercase">{datosSeis.name}</h6>
+					<small>{datosSeis.description}</small>
+					</button>
+				</div>
+				<div 
+					id="collapseSeven" 
+					className="collapse" 
+					aria-labelledby="headingSeven" 
+					data-parent="#accordionExample"
+				>
+					<div className="card-body">
+						<div className="row d-flex justify-content-between">
+							<p className="text-muted">
+								Start date: {moment(`${datosSeis.start_date}`).format('MMMM Do YYYY')} End Date: {moment(`${datosSeis.end_date}`).format('MMMM Do YYYY')}
+							</p>
+							<small className="text-primary">Last update: {moment(`${datosSeis.refreshed_at}`).format('MMMM Do YYYY')}</small>
+						</div>
+						<div className="row w-100">
+							<table className="table">
+								<thead>
+									<tr>
+										<th>
+											{datosSeis.column_names ? datosSeis.column_names[0] : null}
+										</th>
+										<th>
+											{datosSeis.column_names ? datosSeis.column_names[2] : null}
+										</th>
+										<th>
+											{datosSeis.column_names ? datosSeis.column_names[3] : null}
+										</th>
+										<th>
+											{datosSeis.column_names ? datosSeis.column_names[4] : null}
+										</th>
+										<th>
+											{datosSeis.column_names ? datosSeis.column_names[5] : null}
+										</th>
+									</tr>
+								</thead>
+								<tbody>
+									{datosSeis.data ? datosSeis.data.map(dato => (
+										<tr>
+											<td>
+												<small>{dato[0]}</small>
+											</td>
+											<td>
+												<small>{dato[2]}</small>
+											</td>
+											<td>
+												<small>{dato[3]}</small>
+											</td>
+											<td>
+												<small>{dato[4]}</small>
+											</td>
+											<td>
+												<small>{dato[5]}</small>
 											</td>
 										</tr>
 									)): null }	

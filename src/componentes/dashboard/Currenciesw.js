@@ -54,43 +54,6 @@ const Currenciesw = (props) => {
 	const krw = datos['KRW'];
 	const myr = datos['MYR'];
 
-	// Para pedirlo de acuerdo a la base solicitada (cuando me salga)
-	const base = [
-					'EUR',
-					'USD',
-					'CAD',
-					'HKD',
-					'ISK',
-					'PHP',
-					'DKK',
-					'HUF',
-					'CZK',
-					'AUD',
-					'RON',
-					'SEK',
-					'IDR',
-					'INR',
-					'BRL',
-					'RUB',
-					'HRK',
-					'JPY',
-					'THB',
-					'CHF',
-					'SGD',
-					'PLN',
-					'BGN',
-					'TRY',
-					'CNY',
-					'NOK',
-					'NZD',
-					'ZAR',
-					'MXN',
-					'ILS',
-					'GBP',
-					'KRW',
-					'MYR'
-				];
-
 	if(!auth.auth) {
 		props.history.push('/login');
 	}
@@ -119,10 +82,10 @@ const Currenciesw = (props) => {
 					<div className="flex-fill w-100">
 						<div className="w-100 d-flex justify-content-between">
 							<Link
-								className="btn btn-small btn-primary"
+								className="btn btn-small btn-primary bx-1"
 								to={"/currencies"}
 							>
-								<i className="fas fa-coins mr-2"></i> Go to foreign exchange tool
+								<i className="fas fa-coins mr-2"></i> Foreign exchange tool
 							</Link>
 							<p className="text-primary">Updated: {moment().format('MMMM Do YYYY, h:mm:ss a')}</p>
 						</div>
@@ -132,11 +95,11 @@ const Currenciesw = (props) => {
 
 			<div className="row mb-5">
 
-				<div className="d-flex col-6 col-sm-4 col-md-3 col-xl-2">
+				<div className="d-flex col-6 col-sm-4 col-md-3 col-xl-2 mb-1">
 					<div className="card flex-fill w-100 bg-light">
 						<div className=" pt-1 text-center">
 							<h5 className="text-uppercase font-weight-bold text-dark">
-								<img src="https://restcountries.eu/data/usa.svg" className="img-fluid rounded-circle mr-2" width="20" /> 
+								<img src="https://restcountries.eu/data/usa.svg" className="img-fluid rounded-circle mr-2" width="20" alt="imagen flag country" /> 
 								USD
 							</h5>
 							<h6 className="text-uppercase text-muted">
@@ -146,11 +109,11 @@ const Currenciesw = (props) => {
 					</div>
 				</div>
 				
-				<div className="d-flex col-6 col-sm-4 col-md-3 col-xl-2">
+				<div className="d-flex col-6 col-sm-4 col-md-3 col-xl-2 mb-1">
 					<div className="card flex-fill w-100 bg-light">
 						<div className=" pt-1 text-center">
 							<h5 className="text-uppercase font-weight-bold text-dark">
-								<img src="https://restcountries.eu/data/can.svg" className="img-fluid rounded-circle mr-2" width="20" /> 
+								<img src="https://restcountries.eu/data/can.svg" className="img-fluid rounded-circle mr-2" width="20" alt="imagen flag country" /> 
 								CAD
 							</h5>
 							<h6 className="text-uppercase text-muted">
@@ -160,11 +123,11 @@ const Currenciesw = (props) => {
 					</div>
 				</div>
 
-				<div className="d-flex col-6 col-sm-4 col-md-3 col-xl-2">
+				<div className="d-flex col-6 col-sm-4 col-md-3 col-xl-2 mb-1">
 					<div className="card flex-fill w-100 bg-light">
 						<div className=" pt-1 text-center">
 							<h5 className="text-uppercase font-weight-bold text-dark">
-								<img src="https://restcountries.eu/data/hkg.svg" className="img-fluid rounded-circle mr-2" width="20" /> 
+								<img src="https://restcountries.eu/data/hkg.svg" className="img-fluid rounded-circle mr-2" width="20" alt="imagen flag country" /> 
 								HDK
 							</h5>
 							<h6 className="text-uppercase text-muted">
@@ -174,11 +137,11 @@ const Currenciesw = (props) => {
 					</div>
 				</div>
 
-				<div className="d-flex col-6 col-sm-4 col-md-3 col-xl-2">
+				<div className="d-flex col-6 col-sm-4 col-md-3 col-xl-2 mb-1">
 					<div className="card flex-fill w-100 bg-light">
 						<div className=" pt-1 text-center">
 							<h5 className="text-uppercase font-weight-bold text-dark">
-								<img src="https://restcountries.eu/data/isl.svg" className="img-fluid rounded-circle mr-2" width="20" /> 
+								<img src="https://restcountries.eu/data/isl.svg" className="img-fluid rounded-circle mr-2" width="20" alt="imagen flag country" /> 
 								ISK
 							</h5>
 							<h6 className="text-uppercase text-muted">
@@ -188,11 +151,11 @@ const Currenciesw = (props) => {
 					</div>
 				</div>
 
-				<div className="d-flex col-6 col-sm-4 col-md-3 col-xl-2">
+				<div className="d-flex col-6 col-sm-4 col-md-3 col-xl-2 mb-1">
 					<div className="card flex-fill w-100 bg-light">
 						<div className=" pt-1 text-center">
 							<h5 className="text-uppercase font-weight-bold text-dark">
-								<img src="https://restcountries.eu/data/phl.svg" className="img-fluid rounded-circle mr-2" width="20" /> 
+								<img src="https://restcountries.eu/data/phl.svg" className="img-fluid rounded-circle mr-2" width="20" alt="imagen flag country" /> 
 								PHP
 							</h5>
 							<h6 className="text-uppercase text-muted">
@@ -202,11 +165,11 @@ const Currenciesw = (props) => {
 					</div>
 				</div>
 
-				<div className="d-flex col-6 col-sm-4 col-md-3 col-xl-2">
+				<div className="d-flex col-6 col-sm-4 col-md-3 col-xl-2 mb-1">
 					<div className="card flex-fill w-100 bg-light">
 						<div className=" pt-1 text-center">
 							<h5 className="text-uppercase font-weight-bold text-dark">
-								<img src="https://restcountries.eu/data/dnk.svg" className="img-fluid rounded-circle mr-2" width="20" /> 
+								<img src="https://restcountries.eu/data/dnk.svg" className="img-fluid rounded-circle mr-2" width="20" alt="imagen flag country" /> 
 								DKK
 							</h5>
 							<h6 className="text-uppercase text-muted">
@@ -216,11 +179,11 @@ const Currenciesw = (props) => {
 					</div>
 				</div>
 			
-				<div className="d-flex col-6 col-sm-4 col-md-3 col-xl-2">
+				<div className="d-flex col-6 col-sm-4 col-md-3 col-xl-2 mb-1">
 					<div className="card flex-fill w-100 bg-light">
 						<div className=" pt-1 text-center">
 							<h5 className="text-uppercase font-weight-bold text-dark">
-								<img src="https://restcountries.eu/data/hun.svg" className="img-fluid rounded-circle mr-2" width="20" /> 
+								<img src="https://restcountries.eu/data/hun.svg" className="img-fluid rounded-circle mr-2" width="20" alt="imagen flag country"/> 
 								HUF
 							</h5>
 							<h6 className="text-uppercase text-muted">
@@ -230,11 +193,11 @@ const Currenciesw = (props) => {
 					</div>
 				</div>
 
-				<div className="d-flex col-6 col-sm-4 col-md-3 col-xl-2">
+				<div className="d-flex col-6 col-sm-4 col-md-3 col-xl-2 mb-1">
 					<div className="card flex-fill w-100 bg-light">
 						<div className=" pt-1 text-center">
 							<h5 className="text-uppercase font-weight-bold text-dark">
-								<img src="https://restcountries.eu/data/cze.svg" className="img-fluid rounded-circle mr-2" width="20" /> 
+								<img src="https://restcountries.eu/data/cze.svg" className="img-fluid rounded-circle mr-2" width="20" alt="imagen flag country"/> 
 								CZK
 							</h5>
 							<h6 className="text-uppercase text-muted">
@@ -244,11 +207,11 @@ const Currenciesw = (props) => {
 					</div>
 				</div>
 
-				<div className="d-flex col-6 col-sm-4 col-md-3 col-xl-2">
+				<div className="d-flex col-6 col-sm-4 col-md-3 col-xl-2 mb-1">
 					<div className="card flex-fill w-100 bg-light">
 						<div className=" pt-1 text-center">
 							<h5 className="text-uppercase font-weight-bold text-dark">
-								<img src="https://restcountries.eu/data/aus.svg" className="img-fluid rounded-circle mr-2" width="20" /> 
+								<img src="https://restcountries.eu/data/aus.svg" className="img-fluid rounded-circle mr-2" width="20" alt="imagen flag country"/> 
 								AUD
 							</h5>
 							<h6 className="text-uppercase text-muted">
@@ -258,11 +221,11 @@ const Currenciesw = (props) => {
 					</div>
 				</div>
 
-				<div className="d-flex col-6 col-sm-4 col-md-3 col-xl-2">
+				<div className="d-flex col-6 col-sm-4 col-md-3 col-xl-2 mb-1">
 					<div className="card flex-fill w-100 bg-light">
 						<div className=" pt-1 text-center">
 							<h5 className="text-uppercase font-weight-bold text-dark">
-								<img src="https://restcountries.eu/data/rou.svg" className="img-fluid rounded-circle mr-2" width="20" /> 
+								<img src="https://restcountries.eu/data/rou.svg" className="img-fluid rounded-circle mr-2" width="20" alt="imagen flag country"/> 
 								RON
 							</h5>
 							<h6 className="text-uppercase text-muted">
@@ -272,11 +235,11 @@ const Currenciesw = (props) => {
 					</div>
 				</div>
 
-				<div className="d-flex col-6 col-sm-4 col-md-3 col-xl-2">
+				<div className="d-flex col-6 col-sm-4 col-md-3 col-xl-2 mb-1">
 					<div className="card flex-fill w-100 bg-light">
 						<div className=" pt-1 text-center">
 							<h5 className="text-uppercase font-weight-bold text-dark">
-								<img src="https://restcountries.eu/data/swe.svg" className="img-fluid rounded-circle mr-2" width="20" /> 
+								<img src="https://restcountries.eu/data/swe.svg" className="img-fluid rounded-circle mr-2" width="20" alt="imagen flag country"/> 
 								SEK
 							</h5>
 							<h6 className="text-uppercase text-muted">
@@ -286,11 +249,11 @@ const Currenciesw = (props) => {
 					</div>
 				</div>
 
-				<div className="d-flex col-6 col-sm-4 col-md-3 col-xl-2">
+				<div className="d-flex col-6 col-sm-4 col-md-3 col-xl-2 mb-1">
 					<div className="card flex-fill w-100 bg-light">
 						<div className=" pt-1 text-center">
 							<h5 className="text-uppercase font-weight-bold text-dark">
-								<img src="https://restcountries.eu/data/idn.svg" className="img-fluid rounded-circle mr-2" width="20" /> 
+								<img src="https://restcountries.eu/data/idn.svg" className="img-fluid rounded-circle mr-2" width="20" alt="imagen flag country"/> 
 								IDR
 							</h5>
 							<h6 className="text-uppercase text-muted">
@@ -300,11 +263,11 @@ const Currenciesw = (props) => {
 					</div>
 				</div>
 
-				<div className="d-flex col-6 col-sm-4 col-md-3 col-xl-2">
+				<div className="d-flex col-6 col-sm-4 col-md-3 col-xl-2 mb-1">
 					<div className="card flex-fill w-100 bg-light">
 						<div className=" pt-1 text-center">
 							<h5 className="text-uppercase font-weight-bold text-dark">
-								<img src="https://restcountries.eu/data/ind.svg" className="img-fluid rounded-circle mr-2" width="20" /> 
+								<img src="https://restcountries.eu/data/ind.svg" className="img-fluid rounded-circle mr-2" width="20" alt="imagen flag country"/> 
 								INR
 							</h5>
 							<h6 className="text-uppercase text-muted">
@@ -314,11 +277,11 @@ const Currenciesw = (props) => {
 					</div>
 				</div>
 
-				<div className="d-flex col-6 col-sm-4 col-md-3 col-xl-2">
+				<div className="d-flex col-6 col-sm-4 col-md-3 col-xl-2 mb-1">
 					<div className="card flex-fill w-100 bg-light">
 						<div className=" pt-1 text-center">
 							<h5 className="text-uppercase font-weight-bold text-dark">
-								<img src="https://restcountries.eu/data/bra.svg" className="img-fluid rounded-circle mr-2" width="20" /> 
+								<img src="https://restcountries.eu/data/bra.svg" className="img-fluid rounded-circle mr-2" width="20" alt="imagen flag country"/> 
 								BRL
 							</h5>
 							<h6 className="text-uppercase text-muted">
@@ -328,11 +291,11 @@ const Currenciesw = (props) => {
 					</div>
 				</div>
 
-				<div className="d-flex col-6 col-sm-4 col-md-3 col-xl-2">
+				<div className="d-flex col-6 col-sm-4 col-md-3 col-xl-2 mb-1">
 					<div className="card flex-fill w-100 bg-light">
 						<div className=" pt-1 text-center">
 							<h5 className="text-uppercase font-weight-bold text-dark">
-								<img src="https://restcountries.eu/data/rus.svg" className="img-fluid rounded-circle mr-2" width="20" /> 
+								<img src="https://restcountries.eu/data/rus.svg" className="img-fluid rounded-circle mr-2" width="20" alt="imagen flag country"/> 
 								RUB
 							</h5>
 							<h6 className="text-uppercase text-muted">
@@ -342,11 +305,11 @@ const Currenciesw = (props) => {
 					</div>
 				</div>
 
-				<div className="d-flex col-6 col-sm-4 col-md-3 col-xl-2">
+				<div className="d-flex col-6 col-sm-4 col-md-3 col-xl-2 mb-1">
 					<div className="card flex-fill w-100 bg-light">
 						<div className=" pt-1 text-center">
 							<h5 className="text-uppercase font-weight-bold text-dark">
-								<img src="https://restcountries.eu/data/hrv.svg" className="img-fluid rounded-circle mr-2" width="20" /> 
+								<img src="https://restcountries.eu/data/hrv.svg" className="img-fluid rounded-circle mr-2" width="20" alt="imagen flag country"/> 
 								HRK
 							</h5>
 							<h6 className="text-uppercase text-muted">
@@ -356,11 +319,11 @@ const Currenciesw = (props) => {
 					</div>
 				</div>
 
-				<div className="d-flex col-6 col-sm-4 col-md-3 col-xl-2">
+				<div className="d-flex col-6 col-sm-4 col-md-3 col-xl-2 mb-1">
 					<div className="card flex-fill w-100 bg-light">
 						<div className=" pt-1 text-center">
 							<h5 className="text-uppercase font-weight-bold text-dark">
-								<img src="https://restcountries.eu/data/jpn.svg" className="img-fluid rounded-circle mr-2" width="20" /> 
+								<img src="https://restcountries.eu/data/jpn.svg" className="img-fluid rounded-circle mr-2" width="20" alt="imagen flag country"/> 
 								JPY
 							</h5>
 							<h6 className="text-uppercase text-muted">
@@ -370,11 +333,11 @@ const Currenciesw = (props) => {
 					</div>
 				</div>
 
-				<div className="d-flex col-6 col-sm-4 col-md-3 col-xl-2">
+				<div className="d-flex col-6 col-sm-4 col-md-3 col-xl-2 mb-1">
 					<div className="card flex-fill w-100 bg-light">
 						<div className=" pt-1 text-center">
 							<h5 className="text-uppercase font-weight-bold text-dark">
-								<img src="https://restcountries.eu/data/tha.svg" className="img-fluid rounded-circle mr-2" width="20" /> 
+								<img src="https://restcountries.eu/data/tha.svg" className="img-fluid rounded-circle mr-2" width="20" alt="imagen flag country"/> 
 								THB
 							</h5>
 							<h6 className="text-uppercase text-muted">
@@ -384,11 +347,11 @@ const Currenciesw = (props) => {
 					</div>
 				</div>
 
-				<div className="d-flex col-6 col-sm-4 col-md-3 col-xl-2">
+				<div className="d-flex col-6 col-sm-4 col-md-3 col-xl-2 mb-1">
 					<div className="card flex-fill w-100 bg-light">
 						<div className=" pt-1 text-center">
 							<h5 className="text-uppercase font-weight-bold text-dark">
-								<img src="https://restcountries.eu/data/che.svg" className="img-fluid rounded-circle mr-2" width="20" /> 
+								<img src="https://restcountries.eu/data/che.svg" className="img-fluid rounded-circle mr-2" width="20" alt="imagen flag country"/> 
 								CHF
 							</h5>
 							<h6 className="text-uppercase text-muted">
@@ -398,11 +361,11 @@ const Currenciesw = (props) => {
 					</div>
 				</div>
 
-				<div className="d-flex col-6 col-sm-4 col-md-3 col-xl-2">
+				<div className="d-flex col-6 col-sm-4 col-md-3 col-xl-2 mb-1">
 					<div className="card flex-fill w-100 bg-light">
 						<div className=" pt-1 text-center">
 							<h5 className="text-uppercase font-weight-bold text-dark">
-								<img src="https://restcountries.eu/data/brn.svg" className="img-fluid rounded-circle mr-2" width="20" /> 
+								<img src="https://restcountries.eu/data/brn.svg" className="img-fluid rounded-circle mr-2" width="20" alt="imagen flag country"/> 
 								SGD
 							</h5>
 							<h6 className="text-uppercase text-muted">
@@ -412,11 +375,11 @@ const Currenciesw = (props) => {
 					</div>
 				</div>
 
-				<div className="d-flex col-6 col-sm-4 col-md-3 col-xl-2">
+				<div className="d-flex col-6 col-sm-4 col-md-3 col-xl-2 mb-1">
 					<div className="card flex-fill w-100 bg-light">
 						<div className=" pt-1 text-center">
 							<h5 className="text-uppercase font-weight-bold text-dark">
-								<img src="https://restcountries.eu/data/pol.svg" className="img-fluid rounded-circle mr-2" width="20" /> 
+								<img src="https://restcountries.eu/data/pol.svg" className="img-fluid rounded-circle mr-2" width="20" alt="imagen flag country"/> 
 								PLN
 							</h5>
 							<h6 className="text-uppercase text-muted">
@@ -426,11 +389,11 @@ const Currenciesw = (props) => {
 					</div>
 				</div>
 
-				<div className="d-flex col-6 col-sm-4 col-md-3 col-xl-2">
+				<div className="d-flex col-6 col-sm-4 col-md-3 col-xl-2 mb-1">
 					<div className="card flex-fill w-100 bg-light">
 						<div className=" pt-1 text-center">
 							<h5 className="text-uppercase font-weight-bold text-dark">
-								<img src="https://restcountries.eu/data/bgr.svg" className="img-fluid rounded-circle mr-2" width="20" /> 
+								<img src="https://restcountries.eu/data/bgr.svg" className="img-fluid rounded-circle mr-2" width="20" alt="imagen flag country"/> 
 								BGN
 							</h5>
 							<h6 className="text-uppercase text-muted">
@@ -440,11 +403,11 @@ const Currenciesw = (props) => {
 					</div>
 				</div>
 
-				<div className="d-flex col-6 col-sm-4 col-md-3 col-xl-2">
+				<div className="d-flex col-6 col-sm-4 col-md-3 col-xl-2 mb-1">
 					<div className="card flex-fill w-100 bg-light">
 						<div className=" pt-1 text-center">
 							<h5 className="text-uppercase font-weight-bold text-dark">
-								<img src="https://restcountries.eu/data/tur.svg" className="img-fluid rounded-circle mr-2" width="20" /> 
+								<img src="https://restcountries.eu/data/tur.svg" className="img-fluid rounded-circle mr-2" width="20" alt="imagen flag country"/> 
 								TRY
 							</h5>
 							<h6 className="text-uppercase text-muted">
@@ -454,11 +417,11 @@ const Currenciesw = (props) => {
 					</div>
 				</div>
 
-				<div className="d-flex col-6 col-sm-4 col-md-3 col-xl-2">
+				<div className="d-flex col-6 col-sm-4 col-md-3 col-xl-2 mb-1">
 					<div className="card flex-fill w-100 bg-light">
 						<div className=" pt-1 text-center">
 							<h5 className="text-uppercase font-weight-bold text-dark">
-								<img src="https://restcountries.eu/data/chn.svg" className="img-fluid rounded-circle mr-2" width="20" /> 
+								<img src="https://restcountries.eu/data/chn.svg" className="img-fluid rounded-circle mr-2" width="20" alt="imagen flag country"/> 
 								CNY
 							</h5>
 							<h6 className="text-uppercase text-muted">
@@ -468,11 +431,11 @@ const Currenciesw = (props) => {
 					</div>
 				</div>
 
-				<div className="d-flex col-6 col-sm-4 col-md-3 col-xl-2">
+				<div className="d-flex col-6 col-sm-4 col-md-3 col-xl-2 mb-1">
 					<div className="card flex-fill w-100 bg-light">
 						<div className=" pt-1 text-center">
 							<h5 className="text-uppercase font-weight-bold text-dark">
-								<img src="https://restcountries.eu/data/nor.svg" className="img-fluid rounded-circle mr-2" width="20" /> 
+								<img src="https://restcountries.eu/data/nor.svg" className="img-fluid rounded-circle mr-2" width="20" alt="imagen flag country"/> 
 								NOK
 							</h5>
 							<h6 className="text-uppercase text-muted">
@@ -482,11 +445,11 @@ const Currenciesw = (props) => {
 					</div>
 				</div>
 
-				<div className="d-flex col-6 col-sm-4 col-md-3 col-xl-2">
+				<div className="d-flex col-6 col-sm-4 col-md-3 col-xl-2 mb-1">
 					<div className="card flex-fill w-100 bg-light">
 						<div className=" pt-1 text-center">
 							<h5 className="text-uppercase font-weight-bold text-dark">
-								<img src="https://restcountries.eu/data/nzl.svg" className="img-fluid rounded-circle mr-2" width="20" /> 
+								<img src="https://restcountries.eu/data/nzl.svg" className="img-fluid rounded-circle mr-2" width="20" alt="imagen flag country"/> 
 								NZD
 							</h5>
 							<h6 className="text-uppercase text-muted">
@@ -496,11 +459,11 @@ const Currenciesw = (props) => {
 					</div>
 				</div>
 
-				<div className="d-flex col-6 col-sm-4 col-md-3 col-xl-2">
+				<div className="d-flex col-6 col-sm-4 col-md-3 col-xl-2 mb-1">
 					<div className="card flex-fill w-100 bg-light">
 						<div className=" pt-1 text-center">
 							<h5 className="text-uppercase font-weight-bold text-dark">
-								<img src="https://restcountries.eu/data/zaf.svg" className="img-fluid rounded-circle mr-2" width="20" /> 
+								<img src="https://restcountries.eu/data/zaf.svg" className="img-fluid rounded-circle mr-2" width="20" alt="imagen flag country"/> 
 								ZAR
 							</h5>
 							<h6 className="text-uppercase text-muted">
@@ -510,11 +473,11 @@ const Currenciesw = (props) => {
 					</div>
 				</div>
 
-				<div className="d-flex col-6 col-sm-4 col-md-3 col-xl-2">
+				<div className="d-flex col-6 col-sm-4 col-md-3 col-xl-2 mb-1">
 					<div className="card flex-fill w-100 bg-light">
 						<div className=" pt-1 text-center">
 							<h5 className="text-uppercase font-weight-bold text-dark">
-								<img src="https://restcountries.eu/data/mex.svg" className="img-fluid rounded-circle mr-2" width="20" /> 
+								<img src="https://restcountries.eu/data/mex.svg" className="img-fluid rounded-circle mr-2" width="20" alt="imagen flag country"/> 
 								MXN
 							</h5>
 							<h6 className="text-uppercase text-muted">
@@ -524,11 +487,11 @@ const Currenciesw = (props) => {
 					</div>
 				</div>
 
-				<div className="d-flex col-6 col-sm-4 col-md-3 col-xl-2">
+				<div className="d-flex col-6 col-sm-4 col-md-3 col-xl-2 mb-1">
 					<div className="card flex-fill w-100 bg-light">
 						<div className=" pt-1 text-center">
 							<h5 className="text-uppercase font-weight-bold text-dark">
-								<img src="https://restcountries.eu/data/isr.svg" className="img-fluid rounded-circle mr-2" width="20" /> 
+								<img src="https://restcountries.eu/data/isr.svg" className="img-fluid rounded-circle mr-2" width="20" alt="imagen flag country"/> 
 								ILS
 							</h5>
 							<h6 className="text-uppercase text-muted">
@@ -538,11 +501,11 @@ const Currenciesw = (props) => {
 					</div>
 				</div>
 
-				<div className="d-flex col-6 col-sm-4 col-md-3 col-xl-2">
+				<div className="d-flex col-6 col-sm-4 col-md-3 col-xl-2 mb-1">
 					<div className="card flex-fill w-100 bg-light">
 						<div className=" pt-1 text-center">
 							<h5 className="text-uppercase font-weight-bold text-dark">
-								<img src="https://restcountries.eu/data/gbr.svg" className="img-fluid rounded-circle mr-2" width="20" /> 
+								<img src="https://restcountries.eu/data/gbr.svg" className="img-fluid rounded-circle mr-2" width="20" alt="imagen flag country"/> 
 								GBP
 							</h5>
 							<h6 className="text-uppercase text-muted">
@@ -552,11 +515,11 @@ const Currenciesw = (props) => {
 					</div>
 				</div>
 
-				<div className="d-flex col-6 col-sm-4 col-md-3 col-xl-2">
+				<div className="d-flex col-6 col-sm-4 col-md-3 col-xl-2 mb-1">
 					<div className="card flex-fill w-100 bg-light">
 						<div className=" pt-1 text-center">
 							<h5 className="text-uppercase font-weight-bold text-dark">
-								<img src="https://restcountries.eu/data/kor.svg" className="img-fluid rounded-circle mr-2" width="20" /> 
+								<img src="https://restcountries.eu/data/kor.svg" className="img-fluid rounded-circle mr-2" width="20" alt="imagen flag country"/> 
 								KRW
 							</h5>
 							<h6 className="text-uppercase text-muted">
@@ -566,11 +529,11 @@ const Currenciesw = (props) => {
 					</div>
 				</div>
 
-				<div className="d-flex col-6 col-sm-4 col-md-3 col-xl-2">
+				<div className="d-flex col-6 col-sm-4 col-md-3 col-xl-2 mb-1">
 					<div className="card flex-fill w-100 bg-light">
 						<div className=" pt-1 text-center">
 							<h5 className="text-uppercase font-weight-bold text-dark">
-								<img src="https://restcountries.eu/data/mys.svg" className="img-fluid rounded-circle mr-2" width="20" /> 
+								<img src="https://restcountries.eu/data/mys.svg" className="img-fluid rounded-circle mr-2" width="20" alt="imagen flag country"/> 
 								MYR
 							</h5>
 							<h6 className="text-uppercase text-muted">
