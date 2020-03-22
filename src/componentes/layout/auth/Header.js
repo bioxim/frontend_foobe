@@ -13,6 +13,7 @@ const Header = (props) => {
 	const { email } = credenciales;
 
 	const [ clientes, guardarClientes ] = useState([]);
+	const [miembro, guardarMiembro] = useState([]);
 
 	useEffect( () => {
 		// Query a la API
@@ -25,23 +26,24 @@ const Header = (props) => {
 		consultarAPI();
 	}, [clientes, guardarAuth]);
 
-	const clienteNombre = clientes.map(
+	const clienteId = clientes.map(
 		cliente => (
-			(cliente.email === email) ? cliente.nombre : null
+			(cliente.email === email) ? cliente._id : ''
 		));
 
-	const clienteImagen = clientes.map(
-		cliente => (
-			(cliente.email === email) ? cliente.imagen : null
-		));
+	const id = clienteId.filter(Boolean);
 
-	const clienteTagline = clientes.map(
-		cliente => (
-			(cliente.email === email) ? cliente.tagline : null
-		));
+	useEffect(() => {
+    	
+	        const consultarAPI = async () => {
+	            const miembroConsulta = await clienteAxios.get(`/clientes/${id}`);
+	            guardarMiembro(miembroConsulta.data);
+	        }
 
-	//console.log(clienteImagen);
-	//console.log(clienteTagline);
+	        consultarAPI();
+    }, [id, miembro]);
+
+	const { nombre, tagline, imagen } = miembro;
 
 	if(!auth.auth) {
 		props.history.push('/login');
@@ -54,12 +56,12 @@ const Header = (props) => {
 				<span className="align-middle">Foobe App</span> 
 			</Link>
 			<div className="sidebar-user">
-				{ clienteImagen[1] ? <img src={`${process.env.REACT_APP_BACKEND_URL}/${clienteImagen[1] ? clienteImagen[1] : null}`} className="img-fluid rounded-circle" width="400" alt={clienteNombre} /> : null  }
+				{ imagen ? <img src={`${process.env.REACT_APP_BACKEND_URL}/${imagen}`} className="img-fluid rounded-circle" width="400" alt={nombre} /> : <img src="/img/avatar-static.jpg" className="img-fluid rounded-circle" width="400" alt={nombre} />  }
 				<div className="font-weight-bold">
-					{clienteNombre ? clienteNombre : null }
+					{nombre ? nombre : null }
 				</div>
 				<small>
-					{clienteTagline[1] ? clienteTagline[1] : 'Foobes Member' }
+					{tagline ? tagline : 'Foobes Member' }
 				</small>
 			</div>
 			<ul className="sidebar-nav">
@@ -181,6 +183,12 @@ const Header = (props) => {
 							<li className="sidebar-item ">
 								<Link to={"/wiki/continuousfutures"} className="sidebar-link">
 									WIKI Continuous Futures
+								</Link>
+								<Link to={"/eurex/futures"} className="sidebar-link">
+									EUREX Futures
+								</Link>
+								<Link to={"/dalian"} className="sidebar-link">
+									DALIAN Commodities
 								</Link>
 							</li>
 						</ul>

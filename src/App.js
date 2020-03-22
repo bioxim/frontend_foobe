@@ -52,6 +52,8 @@ import Tipo from './componentes/perfiles/Tipo';
 
 /* APIS DE QUANDL DE MERCADOS FINANCIEROS */
 import Wiki from './componentes/quandl/Wiki';
+import Eurex from './componentes/quandl/Eurex';
+import Dalian from './componentes/quandl/Dalian';
 
 /* CONVERSOR DE MONEDAS TOOL */
 import Currencies from './componentes/converter/Currencies';
@@ -115,6 +117,8 @@ function App() {
                         <Route exact path="/users-country" component={Pais} />
 
                         <Route exact path="/wiki/continuousfutures" component={Wiki} />
+                        <Route exact path="/eurex/futures" component={Eurex} />
+                        <Route exact path="/dalian" component={Dalian} />
 
                         <Route exact path="/currencies" component={Currencies} />
                         

@@ -9,6 +9,7 @@ const Bienvenida = (props) => {
 	const { email } = credenciales;
 
 	const [ clientes, guardarClientes ] = useState([]);
+	const [miembro, guardarMiembro] = useState([]);
 
 	useEffect( () => {
 		// Query a la API
@@ -21,18 +22,30 @@ const Bienvenida = (props) => {
 		consultarAPI();
 	}, [clientes, guardarAuth]);
 
-	//const totalClientes = clientes.length;
-
-	const clienteNombre = clientes.map(
+	const clienteId = clientes.map(
 		cliente => (
-			(cliente.email === email) ? cliente.nombre : ''
+			(cliente.email === email) ? cliente._id : ''
 		));
+
+	const id = clienteId.filter(Boolean);
+
+	useEffect(() => {
+    	
+	        const consultarAPI = async () => {
+	            const miembroConsulta = await clienteAxios.get(`/clientes/${id}`);
+	            guardarMiembro(miembroConsulta.data);
+	        }
+
+	        consultarAPI();
+    }, [id, miembro]);
+
+	const { nombre } = miembro;
 
 	return (
 		<Fragment>
 				<div>
 					<h1 className="header-title">
-						Welcome {clienteNombre ? clienteNombre : null }!
+						Welcome { nombre }!
 					</h1>
 				</div>
 			<p className="header-subtitle">

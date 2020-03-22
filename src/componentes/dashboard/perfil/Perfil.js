@@ -1,4 +1,5 @@
 import React, { Fragment, useContext, useEffect, useState } from 'react';
+import Swal from 'sweetalert2';
 import { Link, withRouter } from 'react-router-dom';
 import '../Dashboard.css';
 import '../../layout/auth/Header.css';
@@ -11,7 +12,9 @@ import { CRMContext } from '../../../context/CRMContext';
 
 import moment from 'moment';
 
-const Perfil = (props) => {
+import EditarPerfil from './EditarPerfil';
+
+function Perfil(props) {
 
 	const [auth, guardarAuth] = useContext(CRMContext);
 
@@ -19,6 +22,8 @@ const Perfil = (props) => {
 	const { email } = credenciales;
 
 	const [ clientes, guardarClientes ] = useState([]);
+
+	const [ miembros, guardarMiembros ] = useState([]);
 
 	useEffect( () => {
 		// Query a la API
@@ -38,25 +43,15 @@ const Perfil = (props) => {
 
 	const id = clienteId.filter(Boolean);
 
-	const [miembro, guardarMiembro] = useState({
-		nombre: '',
-		tagline: '',
-		imagen: ''
-	});
-
-	const [archivo, guardarArchivo] = useState('');
-
 	useEffect(() => {
     	
 	        const consultarAPI = async () => {
 	            const miembroConsulta = await clienteAxios.get(`/clientes/${id}`);
-	            guardarMiembro(miembroConsulta.data);
+	            guardarMiembros(miembroConsulta.data);
 	        }
 
 	        consultarAPI();
-    }, [id]);
-
-    const { nombre, tagline, imagen, registro } = miembro;
+    }, [id, miembros]);
 
 	if(!auth.auth) {
 		props.history.push('/login');
@@ -109,55 +104,12 @@ const Perfil = (props) => {
 																Public profile
 															</h6>
 															<h6 className="text-primary">
-																Member since  {moment(`${registro}`).format('l')}
+																Member since  {moment(`${miembros.registro}`).format('l')}
 															</h6>
 														</div>
-														<div className="card-body">
-															<form>
-																<div className="row">
-																	<div className="col-md-8">
-																		<div className="form-group">
-																			<label>Full Name</label>
-																			<input 
-																				name="nombre"
-																				type="text" 
-																				className="form-control" 
-																				placeholder="Your full name"
-																				defaultValue={nombre}
-																			/>
-																		</div>
-																		<div class="form-group">
-																			<label> Business Tagline</label>
-																			<input 
-																				name="tagline"
-																				type="text" 
-																				className="form-control" 
-																				placeholder="Your job"
-																				defaultValue={tagline}
-																			/>
-																		</div>
-																	</div>
-																	<div className="col-md-4">
-																		<div className="text-center">
-																			{ imagen ? (
-														                        <img src={`${process.env.REACT_APP_BACKEND_URL}/${imagen}`} alt="imagen" width="150" className="img-fluid rounded-circle" />
-														                    ) : null }
-																			<div class="mt-2">
-																				<input 
-															                        type="file"  
-															                        name="imagen"
-															                    />
-																			</div>
-																			<small>For best results, use an square image .jpg or .png
-				                                            format</small>
-																		</div>
-																	</div>
-																</div>
-
-																<button type="submit" class="btn btn-primary">Save changes</button>
-															</form>
-
-														</div>
+														<EditarPerfil
+															miembros={miembros}
+														/>
 													</div>
 
 												</div>

@@ -33,17 +33,11 @@ const Wiki = (props) => {
 							<div className="row mb-3">
 								<div className="card w-100">
 									<h5 className="text-dark text-uppercase pt-2 px-2">
-										Wiki Continuous Futures
+										Dalian Commodities Exchange
 									</h5>
 									<p className="text-muted px-2">
-										Continuous contracts for all 600 futures.  Build on top of raw data from CME, ICE, LIFFE, etc.
+										The Dalian Commodities Exchange (DCE) data feed contains a total of 19 futures contracts that have been listed for trading on DCE, covering sectors of grain, oils and oil seeds, livestock, animal feed, forestry, chemical, energy, and metals.
 									</p>
-									<small>
-										Individual futures contracts trade for very short periods of time, and are hence unsuitable for long-horizon analysis. Continuous futures contracts solve this problem by chaining together a series of individual futures contracts, to provide a long-term price history that is suitable for trading, behavioral and strategy analysis.
-									</small>
-									<small>
-										The advantage of continuous contract numbering (depth) is that it allows traders and analysts to construct very long historical time series of futures data for particular commodities. For example, C1 (Front Corn) data goes all the way back to 1970, even though no individual Corn contract is active for more than a year or two.  Of course, one must take care when analyzing and interpreting Continuous Contract data spanning decades, because the impact of multiple Rolls over such long time frames can be quite significant.
-									</small>
 								</div>
 							</div>
 
@@ -51,124 +45,41 @@ const Wiki = (props) => {
 								<div className="col-md-4 col-xl-3">
 									<div className="card">
 										<div className="card-header bg-light">
-											<small className="card-title mb-0 text-dark text-uppercase">Select Commodity</small>
+											<small className="card-title mb-0 text-dark text-uppercase">Select Product</small>
 										</div>
 										<div className="list-group list-group-flush" role="tablist">
-											<a className="list-group-item list-group-item-action" data-toggle="list" href="#barley" role="tab">
-							                    <small>Barley</small>
-							                </a>
-							                <a className="list-group-item list-group-item-action" data-toggle="list" href="#canola" role="tab">
-							                    <small>Canola</small>
-							                </a>
-							                <a className="list-group-item list-group-item-action" data-toggle="list" href="#cocoa" role="tab">
-							                    <small>Cocoa</small>
-							                </a>
-							                <a className="list-group-item list-group-item-action" data-toggle="list" href="#coffee" role="tab">
-							                    <small>Coffee</small>
-							                </a>
 											<a className="list-group-item list-group-item-action" data-toggle="list" href="#corn" role="tab">
 							                    <small>Corn</small>
 							                </a>
-							                <a className="list-group-item list-group-item-action" data-toggle="list" href="#orangejuice" role="tab">
-							                    <small>Orange Juice</small>
+											<a className="list-group-item list-group-item-action" data-toggle="list" href="#cornstarch" role="tab">
+							                    <small>Corn Starch</small>
 							                </a>
-							                 <a className="list-group-item list-group-item-action" data-toggle="list" href="#sorghum" role="tab">
-							                    <small>Sorghum</small>
+							                <a className="list-group-item list-group-item-action" data-toggle="list" href="#henegg" role="tab">
+							                    <small>Hen Egg (fresh)</small>
 							                </a>
-							                <a className="list-group-item list-group-item-action" data-toggle="list" href="#soybeans" role="tab">
-							                    <small>Soybeans</small>
+											<a className="list-group-item list-group-item-action" data-toggle="list" href="#palmolein" role="tab">
+							                    <small>Palm Olein</small>
 							                </a>
-							                <a className="list-group-item list-group-item-action" data-toggle="list" href="#sugar" role="tab">
-							                    <small>Sugar</small>
+											<a className="list-group-item list-group-item-action" data-toggle="list" href="#rice" role="tab">
+							                    <small>Rice</small>
 							                </a>
-							                <a className="list-group-item list-group-item-action" data-toggle="list" href="#wheat" role="tab">
-							                    <small>Wheat</small>
+							                <a className="list-group-item list-group-item-action" data-toggle="list" href="#soybean" role="tab">
+							                    <small>Soybean</small>
+							                </a>
+							                <a className="list-group-item list-group-item-action" data-toggle="list" href="#soybeanmeal" role="tab">
+							                    <small>Soybean Meal</small>
+							                </a>
+											<a className="list-group-item list-group-item-action" data-toggle="list" href="#soybeanoil" role="tab">
+							                    <small>Soybean Oil</small>
+							                </a>
+											<a className="list-group-item list-group-item-action" data-toggle="list" href="#livestock" role="tab">
+							                    <small>Livestock</small>
 							                </a>
 										</div>
 									</div>
 								</div>
 								<div className="col-md-8 col-xl-9">
 									<div className="tab-content">
-										<div className="tab-pane fade show" id="barley" role="tabpanel">
-											<div className="card">
-												
-												<div className="col">
-													<div className="alert alert-primary alert-dismissible" role="alert">
-													<div className="alert-icon">
-														<i className="far fa-fw fa-bell"></i>
-													</div>
-													<div className="alert-message">
-														<strong>Hello there!</strong> Very soon!
-													</div>
-
-													<button type="button" className="close" data-dismiss="alert" aria-label="Close">
-									                	<span aria-hidden="true">×</span>
-										            </button>
-													</div>
-												</div>
-
-											</div>
-										</div>
-										<div className="tab-pane fade show" id="canola" role="tabpanel">
-											<div className="card">
-												
-												<div className="col">
-													<div className="alert alert-primary alert-dismissible" role="alert">
-													<div className="alert-icon">
-														<i className="far fa-fw fa-bell"></i>
-													</div>
-													<div className="alert-message">
-														<strong>Hello there!</strong> Very soon!
-													</div>
-
-													<button type="button" className="close" data-dismiss="alert" aria-label="Close">
-									                	<span aria-hidden="true">×</span>
-										            </button>
-													</div>
-												</div>
-
-											</div>
-										</div>
-										<div className="tab-pane fade show" id="cocoa" role="tabpanel">
-											<div className="card">
-												
-												<div className="col">
-													<div className="alert alert-primary alert-dismissible" role="alert">
-													<div className="alert-icon">
-														<i className="far fa-fw fa-bell"></i>
-													</div>
-													<div className="alert-message">
-														<strong>Hello there!</strong> Very soon!
-													</div>
-
-													<button type="button" className="close" data-dismiss="alert" aria-label="Close">
-									                	<span aria-hidden="true">×</span>
-										            </button>
-													</div>
-												</div>
-
-											</div>
-										</div>
-										<div className="tab-pane fade show" id="coffee" role="tabpanel">
-											<div className="card">
-												
-												<div className="col">
-													<div className="alert alert-primary alert-dismissible" role="alert">
-													<div className="alert-icon">
-														<i className="far fa-fw fa-bell"></i>
-													</div>
-													<div className="alert-message">
-														<strong>Hello there!</strong> Very soon!
-													</div>
-
-													<button type="button" className="close" data-dismiss="alert" aria-label="Close">
-									                	<span aria-hidden="true">×</span>
-										            </button>
-													</div>
-												</div>
-
-											</div>
-										</div>
 										<div className="tab-pane fade show" id="corn" role="tabpanel">
 											<div className="card">
 												
@@ -186,30 +97,10 @@ const Wiki = (props) => {
 										            </button>
 													</div>
 												</div>
-											
-											</div>
-										</div>
-										<div className="tab-pane fade show" id="orangejuice" role="tabpanel">
-											<div className="card">
-												
-												<div className="col">
-													<div className="alert alert-primary alert-dismissible" role="alert">
-													<div className="alert-icon">
-														<i className="far fa-fw fa-bell"></i>
-													</div>
-													<div className="alert-message">
-														<strong>Hello there!</strong> Very soon!
-													</div>
 
-													<button type="button" className="close" data-dismiss="alert" aria-label="Close">
-									                	<span aria-hidden="true">×</span>
-										            </button>
-													</div>
-												</div>
-											
 											</div>
 										</div>
-										<div className="tab-pane fade show" id="wheat" role="tabpanel">
+										<div className="tab-pane fade show" id="cornstarch" role="tabpanel">
 											<div className="card">
 												
 												<div className="col">
@@ -229,27 +120,7 @@ const Wiki = (props) => {
 
 											</div>
 										</div>
-										<div className="tab-pane fade show" id="sorghum" role="tabpanel">
-											<div className="card">
-
-												<div className="col">
-													<div className="alert alert-primary alert-dismissible" role="alert">
-													<div className="alert-icon">
-														<i className="far fa-fw fa-bell"></i>
-													</div>
-													<div className="alert-message">
-														<strong>Hello there!</strong> Very soon!
-													</div>
-
-													<button type="button" className="close" data-dismiss="alert" aria-label="Close">
-									                	<span aria-hidden="true">×</span>
-										            </button>
-													</div>
-												</div>
-												
-											</div>
-										</div>
-										<div className="tab-pane fade show" id="sugar" role="tabpanel">
+										<div className="tab-pane fade show" id="henegg" role="tabpanel">
 											<div className="card">
 												
 												<div className="col">
@@ -269,7 +140,107 @@ const Wiki = (props) => {
 
 											</div>
 										</div>
-										<div className="tab-pane fade show" id="soybeans" role="tabpanel">
+										<div className="tab-pane fade show" id="palmolein" role="tabpanel">
+											<div className="card">
+												
+												<div className="col">
+													<div className="alert alert-primary alert-dismissible" role="alert">
+													<div className="alert-icon">
+														<i className="far fa-fw fa-bell"></i>
+													</div>
+													<div className="alert-message">
+														<strong>Hello there!</strong> Very soon!
+													</div>
+
+													<button type="button" className="close" data-dismiss="alert" aria-label="Close">
+									                	<span aria-hidden="true">×</span>
+										            </button>
+													</div>
+												</div>
+
+											</div>
+										</div>
+										<div className="tab-pane fade show" id="rice" role="tabpanel">
+											<div className="card">
+												
+												<div className="col">
+													<div className="alert alert-primary alert-dismissible" role="alert">
+													<div className="alert-icon">
+														<i className="far fa-fw fa-bell"></i>
+													</div>
+													<div className="alert-message">
+														<strong>Hello there!</strong> Very soon!
+													</div>
+
+													<button type="button" className="close" data-dismiss="alert" aria-label="Close">
+									                	<span aria-hidden="true">×</span>
+										            </button>
+													</div>
+												</div>
+
+											</div>
+										</div>
+										<div className="tab-pane fade show" id="soybean" role="tabpanel">
+											<div className="card">
+												
+												<div className="col">
+													<div className="alert alert-primary alert-dismissible" role="alert">
+													<div className="alert-icon">
+														<i className="far fa-fw fa-bell"></i>
+													</div>
+													<div className="alert-message">
+														<strong>Hello there!</strong> Very soon!
+													</div>
+
+													<button type="button" className="close" data-dismiss="alert" aria-label="Close">
+									                	<span aria-hidden="true">×</span>
+										            </button>
+													</div>
+												</div>
+
+											</div>
+										</div>
+										<div className="tab-pane fade show" id="soybeanmeal" role="tabpanel">
+											<div className="card">
+												
+												<div className="col">
+													<div className="alert alert-primary alert-dismissible" role="alert">
+													<div className="alert-icon">
+														<i className="far fa-fw fa-bell"></i>
+													</div>
+													<div className="alert-message">
+														<strong>Hello there!</strong> Very soon!
+													</div>
+
+													<button type="button" className="close" data-dismiss="alert" aria-label="Close">
+									                	<span aria-hidden="true">×</span>
+										            </button>
+													</div>
+												</div>
+
+											</div>
+										</div>
+										<div className="tab-pane fade show" id="soybeanoil" role="tabpanel">
+											<div className="card">
+												
+												<div className="col">
+													<div className="alert alert-primary alert-dismissible" role="alert">
+													<div className="alert-icon">
+														<i className="far fa-fw fa-bell"></i>
+													</div>
+													<div className="alert-message">
+														<strong>Hello there!</strong> Very soon!
+													</div>
+
+													<button type="button" className="close" data-dismiss="alert" aria-label="Close">
+									                	<span aria-hidden="true">×</span>
+										            </button>
+													</div>
+												</div>
+
+											</div>
+										</div>
+										<div className="tab-pane fade show" id="livestock" role="tabpanel">
 											<div className="card">
 												
 												<div className="col">

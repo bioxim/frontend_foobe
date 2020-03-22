@@ -5,7 +5,7 @@ import '../views/Styles.css';
 
 import moment from 'moment';
 
-// Australian Wheat
+// Sorghum
 
 const Wiki = (props) => {
 	
@@ -14,6 +14,7 @@ const Wiki = (props) => {
 	const [ datosTres, guardarDatosTres ] = useState([]);
 	const [ datosCuatro, guardarDatosCuatro ] = useState([]);
 	const [ datosCinco, guardarDatosCinco ] = useState([]);
+	const [ datosSeis, guardarDatosSeis ] = useState([]);
 
 	const [auth, guardarAuth] = useContext(CRMContext);
 
@@ -21,19 +22,40 @@ const Wiki = (props) => {
 		// Query a la API
 		const consultarAPI = async () => {
 
-			const datosConsulta = await clienteAxios.get('https://www.quandl.com/api/v3/datasets/CHRIS/ASX_WM2.json?start_date=2020-02-15&end_date=2020-05-17&api_key=PaVTvJcxhxsypQDK-1Fn');
+			const datosConsulta = await clienteAxios.get('https://www.quandl.com/api/v3/datasets/CHRIS/ASX_US6.json?start_date=2020-02-15&end_date=2020-05-17&api_key=PaVTvJcxhxsypQDK-1Fn');
       		const respuesta = await datosConsulta.data.dataset;
 
-      		const datosConsulta2 = await clienteAxios.get('https://www.quandl.com/api/v3/datasets/CHRIS/ASX_WM4.json?start_date=2020-02-15&end_date=2020-05-17&api_key=PaVTvJcxhxsypQDK-1Fn');
+      		const datosConsulta2 = await clienteAxios.get('https://www.quandl.com/api/v3/datasets/CHRIS/ASX_US5.json?start_date=2020-02-15&end_date=2020-05-17&api_key=PaVTvJcxhxsypQDK-1Fn');
       		const respuesta2 = await datosConsulta2.data.dataset;
 
-      		const datosConsulta3 = await clienteAxios.get('https://www.quandl.com/api/v3/datasets/CHRIS/ASX_WM1.json?start_date=2020-02-15&end_date=2020-05-17&api_key=PaVTvJcxhxsypQDK-1Fn');
+      		const datosConsulta3 = await clienteAxios.get('https://www.quandl.com/api/v3/datasets/CHRIS/ASX_US4.json?start_date=2020-02-15&end_date=2020-05-17&api_key=PaVTvJcxhxsypQDK-1Fn');
       		const respuesta3 = await datosConsulta3.data.dataset;
 
-      		const datosConsulta4 = await clienteAxios.get('https://www.quandl.com/api/v3/datasets/CHRIS/ASX_WM5.json?start_date=2020-02-15&end_date=2020-05-17&api_key=PaVTvJcxhxsypQDK-1Fn');
+			guardarDatos(respuesta);
+			guardarDatosDos(respuesta2);
+			guardarDatosTres(respuesta3);
+
+		}
+		consultarAPI();
+	}, [datos, datosDos, datosTres, guardarAuth]);
+
+	useEffect( () => {
+		// Query a la API
+		const consultarAPI = async () => {
+
+			const datosConsulta = await clienteAxios.get('https://www.quandl.com/api/v3/datasets/CHRIS/ASX_US6.json?start_date=2020-02-15&end_date=2020-05-17&api_key=PaVTvJcxhxsypQDK-1Fn');
+      		const respuesta = await datosConsulta.data.dataset;
+
+      		const datosConsulta2 = await clienteAxios.get('https://www.quandl.com/api/v3/datasets/CHRIS/ASX_US5.json?start_date=2020-02-15&end_date=2020-05-17&api_key=PaVTvJcxhxsypQDK-1Fn');
+      		const respuesta2 = await datosConsulta2.data.dataset;
+
+      		const datosConsulta3 = await clienteAxios.get('https://www.quandl.com/api/v3/datasets/CHRIS/ASX_US4.json?start_date=2020-02-15&end_date=2020-05-17&api_key=PaVTvJcxhxsypQDK-1Fn');
+      		const respuesta3 = await datosConsulta3.data.dataset;
+
+      		const datosConsulta4 = await clienteAxios.get('https://www.quandl.com/api/v3/datasets/CHRIS/ASX_US3.json?start_date=2020-02-15&end_date=2020-05-17&api_key=PaVTvJcxhxsypQDK-1Fn');
       		const respuesta4 = await datosConsulta4.data.dataset;
 
-      		const datosConsulta5 = await clienteAxios.get('https://www.quandl.com/api/v3/datasets/CHRIS/ASX_WM3.json?start_date=2020-02-15&end_date=2020-05-17&api_key=PaVTvJcxhxsypQDK-1Fn');
+      		const datosConsulta5 = await clienteAxios.get('https://www.quandl.com/api/v3/datasets/CHRIS/ASX_US2.json?start_date=2020-02-15&end_date=2020-05-17&api_key=PaVTvJcxhxsypQDK-1Fn');
       		const respuesta5 = await datosConsulta5.data.dataset;
 
 			guardarDatos(respuesta);

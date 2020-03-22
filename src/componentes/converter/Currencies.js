@@ -9,6 +9,8 @@ import { CRMContext } from '../../context/CRMContext';
 
 import moment from 'moment';
 
+import Conversor from './Conversor';
+
 function Currencies(props) {
 	
 	const [auth, guardarAuth] = useContext(CRMContext);
@@ -17,9 +19,10 @@ function Currencies(props) {
 	const [eur, guardarEur] = useState([]);
 	const [usd, guardarUsd] = useState([]);
 	const [cad, guardarCad] = useState([]);
+	const [hkd, guardarHkd] = useState([]);
 	
-	const base = ['EUR','USD','CAD','HKD','ISK','PHP','DKK','HUF','CZK','AUD','RON','SEK',
-					'IDR','INR','BRL','RUB','HRK','JPY','THB','CHF','SGD','PLN','BGN','TRY','CNY','NOK','NZD','ZAR','MXN','ILS','GBP','KRW','MYR'];
+	const [isk, guardarIsk] = useState([]);
+	const [php, guardarPhp] = useState([]);
 	
 	useEffect( () => {
 		// Query a la API
@@ -38,11 +41,29 @@ function Currencies(props) {
 			const consultaCad = await clienteAxios.get('https://api.exchangeratesapi.io/latest?base=CAD');
       		const respuestaCad = await consultaCad.data.rates;
 			guardarCad(respuestaCad);
+
+			//En base CAD
+			const consultaHkd = await clienteAxios.get('https://api.exchangeratesapi.io/latest?base=HKD');
+      		const respuestaHkd = await consultaHkd.data.rates;
+			guardarHkd(respuestaHkd);
 		}
 		consultarAPI();
-	}, [eur, usd, cad, guardarAuth]);
+	}, [eur, usd, cad, hkd, guardarAuth]);
 
-	console.log({eur});
+	useEffect( () => {
+		// Query a la API
+		const consultarAPI = async () => {
+
+			const consultaIsk = await clienteAxios.get('https://api.exchangeratesapi.io/latest?base=ISK');
+      		const respuestaIsk = await consultaIsk.data.rates;
+			guardarIsk(respuestaIsk);
+
+			const consultaPhp = await clienteAxios.get('https://api.exchangeratesapi.io/latest?base=PHP');
+      		const respuestaPhp = await consultaPhp.data.rates;
+			guardarPhp(respuestaPhp);
+		}
+		consultarAPI();
+	}, [isk, php]);
 
 	if(!auth.auth) {
 		props.history.push('/login');
@@ -84,27 +105,44 @@ function Currencies(props) {
 										<div className="w-100 d-flex">	
 											<div className="col-12">
 												<div className="tab tab-success">
+													
 													<ul className="nav nav-tabs" role="tablist">
 														<li className="nav-item">
-															<a className="nav-link active" href="#colored-icon-1" data-toggle="tab" role="tab" aria-selected="true">
+															<a className="nav-link active" href="#eur" data-toggle="tab" role="tab" aria-selected="true">
 																EUR
 					          								</a>
 														</li>
 														<li className="nav-item">
-															<a className="nav-link" href="#colored-icon-2" data-toggle="tab" role="tab" aria-selected="false">
+															<a className="nav-link" href="#usd" data-toggle="tab" role="tab" aria-selected="false">
 																USD
 					          								</a>
 														</li>
 														<li className="nav-item">
-															<a className="nav-link" href="#colored-icon-3" data-toggle="tab" role="tab" aria-selected="false">
+															<a className="nav-link" href="#cad" data-toggle="tab" role="tab" aria-selected="false">
 					            								CAD
+					          								</a>
+														</li>
+														<li className="nav-item">
+															<a className="nav-link" href="#hkd" data-toggle="tab" role="tab" aria-selected="false">
+					            								HKD
+					          								</a>
+														</li>
+														<li className="nav-item">
+															<a className="nav-link" href="#isk" data-toggle="tab" role="tab" aria-selected="false">
+					            								ISK
+					          								</a>
+														</li>
+														<li className="nav-item">
+															<a className="nav-link" href="#php" data-toggle="tab" role="tab" aria-selected="false">
+					            								PHP
 					          								</a>
 														</li>
 													</ul>
 													
 													<div className="tab-content">
-														//Panel 1: BASE EURO
-														<div className="tab-pane active" id="colored-icon-1" role="tabpanel">
+														
+														<div className="tab-pane active" id="eur" role="tabpanel">
+															
 															<div className="row mb-5">
 
 																<div className="d-flex col-4 col-sm-3 col-md-2 col-xl-1 mb-1">
@@ -522,11 +560,11 @@ function Currencies(props) {
 																		</div>
 																	</div>
 																</div>
-
 															</div>
+														
 														</div>
-														//Panel 2: BASE USD
-														<div class="tab-pane" id="colored-icon-2" role="tabpanel">
+														
+														<div className="tab-pane" id="usd" role="tabpanel">
 															
 															<div className="row mb-5">
 
@@ -945,17 +983,1702 @@ function Currencies(props) {
 																		</div>
 																	</div>
 																</div>
-
 															</div>
 
 														</div>
-														<div class="tab-pane" id="colored-icon-3" role="tabpanel">
-															<h4 class="tab-title">One more</h4>
-															<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor tellus eget condimentum rhoncus. Aenean massa. Cum sociis natoque
-																penatibus et magnis neque dis parturient montes, nascetur ridiculus mus.</p>
-															<p>Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate
-																eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo.</p>
+
+														<div className="tab-pane" id="cad" role="tabpanel">
+															
+															<div className="row mb-5">
+
+																<div className="d-flex col-4 col-sm-3 col-md-2 col-xl-1 mb-1">
+																	<div className="card flex-fill w-100">
+																		<div className=" pt-1 text-center">
+																			<h5 className="text-uppercase font-weight-bold text-dark">
+																				EUR
+																			</h5>
+																			<h6 className="text-uppercase text-muted">
+																				{cad['EUR']}
+																			</h6>
+																		</div>
+																	</div>
+																</div>
+
+																<div className="d-flex col-4 col-sm-3 col-md-2 col-xl-1 mb-1">
+																	<div className="card flex-fill w-100">
+																		<div className=" pt-1 text-center">
+																			<h5 className="text-uppercase font-weight-bold text-dark">
+																				USD
+																			</h5>
+																			<h6 className="text-uppercase text-muted">
+																				{cad['USD']}
+																			</h6>
+																		</div>
+																	</div>
+																</div>
+
+																<div className="d-flex col-4 col-sm-3 col-md-2 col-xl-1 mb-1">
+																	<div className="card flex-fill w-100">
+																		<div className=" pt-1 text-center">
+																			<h5 className="text-uppercase font-weight-bold text-dark">
+																				HKD
+																			</h5>
+																			<h6 className="text-uppercase text-muted">
+																				{cad['HKD']}
+																			</h6>
+																		</div>
+																	</div>
+																</div>
+
+																<div className="d-flex col-4 col-sm-3 col-md-2 col-xl-1 mb-1">
+																	<div className="card flex-fill w-100">
+																		<div className=" pt-1 text-center">
+																			<h5 className="text-uppercase font-weight-bold text-dark">
+																				ISK
+																			</h5>
+																			<h6 className="text-uppercase text-muted">
+																				{cad['ISK']}
+																			</h6>
+																		</div>
+																	</div>
+																</div>
+
+																<div className="d-flex col-4 col-sm-3 col-md-2 col-xl-1 mb-1">
+																	<div className="card flex-fill w-100">
+																		<div className=" pt-1 text-center">
+																			<h5 className="text-uppercase font-weight-bold text-dark">
+																				PHP
+																			</h5>
+																			<h6 className="text-uppercase text-muted">
+																				{cad['PHP']}
+																			</h6>
+																		</div>
+																	</div>
+																</div>
+
+																<div className="d-flex col-4 col-sm-3 col-md-2 col-xl-1 mb-1">
+																	<div className="card flex-fill w-100">
+																		<div className=" pt-1 text-center">
+																			<h5 className="text-uppercase font-weight-bold text-dark">
+																				DKK
+																			</h5>
+																			<h6 className="text-uppercase text-muted">
+																				{cad['DKK']}
+																			</h6>
+																		</div>
+																	</div>
+																</div>
+
+																<div className="d-flex col-4 col-sm-3 col-md-2 col-xl-1 mb-1">
+																	<div className="card flex-fill w-100">
+																		<div className=" pt-1 text-center">
+																			<h5 className="text-uppercase font-weight-bold text-dark">
+																				HUF
+																			</h5>
+																			<h6 className="text-uppercase text-muted">
+																				{cad['HUF']}
+																			</h6>
+																		</div>
+																	</div>
+																</div>
+
+																<div className="d-flex col-4 col-sm-3 col-md-2 col-xl-1 mb-1">
+																	<div className="card flex-fill w-100">
+																		<div className=" pt-1 text-center">
+																			<h5 className="text-uppercase font-weight-bold text-dark">
+																				CZK
+																			</h5>
+																			<h6 className="text-uppercase text-muted">
+																				{cad['CZK']}
+																			</h6>
+																		</div>
+																	</div>
+																</div>
+
+																<div className="d-flex col-4 col-sm-3 col-md-2 col-xl-1 mb-1">
+																	<div className="card flex-fill w-100">
+																		<div className=" pt-1 text-center">
+																			<h5 className="text-uppercase font-weight-bold text-dark">
+																				AUD
+																			</h5>
+																			<h6 className="text-uppercase text-muted">
+																				{cad['AUD']}
+																			</h6>
+																		</div>
+																	</div>
+																</div>
+
+																<div className="d-flex col-4 col-sm-3 col-md-2 col-xl-1 mb-1">
+																	<div className="card flex-fill w-100">
+																		<div className=" pt-1 text-center">
+																			<h5 className="text-uppercase font-weight-bold text-dark">
+																				RON
+																			</h5>
+																			<h6 className="text-uppercase text-muted">
+																				{cad['RON']}
+																			</h6>
+																		</div>
+																	</div>
+																</div>
+
+																<div className="d-flex col-4 col-sm-3 col-md-2 col-xl-1 mb-1">
+																	<div className="card flex-fill w-100">
+																		<div className=" pt-1 text-center">
+																			<h5 className="text-uppercase font-weight-bold text-dark">
+																				SEK
+																			</h5>
+																			<h6 className="text-uppercase text-muted">
+																				{cad['SEK']}
+																			</h6>
+																		</div>
+																	</div>
+																</div>
+
+																<div className="d-flex col-4 col-sm-3 col-md-2 col-xl-1 mb-1">
+																	<div className="card flex-fill w-100">
+																		<div className=" pt-1 text-center">
+																			<h5 className="text-uppercase font-weight-bold text-dark">
+																				IDR
+																			</h5>
+																			<h6 className="text-uppercase text-muted">
+																				{cad['IDR']}
+																			</h6>
+																		</div>
+																	</div>
+																</div>
+
+																<div className="d-flex col-4 col-sm-3 col-md-2 col-xl-1 mb-1">
+																	<div className="card flex-fill w-100">
+																		<div className=" pt-1 text-center">
+																			<h5 className="text-uppercase font-weight-bold text-dark">
+																				INR
+																			</h5>
+																			<h6 className="text-uppercase text-muted">
+																				{cad['INR']}
+																			</h6>
+																		</div>
+																	</div>
+																</div>
+
+																<div className="d-flex col-4 col-sm-3 col-md-2 col-xl-1 mb-1">
+																	<div className="card flex-fill w-100">
+																		<div className=" pt-1 text-center">
+																			<h5 className="text-uppercase font-weight-bold text-dark">
+																				BRL
+																			</h5>
+																			<h6 className="text-uppercase text-muted">
+																				{cad['BRL']}
+																			</h6>
+																		</div>
+																	</div>
+																</div>
+
+																<div className="d-flex col-4 col-sm-3 col-md-2 col-xl-1 mb-1">
+																	<div className="card flex-fill w-100">
+																		<div className=" pt-1 text-center">
+																			<h5 className="text-uppercase font-weight-bold text-dark">
+																				RUB
+																			</h5>
+																			<h6 className="text-uppercase text-muted">
+																				{cad['RUB']}
+																			</h6>
+																		</div>
+																	</div>
+																</div>
+
+																<div className="d-flex col-4 col-sm-3 col-md-2 col-xl-1 mb-1">
+																	<div className="card flex-fill w-100">
+																		<div className=" pt-1 text-center">
+																			<h5 className="text-uppercase font-weight-bold text-dark">
+																				HRK
+																			</h5>
+																			<h6 className="text-uppercase text-muted">
+																				{cad['HRK']}
+																			</h6>
+																		</div>
+																	</div>
+																</div>
+
+																<div className="d-flex col-4 col-sm-3 col-md-2 col-xl-1 mb-1">
+																	<div className="card flex-fill w-100">
+																		<div className=" pt-1 text-center">
+																			<h5 className="text-uppercase font-weight-bold text-dark">
+																				JPY
+																			</h5>
+																			<h6 className="text-uppercase text-muted">
+																				{cad['JPY']}
+																			</h6>
+																		</div>
+																	</div>
+																</div>
+																
+																<div className="d-flex col-4 col-sm-3 col-md-2 col-xl-1 mb-1">
+																	<div className="card flex-fill w-100">
+																		<div className=" pt-1 text-center">
+																			<h5 className="text-uppercase font-weight-bold text-dark">
+																				THB
+																			</h5>
+																			<h6 className="text-uppercase text-muted">
+																				{cad['THB']}
+																			</h6>
+																		</div>
+																	</div>
+																</div>
+
+																<div className="d-flex col-4 col-sm-3 col-md-2 col-xl-1 mb-1">
+																	<div className="card flex-fill w-100">
+																		<div className=" pt-1 text-center">
+																			<h5 className="text-uppercase font-weight-bold text-dark">
+																				CHF
+																			</h5>
+																			<h6 className="text-uppercase text-muted">
+																				{cad['CHF']}
+																			</h6>
+																		</div>
+																	</div>
+																</div>
+
+																<div className="d-flex col-4 col-sm-3 col-md-2 col-xl-1 mb-1">
+																	<div className="card flex-fill w-100">
+																		<div className=" pt-1 text-center">
+																			<h5 className="text-uppercase font-weight-bold text-dark">
+																				SGD
+																			</h5>
+																			<h6 className="text-uppercase text-muted">
+																				{cad['SGD']}
+																			</h6>
+																		</div>
+																	</div>
+																</div>
+
+																<div className="d-flex col-4 col-sm-3 col-md-2 col-xl-1 mb-1">
+																	<div className="card flex-fill w-100">
+																		<div className=" pt-1 text-center">
+																			<h5 className="text-uppercase font-weight-bold text-dark">
+																				PLN
+																			</h5>
+																			<h6 className="text-uppercase text-muted">
+																				{cad['PLN']}
+																			</h6>
+																		</div>
+																	</div>
+																</div>
+
+																<div className="d-flex col-4 col-sm-3 col-md-2 col-xl-1 mb-1">
+																	<div className="card flex-fill w-100">
+																		<div className=" pt-1 text-center">
+																			<h5 className="text-uppercase font-weight-bold text-dark">
+																				BGN
+																			</h5>
+																			<h6 className="text-uppercase text-muted">
+																				{cad['BGN']}
+																			</h6>
+																		</div>
+																	</div>
+																</div>
+
+																<div className="d-flex col-4 col-sm-3 col-md-2 col-xl-1 mb-1">
+																	<div className="card flex-fill w-100">
+																		<div className=" pt-1 text-center">
+																			<h5 className="text-uppercase font-weight-bold text-dark">
+																				TRY
+																			</h5>
+																			<h6 className="text-uppercase text-muted">
+																				{cad['TRY']}
+																			</h6>
+																		</div>
+																	</div>
+																</div>
+
+																<div className="d-flex col-4 col-sm-3 col-md-2 col-xl-1 mb-1">
+																	<div className="card flex-fill w-100">
+																		<div className=" pt-1 text-center">
+																			<h5 className="text-uppercase font-weight-bold text-dark">
+																				CNY
+																			</h5>
+																			<h6 className="text-uppercase text-muted">
+																				{cad['CNY']}
+																			</h6>
+																		</div>
+																	</div>
+																</div>
+
+																<div className="d-flex col-4 col-sm-3 col-md-2 col-xl-1 mb-1">
+																	<div className="card flex-fill w-100">
+																		<div className=" pt-1 text-center">
+																			<h5 className="text-uppercase font-weight-bold text-dark">
+																				NOK
+																			</h5>
+																			<h6 className="text-uppercase text-muted">
+																				{cad['NOK']}
+																			</h6>
+																		</div>
+																	</div>
+																</div>
+
+																<div className="d-flex col-4 col-sm-3 col-md-2 col-xl-1 mb-1">
+																	<div className="card flex-fill w-100">
+																		<div className=" pt-1 text-center">
+																			<h5 className="text-uppercase font-weight-bold text-dark">
+																				NZD
+																			</h5>
+																			<h6 className="text-uppercase text-muted">
+																				{cad['NZD']}
+																			</h6>
+																		</div>
+																	</div>
+																</div>
+
+																<div className="d-flex col-4 col-sm-3 col-md-2 col-xl-1 mb-1">
+																	<div className="card flex-fill w-100">
+																		<div className=" pt-1 text-center">
+																			<h5 className="text-uppercase font-weight-bold text-dark">
+																				ZAR
+																			</h5>
+																			<h6 className="text-uppercase text-muted">
+																				{cad['ZAR']}
+																			</h6>
+																		</div>
+																	</div>
+																</div>
+
+																<div className="d-flex col-4 col-sm-3 col-md-2 col-xl-1 mb-1">
+																	<div className="card flex-fill w-100">
+																		<div className=" pt-1 text-center">
+																			<h5 className="text-uppercase font-weight-bold text-dark">
+																				MXN
+																			</h5>
+																			<h6 className="text-uppercase text-muted">
+																				{cad['MXN']}
+																			</h6>
+																		</div>
+																	</div>
+																</div>
+
+																<div className="d-flex col-4 col-sm-3 col-md-2 col-xl-1 mb-1">
+																	<div className="card flex-fill w-100">
+																		<div className=" pt-1 text-center">
+																			<h5 className="text-uppercase font-weight-bold text-dark">
+																				ILS
+																			</h5>
+																			<h6 className="text-uppercase text-muted">
+																				{cad['ILS']}
+																			</h6>
+																		</div>
+																	</div>
+																</div>
+
+																<div className="d-flex col-4 col-sm-3 col-md-2 col-xl-1 mb-1">
+																	<div className="card flex-fill w-100">
+																		<div className=" pt-1 text-center">
+																			<h5 className="text-uppercase font-weight-bold text-dark">
+																				GBP
+																			</h5>
+																			<h6 className="text-uppercase text-muted">
+																				{cad['GBP']}
+																			</h6>
+																		</div>
+																	</div>
+																</div>
+
+																<div className="d-flex col-4 col-sm-3 col-md-2 col-xl-1 mb-1">
+																	<div className="card flex-fill w-100">
+																		<div className=" pt-1 text-center">
+																			<h5 className="text-uppercase font-weight-bold text-dark">
+																				KRW
+																			</h5>
+																			<h6 className="text-uppercase text-muted">
+																				{cad['KRW']}
+																			</h6>
+																		</div>
+																	</div>
+																</div>
+
+																<div className="d-flex col-4 col-sm-3 col-md-2 col-xl-1 mb-1">
+																	<div className="card flex-fill w-100">
+																		<div className=" pt-1 text-center">
+																			<h5 className="text-uppercase font-weight-bold text-dark">
+																				MYR
+																			</h5>
+																			<h6 className="text-uppercase text-muted">
+																				{cad['MYR']}
+																			</h6>
+																		</div>
+																	</div>
+																</div>
+															</div>
+
 														</div>
+
+														<div className="tab-pane" id="hkd" role="tabpanel">
+															
+															<div className="row mb-5">
+
+																<div className="d-flex col-4 col-sm-3 col-md-2 col-xl-1 mb-1">
+																	<div className="card flex-fill w-100">
+																		<div className=" pt-1 text-center">
+																			<h5 className="text-uppercase font-weight-bold text-dark">
+																				EUR
+																			</h5>
+																			<h6 className="text-uppercase text-muted">
+																				{hkd['EUR']}
+																			</h6>
+																		</div>
+																	</div>
+																</div>
+
+																<div className="d-flex col-4 col-sm-3 col-md-2 col-xl-1 mb-1">
+																	<div className="card flex-fill w-100">
+																		<div className=" pt-1 text-center">
+																			<h5 className="text-uppercase font-weight-bold text-dark">
+																				USD
+																			</h5>
+																			<h6 className="text-uppercase text-muted">
+																				{hkd['USD']}
+																			</h6>
+																		</div>
+																	</div>
+																</div>
+
+																<div className="d-flex col-4 col-sm-3 col-md-2 col-xl-1 mb-1">
+																	<div className="card flex-fill w-100">
+																		<div className=" pt-1 text-center">
+																			<h5 className="text-uppercase font-weight-bold text-dark">
+																				CAD
+																			</h5>
+																			<h6 className="text-uppercase text-muted">
+																				{hkd['CAD']}
+																			</h6>
+																		</div>
+																	</div>
+																</div>
+
+																<div className="d-flex col-4 col-sm-3 col-md-2 col-xl-1 mb-1">
+																	<div className="card flex-fill w-100">
+																		<div className=" pt-1 text-center">
+																			<h5 className="text-uppercase font-weight-bold text-dark">
+																				ISK
+																			</h5>
+																			<h6 className="text-uppercase text-muted">
+																				{hkd['ISK']}
+																			</h6>
+																		</div>
+																	</div>
+																</div>
+
+																<div className="d-flex col-4 col-sm-3 col-md-2 col-xl-1 mb-1">
+																	<div className="card flex-fill w-100">
+																		<div className=" pt-1 text-center">
+																			<h5 className="text-uppercase font-weight-bold text-dark">
+																				PHP
+																			</h5>
+																			<h6 className="text-uppercase text-muted">
+																				{hkd['PHP']}
+																			</h6>
+																		</div>
+																	</div>
+																</div>
+
+																<div className="d-flex col-4 col-sm-3 col-md-2 col-xl-1 mb-1">
+																	<div className="card flex-fill w-100">
+																		<div className=" pt-1 text-center">
+																			<h5 className="text-uppercase font-weight-bold text-dark">
+																				DKK
+																			</h5>
+																			<h6 className="text-uppercase text-muted">
+																				{hkd['DKK']}
+																			</h6>
+																		</div>
+																	</div>
+																</div>
+
+																<div className="d-flex col-4 col-sm-3 col-md-2 col-xl-1 mb-1">
+																	<div className="card flex-fill w-100">
+																		<div className=" pt-1 text-center">
+																			<h5 className="text-uppercase font-weight-bold text-dark">
+																				HUF
+																			</h5>
+																			<h6 className="text-uppercase text-muted">
+																				{hkd['HUF']}
+																			</h6>
+																		</div>
+																	</div>
+																</div>
+
+																<div className="d-flex col-4 col-sm-3 col-md-2 col-xl-1 mb-1">
+																	<div className="card flex-fill w-100">
+																		<div className=" pt-1 text-center">
+																			<h5 className="text-uppercase font-weight-bold text-dark">
+																				CZK
+																			</h5>
+																			<h6 className="text-uppercase text-muted">
+																				{hkd['CZK']}
+																			</h6>
+																		</div>
+																	</div>
+																</div>
+
+																<div className="d-flex col-4 col-sm-3 col-md-2 col-xl-1 mb-1">
+																	<div className="card flex-fill w-100">
+																		<div className=" pt-1 text-center">
+																			<h5 className="text-uppercase font-weight-bold text-dark">
+																				AUD
+																			</h5>
+																			<h6 className="text-uppercase text-muted">
+																				{hkd['AUD']}
+																			</h6>
+																		</div>
+																	</div>
+																</div>
+
+																<div className="d-flex col-4 col-sm-3 col-md-2 col-xl-1 mb-1">
+																	<div className="card flex-fill w-100">
+																		<div className=" pt-1 text-center">
+																			<h5 className="text-uppercase font-weight-bold text-dark">
+																				RON
+																			</h5>
+																			<h6 className="text-uppercase text-muted">
+																				{hkd['RON']}
+																			</h6>
+																		</div>
+																	</div>
+																</div>
+
+																<div className="d-flex col-4 col-sm-3 col-md-2 col-xl-1 mb-1">
+																	<div className="card flex-fill w-100">
+																		<div className=" pt-1 text-center">
+																			<h5 className="text-uppercase font-weight-bold text-dark">
+																				SEK
+																			</h5>
+																			<h6 className="text-uppercase text-muted">
+																				{hkd['SEK']}
+																			</h6>
+																		</div>
+																	</div>
+																</div>
+
+																<div className="d-flex col-4 col-sm-3 col-md-2 col-xl-1 mb-1">
+																	<div className="card flex-fill w-100">
+																		<div className=" pt-1 text-center">
+																			<h5 className="text-uppercase font-weight-bold text-dark">
+																				IDR
+																			</h5>
+																			<h6 className="text-uppercase text-muted">
+																				{hkd['IDR']}
+																			</h6>
+																		</div>
+																	</div>
+																</div>
+
+																<div className="d-flex col-4 col-sm-3 col-md-2 col-xl-1 mb-1">
+																	<div className="card flex-fill w-100">
+																		<div className=" pt-1 text-center">
+																			<h5 className="text-uppercase font-weight-bold text-dark">
+																				INR
+																			</h5>
+																			<h6 className="text-uppercase text-muted">
+																				{hkd['INR']}
+																			</h6>
+																		</div>
+																	</div>
+																</div>
+
+																<div className="d-flex col-4 col-sm-3 col-md-2 col-xl-1 mb-1">
+																	<div className="card flex-fill w-100">
+																		<div className=" pt-1 text-center">
+																			<h5 className="text-uppercase font-weight-bold text-dark">
+																				BRL
+																			</h5>
+																			<h6 className="text-uppercase text-muted">
+																				{hkd['BRL']}
+																			</h6>
+																		</div>
+																	</div>
+																</div>
+
+																<div className="d-flex col-4 col-sm-3 col-md-2 col-xl-1 mb-1">
+																	<div className="card flex-fill w-100">
+																		<div className=" pt-1 text-center">
+																			<h5 className="text-uppercase font-weight-bold text-dark">
+																				RUB
+																			</h5>
+																			<h6 className="text-uppercase text-muted">
+																				{hkd['RUB']}
+																			</h6>
+																		</div>
+																	</div>
+																</div>
+
+																<div className="d-flex col-4 col-sm-3 col-md-2 col-xl-1 mb-1">
+																	<div className="card flex-fill w-100">
+																		<div className=" pt-1 text-center">
+																			<h5 className="text-uppercase font-weight-bold text-dark">
+																				HRK
+																			</h5>
+																			<h6 className="text-uppercase text-muted">
+																				{hkd['HRK']}
+																			</h6>
+																		</div>
+																	</div>
+																</div>
+
+																<div className="d-flex col-4 col-sm-3 col-md-2 col-xl-1 mb-1">
+																	<div className="card flex-fill w-100">
+																		<div className=" pt-1 text-center">
+																			<h5 className="text-uppercase font-weight-bold text-dark">
+																				JPY
+																			</h5>
+																			<h6 className="text-uppercase text-muted">
+																				{hkd['JPY']}
+																			</h6>
+																		</div>
+																	</div>
+																</div>
+																
+																<div className="d-flex col-4 col-sm-3 col-md-2 col-xl-1 mb-1">
+																	<div className="card flex-fill w-100">
+																		<div className=" pt-1 text-center">
+																			<h5 className="text-uppercase font-weight-bold text-dark">
+																				THB
+																			</h5>
+																			<h6 className="text-uppercase text-muted">
+																				{hkd['THB']}
+																			</h6>
+																		</div>
+																	</div>
+																</div>
+
+																<div className="d-flex col-4 col-sm-3 col-md-2 col-xl-1 mb-1">
+																	<div className="card flex-fill w-100">
+																		<div className=" pt-1 text-center">
+																			<h5 className="text-uppercase font-weight-bold text-dark">
+																				CHF
+																			</h5>
+																			<h6 className="text-uppercase text-muted">
+																				{hkd['CHF']}
+																			</h6>
+																		</div>
+																	</div>
+																</div>
+
+																<div className="d-flex col-4 col-sm-3 col-md-2 col-xl-1 mb-1">
+																	<div className="card flex-fill w-100">
+																		<div className=" pt-1 text-center">
+																			<h5 className="text-uppercase font-weight-bold text-dark">
+																				SGD
+																			</h5>
+																			<h6 className="text-uppercase text-muted">
+																				{hkd['SGD']}
+																			</h6>
+																		</div>
+																	</div>
+																</div>
+
+																<div className="d-flex col-4 col-sm-3 col-md-2 col-xl-1 mb-1">
+																	<div className="card flex-fill w-100">
+																		<div className=" pt-1 text-center">
+																			<h5 className="text-uppercase font-weight-bold text-dark">
+																				PLN
+																			</h5>
+																			<h6 className="text-uppercase text-muted">
+																				{hkd['PLN']}
+																			</h6>
+																		</div>
+																	</div>
+																</div>
+
+																<div className="d-flex col-4 col-sm-3 col-md-2 col-xl-1 mb-1">
+																	<div className="card flex-fill w-100">
+																		<div className=" pt-1 text-center">
+																			<h5 className="text-uppercase font-weight-bold text-dark">
+																				BGN
+																			</h5>
+																			<h6 className="text-uppercase text-muted">
+																				{hkd['BGN']}
+																			</h6>
+																		</div>
+																	</div>
+																</div>
+
+																<div className="d-flex col-4 col-sm-3 col-md-2 col-xl-1 mb-1">
+																	<div className="card flex-fill w-100">
+																		<div className=" pt-1 text-center">
+																			<h5 className="text-uppercase font-weight-bold text-dark">
+																				TRY
+																			</h5>
+																			<h6 className="text-uppercase text-muted">
+																				{hkd['TRY']}
+																			</h6>
+																		</div>
+																	</div>
+																</div>
+
+																<div className="d-flex col-4 col-sm-3 col-md-2 col-xl-1 mb-1">
+																	<div className="card flex-fill w-100">
+																		<div className=" pt-1 text-center">
+																			<h5 className="text-uppercase font-weight-bold text-dark">
+																				CNY
+																			</h5>
+																			<h6 className="text-uppercase text-muted">
+																				{hkd['CNY']}
+																			</h6>
+																		</div>
+																	</div>
+																</div>
+
+																<div className="d-flex col-4 col-sm-3 col-md-2 col-xl-1 mb-1">
+																	<div className="card flex-fill w-100">
+																		<div className=" pt-1 text-center">
+																			<h5 className="text-uppercase font-weight-bold text-dark">
+																				NOK
+																			</h5>
+																			<h6 className="text-uppercase text-muted">
+																				{hkd['NOK']}
+																			</h6>
+																		</div>
+																	</div>
+																</div>
+
+																<div className="d-flex col-4 col-sm-3 col-md-2 col-xl-1 mb-1">
+																	<div className="card flex-fill w-100">
+																		<div className=" pt-1 text-center">
+																			<h5 className="text-uppercase font-weight-bold text-dark">
+																				NZD
+																			</h5>
+																			<h6 className="text-uppercase text-muted">
+																				{hkd['NZD']}
+																			</h6>
+																		</div>
+																	</div>
+																</div>
+
+																<div className="d-flex col-4 col-sm-3 col-md-2 col-xl-1 mb-1">
+																	<div className="card flex-fill w-100">
+																		<div className=" pt-1 text-center">
+																			<h5 className="text-uppercase font-weight-bold text-dark">
+																				ZAR
+																			</h5>
+																			<h6 className="text-uppercase text-muted">
+																				{hkd['ZAR']}
+																			</h6>
+																		</div>
+																	</div>
+																</div>
+
+																<div className="d-flex col-4 col-sm-3 col-md-2 col-xl-1 mb-1">
+																	<div className="card flex-fill w-100">
+																		<div className=" pt-1 text-center">
+																			<h5 className="text-uppercase font-weight-bold text-dark">
+																				MXN
+																			</h5>
+																			<h6 className="text-uppercase text-muted">
+																				{hkd['MXN']}
+																			</h6>
+																		</div>
+																	</div>
+																</div>
+
+																<div className="d-flex col-4 col-sm-3 col-md-2 col-xl-1 mb-1">
+																	<div className="card flex-fill w-100">
+																		<div className=" pt-1 text-center">
+																			<h5 className="text-uppercase font-weight-bold text-dark">
+																				ILS
+																			</h5>
+																			<h6 className="text-uppercase text-muted">
+																				{hkd['ILS']}
+																			</h6>
+																		</div>
+																	</div>
+																</div>
+
+																<div className="d-flex col-4 col-sm-3 col-md-2 col-xl-1 mb-1">
+																	<div className="card flex-fill w-100">
+																		<div className=" pt-1 text-center">
+																			<h5 className="text-uppercase font-weight-bold text-dark">
+																				GBP
+																			</h5>
+																			<h6 className="text-uppercase text-muted">
+																				{hkd['GBP']}
+																			</h6>
+																		</div>
+																	</div>
+																</div>
+
+																<div className="d-flex col-4 col-sm-3 col-md-2 col-xl-1 mb-1">
+																	<div className="card flex-fill w-100">
+																		<div className=" pt-1 text-center">
+																			<h5 className="text-uppercase font-weight-bold text-dark">
+																				KRW
+																			</h5>
+																			<h6 className="text-uppercase text-muted">
+																				{hkd['KRW']}
+																			</h6>
+																		</div>
+																	</div>
+																</div>
+
+																<div className="d-flex col-4 col-sm-3 col-md-2 col-xl-1 mb-1">
+																	<div className="card flex-fill w-100">
+																		<div className=" pt-1 text-center">
+																			<h5 className="text-uppercase font-weight-bold text-dark">
+																				MYR
+																			</h5>
+																			<h6 className="text-uppercase text-muted">
+																				{hkd['MYR']}
+																			</h6>
+																		</div>
+																	</div>
+																</div>
+															</div>
+
+														</div>
+
+														<div className="tab-pane" id="isk" role="tabpanel">
+															
+															<div className="row mb-5">
+
+																<div className="d-flex col-4 col-sm-3 col-md-2 col-xl-1 mb-1">
+																	<div className="card flex-fill w-100">
+																		<div className=" pt-1 text-center">
+																			<h5 className="text-uppercase font-weight-bold text-dark">
+																				EUR
+																			</h5>
+																			<h6 className="text-uppercase text-muted">
+																				{isk['EUR']}
+																			</h6>
+																		</div>
+																	</div>
+																</div>
+
+																<div className="d-flex col-4 col-sm-3 col-md-2 col-xl-1 mb-1">
+																	<div className="card flex-fill w-100">
+																		<div className=" pt-1 text-center">
+																			<h5 className="text-uppercase font-weight-bold text-dark">
+																				USD
+																			</h5>
+																			<h6 className="text-uppercase text-muted">
+																				{isk['USD']}
+																			</h6>
+																		</div>
+																	</div>
+																</div>
+
+																<div className="d-flex col-4 col-sm-3 col-md-2 col-xl-1 mb-1">
+																	<div className="card flex-fill w-100">
+																		<div className=" pt-1 text-center">
+																			<h5 className="text-uppercase font-weight-bold text-dark">
+																				CAD
+																			</h5>
+																			<h6 className="text-uppercase text-muted">
+																				{isk['CAD']}
+																			</h6>
+																		</div>
+																	</div>
+																</div>
+
+																<div className="d-flex col-4 col-sm-3 col-md-2 col-xl-1 mb-1">
+																	<div className="card flex-fill w-100">
+																		<div className=" pt-1 text-center">
+																			<h5 className="text-uppercase font-weight-bold text-dark">
+																				HKD
+																			</h5>
+																			<h6 className="text-uppercase text-muted">
+																				{isk['HKD']}
+																			</h6>
+																		</div>
+																	</div>
+																</div>
+
+																<div className="d-flex col-4 col-sm-3 col-md-2 col-xl-1 mb-1">
+																	<div className="card flex-fill w-100">
+																		<div className=" pt-1 text-center">
+																			<h5 className="text-uppercase font-weight-bold text-dark">
+																				PHP
+																			</h5>
+																			<h6 className="text-uppercase text-muted">
+																				{isk['PHP']}
+																			</h6>
+																		</div>
+																	</div>
+																</div>
+
+																<div className="d-flex col-4 col-sm-3 col-md-2 col-xl-1 mb-1">
+																	<div className="card flex-fill w-100">
+																		<div className=" pt-1 text-center">
+																			<h5 className="text-uppercase font-weight-bold text-dark">
+																				DKK
+																			</h5>
+																			<h6 className="text-uppercase text-muted">
+																				{isk['DKK']}
+																			</h6>
+																		</div>
+																	</div>
+																</div>
+
+																<div className="d-flex col-4 col-sm-3 col-md-2 col-xl-1 mb-1">
+																	<div className="card flex-fill w-100">
+																		<div className=" pt-1 text-center">
+																			<h5 className="text-uppercase font-weight-bold text-dark">
+																				HUF
+																			</h5>
+																			<h6 className="text-uppercase text-muted">
+																				{isk['HUF']}
+																			</h6>
+																		</div>
+																	</div>
+																</div>
+
+																<div className="d-flex col-4 col-sm-3 col-md-2 col-xl-1 mb-1">
+																	<div className="card flex-fill w-100">
+																		<div className=" pt-1 text-center">
+																			<h5 className="text-uppercase font-weight-bold text-dark">
+																				CZK
+																			</h5>
+																			<h6 className="text-uppercase text-muted">
+																				{isk['CZK']}
+																			</h6>
+																		</div>
+																	</div>
+																</div>
+
+																<div className="d-flex col-4 col-sm-3 col-md-2 col-xl-1 mb-1">
+																	<div className="card flex-fill w-100">
+																		<div className=" pt-1 text-center">
+																			<h5 className="text-uppercase font-weight-bold text-dark">
+																				AUD
+																			</h5>
+																			<h6 className="text-uppercase text-muted">
+																				{isk['AUD']}
+																			</h6>
+																		</div>
+																	</div>
+																</div>
+
+																<div className="d-flex col-4 col-sm-3 col-md-2 col-xl-1 mb-1">
+																	<div className="card flex-fill w-100">
+																		<div className=" pt-1 text-center">
+																			<h5 className="text-uppercase font-weight-bold text-dark">
+																				RON
+																			</h5>
+																			<h6 className="text-uppercase text-muted">
+																				{isk['RON']}
+																			</h6>
+																		</div>
+																	</div>
+																</div>
+
+																<div className="d-flex col-4 col-sm-3 col-md-2 col-xl-1 mb-1">
+																	<div className="card flex-fill w-100">
+																		<div className=" pt-1 text-center">
+																			<h5 className="text-uppercase font-weight-bold text-dark">
+																				SEK
+																			</h5>
+																			<h6 className="text-uppercase text-muted">
+																				{isk['SEK']}
+																			</h6>
+																		</div>
+																	</div>
+																</div>
+
+																<div className="d-flex col-4 col-sm-3 col-md-2 col-xl-1 mb-1">
+																	<div className="card flex-fill w-100">
+																		<div className=" pt-1 text-center">
+																			<h5 className="text-uppercase font-weight-bold text-dark">
+																				IDR
+																			</h5>
+																			<h6 className="text-uppercase text-muted">
+																				{isk['IDR']}
+																			</h6>
+																		</div>
+																	</div>
+																</div>
+
+																<div className="d-flex col-4 col-sm-3 col-md-2 col-xl-1 mb-1">
+																	<div className="card flex-fill w-100">
+																		<div className=" pt-1 text-center">
+																			<h5 className="text-uppercase font-weight-bold text-dark">
+																				INR
+																			</h5>
+																			<h6 className="text-uppercase text-muted">
+																				{isk['INR']}
+																			</h6>
+																		</div>
+																	</div>
+																</div>
+
+																<div className="d-flex col-4 col-sm-3 col-md-2 col-xl-1 mb-1">
+																	<div className="card flex-fill w-100">
+																		<div className=" pt-1 text-center">
+																			<h5 className="text-uppercase font-weight-bold text-dark">
+																				BRL
+																			</h5>
+																			<h6 className="text-uppercase text-muted">
+																				{isk['BRL']}
+																			</h6>
+																		</div>
+																	</div>
+																</div>
+
+																<div className="d-flex col-4 col-sm-3 col-md-2 col-xl-1 mb-1">
+																	<div className="card flex-fill w-100">
+																		<div className=" pt-1 text-center">
+																			<h5 className="text-uppercase font-weight-bold text-dark">
+																				RUB
+																			</h5>
+																			<h6 className="text-uppercase text-muted">
+																				{isk['RUB']}
+																			</h6>
+																		</div>
+																	</div>
+																</div>
+
+																<div className="d-flex col-4 col-sm-3 col-md-2 col-xl-1 mb-1">
+																	<div className="card flex-fill w-100">
+																		<div className=" pt-1 text-center">
+																			<h5 className="text-uppercase font-weight-bold text-dark">
+																				HRK
+																			</h5>
+																			<h6 className="text-uppercase text-muted">
+																				{isk['HRK']}
+																			</h6>
+																		</div>
+																	</div>
+																</div>
+
+																<div className="d-flex col-4 col-sm-3 col-md-2 col-xl-1 mb-1">
+																	<div className="card flex-fill w-100">
+																		<div className=" pt-1 text-center">
+																			<h5 className="text-uppercase font-weight-bold text-dark">
+																				JPY
+																			</h5>
+																			<h6 className="text-uppercase text-muted">
+																				{isk['JPY']}
+																			</h6>
+																		</div>
+																	</div>
+																</div>
+																
+																<div className="d-flex col-4 col-sm-3 col-md-2 col-xl-1 mb-1">
+																	<div className="card flex-fill w-100">
+																		<div className=" pt-1 text-center">
+																			<h5 className="text-uppercase font-weight-bold text-dark">
+																				THB
+																			</h5>
+																			<h6 className="text-uppercase text-muted">
+																				{isk['THB']}
+																			</h6>
+																		</div>
+																	</div>
+																</div>
+
+																<div className="d-flex col-4 col-sm-3 col-md-2 col-xl-1 mb-1">
+																	<div className="card flex-fill w-100">
+																		<div className=" pt-1 text-center">
+																			<h5 className="text-uppercase font-weight-bold text-dark">
+																				CHF
+																			</h5>
+																			<h6 className="text-uppercase text-muted">
+																				{isk['CHF']}
+																			</h6>
+																		</div>
+																	</div>
+																</div>
+
+																<div className="d-flex col-4 col-sm-3 col-md-2 col-xl-1 mb-1">
+																	<div className="card flex-fill w-100">
+																		<div className=" pt-1 text-center">
+																			<h5 className="text-uppercase font-weight-bold text-dark">
+																				SGD
+																			</h5>
+																			<h6 className="text-uppercase text-muted">
+																				{isk['SGD']}
+																			</h6>
+																		</div>
+																	</div>
+																</div>
+
+																<div className="d-flex col-4 col-sm-3 col-md-2 col-xl-1 mb-1">
+																	<div className="card flex-fill w-100">
+																		<div className=" pt-1 text-center">
+																			<h5 className="text-uppercase font-weight-bold text-dark">
+																				PLN
+																			</h5>
+																			<h6 className="text-uppercase text-muted">
+																				{isk['PLN']}
+																			</h6>
+																		</div>
+																	</div>
+																</div>
+
+																<div className="d-flex col-4 col-sm-3 col-md-2 col-xl-1 mb-1">
+																	<div className="card flex-fill w-100">
+																		<div className=" pt-1 text-center">
+																			<h5 className="text-uppercase font-weight-bold text-dark">
+																				BGN
+																			</h5>
+																			<h6 className="text-uppercase text-muted">
+																				{isk['BGN']}
+																			</h6>
+																		</div>
+																	</div>
+																</div>
+
+																<div className="d-flex col-4 col-sm-3 col-md-2 col-xl-1 mb-1">
+																	<div className="card flex-fill w-100">
+																		<div className=" pt-1 text-center">
+																			<h5 className="text-uppercase font-weight-bold text-dark">
+																				TRY
+																			</h5>
+																			<h6 className="text-uppercase text-muted">
+																				{isk['TRY']}
+																			</h6>
+																		</div>
+																	</div>
+																</div>
+
+																<div className="d-flex col-4 col-sm-3 col-md-2 col-xl-1 mb-1">
+																	<div className="card flex-fill w-100">
+																		<div className=" pt-1 text-center">
+																			<h5 className="text-uppercase font-weight-bold text-dark">
+																				CNY
+																			</h5>
+																			<h6 className="text-uppercase text-muted">
+																				{isk['CNY']}
+																			</h6>
+																		</div>
+																	</div>
+																</div>
+
+																<div className="d-flex col-4 col-sm-3 col-md-2 col-xl-1 mb-1">
+																	<div className="card flex-fill w-100">
+																		<div className=" pt-1 text-center">
+																			<h5 className="text-uppercase font-weight-bold text-dark">
+																				NOK
+																			</h5>
+																			<h6 className="text-uppercase text-muted">
+																				{isk['NOK']}
+																			</h6>
+																		</div>
+																	</div>
+																</div>
+
+																<div className="d-flex col-4 col-sm-3 col-md-2 col-xl-1 mb-1">
+																	<div className="card flex-fill w-100">
+																		<div className=" pt-1 text-center">
+																			<h5 className="text-uppercase font-weight-bold text-dark">
+																				NZD
+																			</h5>
+																			<h6 className="text-uppercase text-muted">
+																				{isk['NZD']}
+																			</h6>
+																		</div>
+																	</div>
+																</div>
+
+																<div className="d-flex col-4 col-sm-3 col-md-2 col-xl-1 mb-1">
+																	<div className="card flex-fill w-100">
+																		<div className=" pt-1 text-center">
+																			<h5 className="text-uppercase font-weight-bold text-dark">
+																				ZAR
+																			</h5>
+																			<h6 className="text-uppercase text-muted">
+																				{isk['ZAR']}
+																			</h6>
+																		</div>
+																	</div>
+																</div>
+
+																<div className="d-flex col-4 col-sm-3 col-md-2 col-xl-1 mb-1">
+																	<div className="card flex-fill w-100">
+																		<div className=" pt-1 text-center">
+																			<h5 className="text-uppercase font-weight-bold text-dark">
+																				MXN
+																			</h5>
+																			<h6 className="text-uppercase text-muted">
+																				{isk['MXN']}
+																			</h6>
+																		</div>
+																	</div>
+																</div>
+
+																<div className="d-flex col-4 col-sm-3 col-md-2 col-xl-1 mb-1">
+																	<div className="card flex-fill w-100">
+																		<div className=" pt-1 text-center">
+																			<h5 className="text-uppercase font-weight-bold text-dark">
+																				ILS
+																			</h5>
+																			<h6 className="text-uppercase text-muted">
+																				{isk['ILS']}
+																			</h6>
+																		</div>
+																	</div>
+																</div>
+
+																<div className="d-flex col-4 col-sm-3 col-md-2 col-xl-1 mb-1">
+																	<div className="card flex-fill w-100">
+																		<div className=" pt-1 text-center">
+																			<h5 className="text-uppercase font-weight-bold text-dark">
+																				GBP
+																			</h5>
+																			<h6 className="text-uppercase text-muted">
+																				{isk['GBP']}
+																			</h6>
+																		</div>
+																	</div>
+																</div>
+
+																<div className="d-flex col-4 col-sm-3 col-md-2 col-xl-1 mb-1">
+																	<div className="card flex-fill w-100">
+																		<div className=" pt-1 text-center">
+																			<h5 className="text-uppercase font-weight-bold text-dark">
+																				KRW
+																			</h5>
+																			<h6 className="text-uppercase text-muted">
+																				{isk['KRW']}
+																			</h6>
+																		</div>
+																	</div>
+																</div>
+
+																<div className="d-flex col-4 col-sm-3 col-md-2 col-xl-1 mb-1">
+																	<div className="card flex-fill w-100">
+																		<div className=" pt-1 text-center">
+																			<h5 className="text-uppercase font-weight-bold text-dark">
+																				MYR
+																			</h5>
+																			<h6 className="text-uppercase text-muted">
+																				{isk['MYR']}
+																			</h6>
+																		</div>
+																	</div>
+																</div>
+															</div>
+
+														</div>
+
+														<div className="tab-pane" id="php" role="tabpanel">
+															
+															<div className="row mb-5">
+
+																<div className="d-flex col-4 col-sm-3 col-md-2 col-xl-1 mb-1">
+																	<div className="card flex-fill w-100">
+																		<div className=" pt-1 text-center">
+																			<h5 className="text-uppercase font-weight-bold text-dark">
+																				EUR
+																			</h5>
+																			<h6 className="text-uppercase text-muted">
+																				{php['EUR']}
+																			</h6>
+																		</div>
+																	</div>
+																</div>
+
+																<div className="d-flex col-4 col-sm-3 col-md-2 col-xl-1 mb-1">
+																	<div className="card flex-fill w-100">
+																		<div className=" pt-1 text-center">
+																			<h5 className="text-uppercase font-weight-bold text-dark">
+																				USD
+																			</h5>
+																			<h6 className="text-uppercase text-muted">
+																				{php['USD']}
+																			</h6>
+																		</div>
+																	</div>
+																</div>
+
+																<div className="d-flex col-4 col-sm-3 col-md-2 col-xl-1 mb-1">
+																	<div className="card flex-fill w-100">
+																		<div className=" pt-1 text-center">
+																			<h5 className="text-uppercase font-weight-bold text-dark">
+																				CAD
+																			</h5>
+																			<h6 className="text-uppercase text-muted">
+																				{php['CAD']}
+																			</h6>
+																		</div>
+																	</div>
+																</div>
+
+																<div className="d-flex col-4 col-sm-3 col-md-2 col-xl-1 mb-1">
+																	<div className="card flex-fill w-100">
+																		<div className=" pt-1 text-center">
+																			<h5 className="text-uppercase font-weight-bold text-dark">
+																				HKD
+																			</h5>
+																			<h6 className="text-uppercase text-muted">
+																				{php['HKD']}
+																			</h6>
+																		</div>
+																	</div>
+																</div>
+
+																<div className="d-flex col-4 col-sm-3 col-md-2 col-xl-1 mb-1">
+																	<div className="card flex-fill w-100">
+																		<div className=" pt-1 text-center">
+																			<h5 className="text-uppercase font-weight-bold text-dark">
+																				ISK
+																			</h5>
+																			<h6 className="text-uppercase text-muted">
+																				{php['ISK']}
+																			</h6>
+																		</div>
+																	</div>
+																</div>
+
+																<div className="d-flex col-4 col-sm-3 col-md-2 col-xl-1 mb-1">
+																	<div className="card flex-fill w-100">
+																		<div className=" pt-1 text-center">
+																			<h5 className="text-uppercase font-weight-bold text-dark">
+																				DKK
+																			</h5>
+																			<h6 className="text-uppercase text-muted">
+																				{php['DKK']}
+																			</h6>
+																		</div>
+																	</div>
+																</div>
+
+																<div className="d-flex col-4 col-sm-3 col-md-2 col-xl-1 mb-1">
+																	<div className="card flex-fill w-100">
+																		<div className=" pt-1 text-center">
+																			<h5 className="text-uppercase font-weight-bold text-dark">
+																				HUF
+																			</h5>
+																			<h6 className="text-uppercase text-muted">
+																				{php['HUF']}
+																			</h6>
+																		</div>
+																	</div>
+																</div>
+
+																<div className="d-flex col-4 col-sm-3 col-md-2 col-xl-1 mb-1">
+																	<div className="card flex-fill w-100">
+																		<div className=" pt-1 text-center">
+																			<h5 className="text-uppercase font-weight-bold text-dark">
+																				CZK
+																			</h5>
+																			<h6 className="text-uppercase text-muted">
+																				{php['CZK']}
+																			</h6>
+																		</div>
+																	</div>
+																</div>
+
+																<div className="d-flex col-4 col-sm-3 col-md-2 col-xl-1 mb-1">
+																	<div className="card flex-fill w-100">
+																		<div className=" pt-1 text-center">
+																			<h5 className="text-uppercase font-weight-bold text-dark">
+																				AUD
+																			</h5>
+																			<h6 className="text-uppercase text-muted">
+																				{php['AUD']}
+																			</h6>
+																		</div>
+																	</div>
+																</div>
+
+																<div className="d-flex col-4 col-sm-3 col-md-2 col-xl-1 mb-1">
+																	<div className="card flex-fill w-100">
+																		<div className=" pt-1 text-center">
+																			<h5 className="text-uppercase font-weight-bold text-dark">
+																				RON
+																			</h5>
+																			<h6 className="text-uppercase text-muted">
+																				{php['RON']}
+																			</h6>
+																		</div>
+																	</div>
+																</div>
+
+																<div className="d-flex col-4 col-sm-3 col-md-2 col-xl-1 mb-1">
+																	<div className="card flex-fill w-100">
+																		<div className=" pt-1 text-center">
+																			<h5 className="text-uppercase font-weight-bold text-dark">
+																				SEK
+																			</h5>
+																			<h6 className="text-uppercase text-muted">
+																				{php['SEK']}
+																			</h6>
+																		</div>
+																	</div>
+																</div>
+
+																<div className="d-flex col-4 col-sm-3 col-md-2 col-xl-1 mb-1">
+																	<div className="card flex-fill w-100">
+																		<div className=" pt-1 text-center">
+																			<h5 className="text-uppercase font-weight-bold text-dark">
+																				IDR
+																			</h5>
+																			<h6 className="text-uppercase text-muted">
+																				{php['IDR']}
+																			</h6>
+																		</div>
+																	</div>
+																</div>
+
+																<div className="d-flex col-4 col-sm-3 col-md-2 col-xl-1 mb-1">
+																	<div className="card flex-fill w-100">
+																		<div className=" pt-1 text-center">
+																			<h5 className="text-uppercase font-weight-bold text-dark">
+																				INR
+																			</h5>
+																			<h6 className="text-uppercase text-muted">
+																				{php['INR']}
+																			</h6>
+																		</div>
+																	</div>
+																</div>
+
+																<div className="d-flex col-4 col-sm-3 col-md-2 col-xl-1 mb-1">
+																	<div className="card flex-fill w-100">
+																		<div className=" pt-1 text-center">
+																			<h5 className="text-uppercase font-weight-bold text-dark">
+																				BRL
+																			</h5>
+																			<h6 className="text-uppercase text-muted">
+																				{php['BRL']}
+																			</h6>
+																		</div>
+																	</div>
+																</div>
+
+																<div className="d-flex col-4 col-sm-3 col-md-2 col-xl-1 mb-1">
+																	<div className="card flex-fill w-100">
+																		<div className=" pt-1 text-center">
+																			<h5 className="text-uppercase font-weight-bold text-dark">
+																				RUB
+																			</h5>
+																			<h6 className="text-uppercase text-muted">
+																				{php['RUB']}
+																			</h6>
+																		</div>
+																	</div>
+																</div>
+
+																<div className="d-flex col-4 col-sm-3 col-md-2 col-xl-1 mb-1">
+																	<div className="card flex-fill w-100">
+																		<div className=" pt-1 text-center">
+																			<h5 className="text-uppercase font-weight-bold text-dark">
+																				HRK
+																			</h5>
+																			<h6 className="text-uppercase text-muted">
+																				{php['HRK']}
+																			</h6>
+																		</div>
+																	</div>
+																</div>
+
+																<div className="d-flex col-4 col-sm-3 col-md-2 col-xl-1 mb-1">
+																	<div className="card flex-fill w-100">
+																		<div className=" pt-1 text-center">
+																			<h5 className="text-uppercase font-weight-bold text-dark">
+																				JPY
+																			</h5>
+																			<h6 className="text-uppercase text-muted">
+																				{php['JPY']}
+																			</h6>
+																		</div>
+																	</div>
+																</div>
+																
+																<div className="d-flex col-4 col-sm-3 col-md-2 col-xl-1 mb-1">
+																	<div className="card flex-fill w-100">
+																		<div className=" pt-1 text-center">
+																			<h5 className="text-uppercase font-weight-bold text-dark">
+																				THB
+																			</h5>
+																			<h6 className="text-uppercase text-muted">
+																				{php['THB']}
+																			</h6>
+																		</div>
+																	</div>
+																</div>
+
+																<div className="d-flex col-4 col-sm-3 col-md-2 col-xl-1 mb-1">
+																	<div className="card flex-fill w-100">
+																		<div className=" pt-1 text-center">
+																			<h5 className="text-uppercase font-weight-bold text-dark">
+																				CHF
+																			</h5>
+																			<h6 className="text-uppercase text-muted">
+																				{php['CHF']}
+																			</h6>
+																		</div>
+																	</div>
+																</div>
+
+																<div className="d-flex col-4 col-sm-3 col-md-2 col-xl-1 mb-1">
+																	<div className="card flex-fill w-100">
+																		<div className=" pt-1 text-center">
+																			<h5 className="text-uppercase font-weight-bold text-dark">
+																				SGD
+																			</h5>
+																			<h6 className="text-uppercase text-muted">
+																				{php['SGD']}
+																			</h6>
+																		</div>
+																	</div>
+																</div>
+
+																<div className="d-flex col-4 col-sm-3 col-md-2 col-xl-1 mb-1">
+																	<div className="card flex-fill w-100">
+																		<div className=" pt-1 text-center">
+																			<h5 className="text-uppercase font-weight-bold text-dark">
+																				PLN
+																			</h5>
+																			<h6 className="text-uppercase text-muted">
+																				{php['PLN']}
+																			</h6>
+																		</div>
+																	</div>
+																</div>
+
+																<div className="d-flex col-4 col-sm-3 col-md-2 col-xl-1 mb-1">
+																	<div className="card flex-fill w-100">
+																		<div className=" pt-1 text-center">
+																			<h5 className="text-uppercase font-weight-bold text-dark">
+																				BGN
+																			</h5>
+																			<h6 className="text-uppercase text-muted">
+																				{php['BGN']}
+																			</h6>
+																		</div>
+																	</div>
+																</div>
+
+																<div className="d-flex col-4 col-sm-3 col-md-2 col-xl-1 mb-1">
+																	<div className="card flex-fill w-100">
+																		<div className=" pt-1 text-center">
+																			<h5 className="text-uppercase font-weight-bold text-dark">
+																				TRY
+																			</h5>
+																			<h6 className="text-uppercase text-muted">
+																				{php['TRY']}
+																			</h6>
+																		</div>
+																	</div>
+																</div>
+
+																<div className="d-flex col-4 col-sm-3 col-md-2 col-xl-1 mb-1">
+																	<div className="card flex-fill w-100">
+																		<div className=" pt-1 text-center">
+																			<h5 className="text-uppercase font-weight-bold text-dark">
+																				CNY
+																			</h5>
+																			<h6 className="text-uppercase text-muted">
+																				{php['CNY']}
+																			</h6>
+																		</div>
+																	</div>
+																</div>
+
+																<div className="d-flex col-4 col-sm-3 col-md-2 col-xl-1 mb-1">
+																	<div className="card flex-fill w-100">
+																		<div className=" pt-1 text-center">
+																			<h5 className="text-uppercase font-weight-bold text-dark">
+																				NOK
+																			</h5>
+																			<h6 className="text-uppercase text-muted">
+																				{php['NOK']}
+																			</h6>
+																		</div>
+																	</div>
+																</div>
+
+																<div className="d-flex col-4 col-sm-3 col-md-2 col-xl-1 mb-1">
+																	<div className="card flex-fill w-100">
+																		<div className=" pt-1 text-center">
+																			<h5 className="text-uppercase font-weight-bold text-dark">
+																				NZD
+																			</h5>
+																			<h6 className="text-uppercase text-muted">
+																				{php['NZD']}
+																			</h6>
+																		</div>
+																	</div>
+																</div>
+
+																<div className="d-flex col-4 col-sm-3 col-md-2 col-xl-1 mb-1">
+																	<div className="card flex-fill w-100">
+																		<div className=" pt-1 text-center">
+																			<h5 className="text-uppercase font-weight-bold text-dark">
+																				ZAR
+																			</h5>
+																			<h6 className="text-uppercase text-muted">
+																				{php['ZAR']}
+																			</h6>
+																		</div>
+																	</div>
+																</div>
+
+																<div className="d-flex col-4 col-sm-3 col-md-2 col-xl-1 mb-1">
+																	<div className="card flex-fill w-100">
+																		<div className=" pt-1 text-center">
+																			<h5 className="text-uppercase font-weight-bold text-dark">
+																				MXN
+																			</h5>
+																			<h6 className="text-uppercase text-muted">
+																				{php['MXN']}
+																			</h6>
+																		</div>
+																	</div>
+																</div>
+
+																<div className="d-flex col-4 col-sm-3 col-md-2 col-xl-1 mb-1">
+																	<div className="card flex-fill w-100">
+																		<div className=" pt-1 text-center">
+																			<h5 className="text-uppercase font-weight-bold text-dark">
+																				ILS
+																			</h5>
+																			<h6 className="text-uppercase text-muted">
+																				{php['ILS']}
+																			</h6>
+																		</div>
+																	</div>
+																</div>
+
+																<div className="d-flex col-4 col-sm-3 col-md-2 col-xl-1 mb-1">
+																	<div className="card flex-fill w-100">
+																		<div className=" pt-1 text-center">
+																			<h5 className="text-uppercase font-weight-bold text-dark">
+																				GBP
+																			</h5>
+																			<h6 className="text-uppercase text-muted">
+																				{php['GBP']}
+																			</h6>
+																		</div>
+																	</div>
+																</div>
+
+																<div className="d-flex col-4 col-sm-3 col-md-2 col-xl-1 mb-1">
+																	<div className="card flex-fill w-100">
+																		<div className=" pt-1 text-center">
+																			<h5 className="text-uppercase font-weight-bold text-dark">
+																				KRW
+																			</h5>
+																			<h6 className="text-uppercase text-muted">
+																				{php['KRW']}
+																			</h6>
+																		</div>
+																	</div>
+																</div>
+
+																<div className="d-flex col-4 col-sm-3 col-md-2 col-xl-1 mb-1">
+																	<div className="card flex-fill w-100">
+																		<div className=" pt-1 text-center">
+																			<h5 className="text-uppercase font-weight-bold text-dark">
+																				MYR
+																			</h5>
+																			<h6 className="text-uppercase text-muted">
+																				{php['MYR']}
+																			</h6>
+																		</div>
+																	</div>
+																</div>
+															</div>
+
+														</div>
+
 													</div>
 												</div>
 											</div>
@@ -963,6 +2686,8 @@ function Currencies(props) {
 									</div>
 								</div>
 							</div>
+
+							<Conversor />
 
 						</div>
 					</div>
