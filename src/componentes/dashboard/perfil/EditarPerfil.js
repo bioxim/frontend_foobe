@@ -3,13 +3,17 @@ import { withRouter } from 'react-router-dom';
 import Swal from 'sweetalert2';
 import clienteAxios from '../../../config/axios';
 
+import moment from 'moment';
+
 function EditarPerfil({miembros}, props) {
 
 	const { _id } = miembros;
 
 	const [miembro, guardarMiembro] = useState({
 		nombre: '',
-		tagline: ''
+		tagline: '',
+		nacimiento: '',
+		actividad: ''
 	});
 
 	const [archivo, guardarArchivo] = useState('');
@@ -21,6 +25,8 @@ function EditarPerfil({miembros}, props) {
         const formData = new FormData();
         formData.append('nombre', miembro.nombre);
         formData.append('tagline', miembro.tagline);
+        formData.append('nacimiento', miembro.nacimiento);
+        formData.append('actividad', miembro.actividad);
         formData.append('imagen', archivo);
 
         // almacenarlo en la BD
@@ -30,11 +36,11 @@ function EditarPerfil({miembros}, props) {
                     'Content-Type' : 'multipart/form-data'
                 }
             } );
-            console.log(res);
+            //console.log(res);
             // Lanzar una alerta
             if(res.status === 200) {
                 Swal.fire(
-                    'Editado Correctamente',
+                    'Profile Up-to-date :)',
                     res.data.mensaje,
                     'success'
                 )
@@ -109,6 +115,55 @@ function EditarPerfil({miembros}, props) {
 							<small>
 								For best results, use an square image .jpg or .png format
 							</small>
+						</div>
+					</div>
+				</div>
+
+				<div className="row">
+					<div className="col-md-5">
+						<div className="form-group">
+							<label>Birth date { miembros.nacimiento ? moment(`${miembros.nacimiento}`).format('MMMM Do YYYY') : null }</label>
+								<input 
+									name="nacimiento" 
+									type="date" 
+									className="form-control"
+									onChange={leerInformacionMiembro}	
+									defaultValue={miembros.nacimiento}							
+								/>
+						</div>
+					</div>
+					<div className="col-md-5">
+						<div className="form-group">
+							<label>Work Activity { miembros.actividad ? <span className="text-primary">{miembros.actividad}</span> : null }</label>
+							<select 
+								name="actividad" 
+								className="custom-select"
+								onChange={leerInformacionMiembro}
+                        		defaultValue={miembros.actividad}
+							>
+								<option value="" selected disabled>-- What it defines you better --</option>
+								<option value="Agriculture">Agriculture</option>
+								<option value="Bakery">Bakery</option>
+								<option value="Beverages">Beverages</option>
+								<option value="Catering">Catering</option>
+								<option value="Dairy">Dairy</option>
+								<option value="Farming">Farming</option>
+								<option value="Fishery">Fishery</option>
+								<option value="Food Manufacturing">Food Manufacturing</option>
+								<option value="Fruitculture">Fruitculture</option>
+								<option value="Horticulture">Horticulture</option>
+								<option value="Hotel Supplying">Hotel Supplying</option>
+								<option value="Meat Industry">Meat Industry</option>
+								<option value="Packaging">Packaging</option>
+								<option value="Pet Food">Pet Food</option>
+								<option value="Restaurant Supplying">Restaurant Supplying</option>
+								<option value="Services">Services</option>
+								<option value="Software">Software</option>
+								<option value="Students">Students</option>
+								<option value="Trader">Trader</option>
+								<option value="Viniculture">Viniculture</option>
+								<option value="Other">Other</option>
+							</select>
 						</div>
 					</div>
 				</div>

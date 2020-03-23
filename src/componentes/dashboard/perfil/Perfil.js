@@ -13,6 +13,7 @@ import { CRMContext } from '../../../context/CRMContext';
 import moment from 'moment';
 
 import EditarPerfil from './EditarPerfil';
+import EditarSocial from './EditarSocial';
 
 function Perfil(props) {
 
@@ -88,6 +89,15 @@ function Perfil(props) {
 											<a className="list-group-item list-group-item-action active" data-toggle="list" href="#account" role="tab">
 							                    Account
 							                </a>
+							                <a className="list-group-item list-group-item-action" data-toggle="list" href="#social" role="tab">
+							                    Social Networks
+							                </a>
+							                <a className="list-group-item list-group-item-action" data-toggle="list" href="#job" role="tab">
+							                    Job
+							                </a>
+							                <a className="list-group-item list-group-item-action" data-toggle="list" href="#summary" role="tab">
+							                    Summary
+							                </a>
 										</div>
 									
 									</div>
@@ -96,6 +106,7 @@ function Perfil(props) {
 								
 								<div className="col-md-9 col-xl-10">
 											<div className="tab-content">
+												
 												<div className="tab-pane fade show active" id="account" role="tabpanel">
 													
 													<div className="card">
@@ -113,6 +124,22 @@ function Perfil(props) {
 													</div>
 
 												</div>
+
+												<div className="tab-pane fade" id="social" role="tabpanel">
+													
+													<div className="card">
+														<div className="card-header d-flex justify-content-between">
+															<h6 className="card-title mb-0">
+																Social Networks
+															</h6>
+														</div>
+														<EditarSocial
+															miembros={miembros}
+														/>
+													</div>
+
+												</div>
+
 											</div>
 										</div>
 
