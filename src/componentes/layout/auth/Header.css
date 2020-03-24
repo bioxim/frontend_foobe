@@ -1879,3 +1879,18 @@ a:not([href]):not([tabindex]) {
 .bg-dark {
     background-color: #1b2a4e!important;
 }
+.tab-vertical .nav-tabs {
+  float:left;
+  -webkit-box-orient:vertical;
+  -webkit-box-direction:normal;
+  flex-direction:column;
+}
+.tab-vertical .nav-tabs .nav-link {
+  border-top-left-radius:.2rem;
+  border-bottom-left-radius:.2rem;
+  border-top-right-radius:0;
+  border-bottom-right-radius:0;
+}
+.tab-vertical .tab-content {
+  overflow:auto;
+}
