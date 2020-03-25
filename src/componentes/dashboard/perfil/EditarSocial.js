@@ -55,6 +55,9 @@ function EditarPerfil({miembros}, props) {
 				<div className="row">
 					<div className="col">
 						<div className="form-group">
+							<label className="text-uppercase text-muted">
+								linkedin
+							</label>
 							<div className="input-group mb-3">
 								<div className="input-group-prepend">
 									<span className="input-group-text"> <i className="fab fa-linkedin-in text-primary mr-2"></i> https://www.linkedin.com/in/</span>
@@ -74,6 +77,9 @@ function EditarPerfil({miembros}, props) {
 				<div className="row">
 					<div className="col">
 						<div className="form-group">
+							<label className="text-uppercase text-muted">
+								Twitter
+							</label>
 							<div className="input-group mb-3">
 								<div className="input-group-prepend">
 									<span className="input-group-text"> <i className="fab fa-twitter text-info mr-2"></i> https://twitter.com/</span>
@@ -93,6 +99,9 @@ function EditarPerfil({miembros}, props) {
 				<div className="row">
 					<div className="col">
 						<div className="form-group">
+							<label className="text-uppercase text-muted">
+								Facebook
+							</label>
 							<div className="input-group mb-3">
 								<div className="input-group-prepend">
 									<span className="input-group-text"> <i className="fab fa-facebook-f text-primary mr-2"></i> https://www.facebook.com/</span>
@@ -112,6 +121,9 @@ function EditarPerfil({miembros}, props) {
 				<div className="row">
 					<div className="col">
 						<div className="form-group">
+							<label className="text-uppercase text-muted">
+								Instagram
+							</label>
 							<div className="input-group mb-3">
 								<div className="input-group-prepend">
 									<span className="input-group-text"> <i className="fab fa-instagram text-danger mr-2"></i> https://www.instagram.com/</span>

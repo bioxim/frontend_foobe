@@ -80,7 +80,7 @@ function EditarPerfil({miembros}, props) {
 				<div className="row">
 					<div className="col-md-8">
 						<div className="form-group">
-							<label>Full Name</label>
+							<label className="text-uppercase text-muted">Full Name</label>
 							<input 
 								name="nombre"
 								type="text"
@@ -90,7 +90,7 @@ function EditarPerfil({miembros}, props) {
 							/>
 						</div>
 						<div className="form-group">
-							<label> Business Tagline</label>
+							<label className="text-uppercase text-muted"> Business Tagline</label>
 							<input 
 								name="tagline"
 								type="text"
@@ -122,7 +122,7 @@ function EditarPerfil({miembros}, props) {
 				<div className="row">
 					<div className="col-md-5">
 						<div className="form-group">
-							<label>Birth date { miembros.nacimiento ? moment(`${miembros.nacimiento}`).format('MMMM Do YYYY') : null }</label>
+							<label className="text-uppercase text-muted">Birth date { miembros.nacimiento ? moment(`${miembros.nacimiento}`).format('MMMM Do YYYY') : null }</label>
 								<input 
 									name="nacimiento" 
 									type="date" 
@@ -134,7 +134,7 @@ function EditarPerfil({miembros}, props) {
 					</div>
 					<div className="col-md-5">
 						<div className="form-group">
-							<label>Work Activity { miembros.actividad ? <span className="text-primary">{miembros.actividad}</span> : null }</label>
+							<label className="text-uppercase text-muted">Work Activity { miembros.actividad ? <span className="text-primary">{miembros.actividad}</span> : null }</label>
 							<select 
 								name="actividad" 
 								className="custom-select"

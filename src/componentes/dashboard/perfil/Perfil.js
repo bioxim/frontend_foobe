@@ -14,6 +14,7 @@ import moment from 'moment';
 
 import EditarPerfil from './EditarPerfil';
 import EditarSocial from './EditarSocial';
+import EditarEmpleo from './EditarEmpleo';
 
 function Perfil(props) {
 
@@ -134,6 +135,21 @@ function Perfil(props) {
 															</h6>
 														</div>
 														<EditarSocial
+															miembros={miembros}
+														/>
+													</div>
+
+												</div>
+
+												<div className="tab-pane fade" id="job" role="tabpanel">
+													
+													<div className="card">
+														<div className="card-header d-flex justify-content-between">
+															<h6 className="card-title mb-0">
+																Job Profile
+															</h6>
+														</div>
+														<EditarEmpleo
 															miembros={miembros}
 														/>
 													</div>
