@@ -1894,3 +1894,15 @@ a:not([href]):not([tabindex]) {
 .tab-vertical .tab-content {
   overflow:auto;
 }
+.badge-secondary-soft {
+  background-color:rgba(66,186,150,.1)!important;
+  color:#42ba96!important;
+}
+.badge-float {
+  position:absolute;
+  z-index:1000;
+}
+.badge-float-inside {
+  top:1rem;
+  right:1rem;
+}

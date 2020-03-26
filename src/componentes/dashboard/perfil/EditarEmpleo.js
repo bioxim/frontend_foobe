@@ -3,8 +3,6 @@ import { withRouter } from 'react-router-dom';
 import Swal from 'sweetalert2';
 import clienteAxios from '../../../config/axios';
 
-import moment from 'moment';
-
 function EditarEmpleo({miembros}, props) {
 
 	const { _id } = miembros;
@@ -76,6 +74,7 @@ function EditarEmpleo({miembros}, props) {
 								type="text" 
 								className="form-control"
 								onChange={leerInformacionMiembro}
+								defaultValue={miembros.empresa}		
 							/>
 						</div>
 					</div>
@@ -110,6 +109,7 @@ function EditarEmpleo({miembros}, props) {
 								type="text" 
 								className="form-control"
 								onChange={leerInformacionMiembro}
+								defaultValue={miembros.direccion}		
 							/>
 						</div>
 					</div>

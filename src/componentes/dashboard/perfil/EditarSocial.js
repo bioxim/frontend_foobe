@@ -3,8 +3,6 @@ import { withRouter } from 'react-router-dom';
 import Swal from 'sweetalert2';
 import clienteAxios from '../../../config/axios';
 
-import moment from 'moment';
-
 function EditarPerfil({miembros}, props) {
 
 	const { _id } = miembros;

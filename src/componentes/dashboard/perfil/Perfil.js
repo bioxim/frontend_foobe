@@ -15,6 +15,7 @@ import moment from 'moment';
 import EditarPerfil from './EditarPerfil';
 import EditarSocial from './EditarSocial';
 import EditarEmpleo from './EditarEmpleo';
+import VerPerfil from './VerPerfil';
 
 function Perfil(props) {
 
@@ -150,6 +151,23 @@ function Perfil(props) {
 															</h6>
 														</div>
 														<EditarEmpleo
+															miembros={miembros}
+														/>
+													</div>
+
+												</div>
+
+												<div className="tab-pane fade" id="summary" role="tabpanel">
+													
+													<div className="card">
+														<div className="card-header">
+															<h6 className="card-title mb-0">
+																Summary
+															</h6>
+															<p><small className="text-muted">How your profile is shown to other members in search section</small></p>
+															<hr />
+														</div>
+														<VerPerfil
 															miembros={miembros}
 														/>
 													</div>
