@@ -152,12 +152,12 @@ const Header = (props) => {
 						<ul id="item" className="sidebar-dropdown list-unstyled">
 							<li className="sidebar-item ">
 								<Link to={"/users-all"} className="sidebar-link">
-									By Keyword
+									By Work Activity
 								</Link>
 							</li>
 							<li className="sidebar-item ">
 								<Link to={"/users-profile"} className="sidebar-link">
-									By Occupation
+									By Company
 								</Link>
 							</li>
 							<li className="sidebar-item ">

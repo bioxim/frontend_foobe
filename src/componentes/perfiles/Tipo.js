@@ -1,15 +1,57 @@
-import React, { Fragment, useContext } from 'react';
-import { Link, withRouter } from 'react-router-dom';
+import React, { useEffect, useState, useContext, Fragment } from 'react';
+import { withRouter } from 'react-router-dom';
+import clienteAxios from '../../config/axios';
+
 import '../dashboard/Dashboard.css';
 import '../layout/auth/Header.css';
 import Header from '../layout/auth/Header';
 import Navegacion from '../layout/auth/Navegacion';
 
+import Search from './Search';
+import Pagination from '../Pagination';
+import PaisLista from './PaisLista';
+
 import { CRMContext } from '../../context/CRMContext';
 
-const Amigos = (props) => {
+const Tipos = (props) => {
 
-	const [auth] = useContext(CRMContext);
+	const [ clientes, guardarClientes ] = useState([]);
+	const [ items, setItems ] = useState(clientes);
+
+	const [loading, setLoading] = useState(false);
+  	const [currentPage, setCurrentPage] = useState(1);
+  	const [postsPerPage] = useState(50);
+
+	const [auth, guardarAuth] = useContext(CRMContext);
+
+	useEffect( () => {
+		
+		const consultarAPI = async () => {
+				setLoading(true);
+
+				//console.log('Consultando...');
+				const clientesConsulta = await clienteAxios.get('/clientes');
+
+				// colocar el resultado en el state
+				guardarClientes(clientesConsulta.data);
+
+				setLoading(false);
+		}
+
+		consultarAPI();
+		
+		}, [clientes, items, loading, guardarAuth]);
+
+	const onChangeSearch = value => {
+		const newItems = clientes.filter(items => items.empresa.toLowerCase().includes(value.toLowerCase()));
+				    	setItems(newItems);
+	}
+
+	const indexOfLastPost = currentPage * postsPerPage;
+    const indexOfFirstPost = indexOfLastPost - postsPerPage;
+    const currentPosts = items.slice(indexOfFirstPost, indexOfLastPost);
+
+    const paginate = pageNumber => setCurrentPage(pageNumber);
 
 	if(!auth.auth) {
 		props.history.push('/login');
@@ -26,37 +68,39 @@ const Amigos = (props) => {
 			<div className="wrapper  bg-light">
 				<Header />
 				<div className="main">
+					
 					<Navegacion />
+					
 					<div className="content">
-						<section className="section-border border-primary">
-					      	<div className="container d-flex flex-column">
-					        	<div className="row align-items-center justify-content-center no-gutters min-vh-100">
-					          		<div className="col-8 col-md-6 col-lg-7 offset-md-1 order-md-2 mt-auto mt-md-0 pt-8 pb-4 py-md-11">
+						
+						<div className="container-fluid">
 
-					            		<img src="img/illustration-1.png" alt="not yet" className="img-fluid" />
+							<div className="header">
+								<h1 className="header-title">
+									Members search by company
+								</h1>
+							</div>
 
-					          		</div>
-					          		<div className="col-12 col-md-5 col-lg-4 order-md-1 mb-auto mb-md-0 pb-8 py-md-11">
-					            
-					            		<h1 className="display-3 font-weight-bold text-center">
-					              			Uh Oh.
-					            		</h1>
+							<Search
+								onChangeSearch={onChangeSearch}
+							/>
 
-					            		<p className="mb-5 text-center text-muted">
-					              			We ran into an issue, but don’t worry, we’ll take care of it for sure.
-					            		</p>
+							<PaisLista
+								items={currentPosts}
+							/>
 
-					            		<div className="text-center">
-					              			<Link to={"/dashboard"} className="btn btn-primary" >
-					                			Back to dashboard
-					              			</Link>
-					            		</div>
+							<div className="row mb-3">
+								<Pagination
+									postsPerPage={postsPerPage}
+									totalPosts={items.length}
+									paginate={paginate}
+								/>
+							</div>	
 
-					          		</div>
-					        	</div>
-					      	</div> 
-				    	</section>
+						</div>
+
 				    </div>
+				
 				</div>
 			</div>
 
@@ -80,4 +124,4 @@ const Amigos = (props) => {
 		</Fragment>
 	)
 }
-export default withRouter(Amigos);
+export default withRouter(Tipos);
