@@ -1,7 +1,99 @@
-import React from 'react';
+import React, { useContext, useState, useEffect } from 'react';
+import { CRMContext } from '../../context/CRMContext';
+import clienteAxios from '../../config/axios';
+import Swal from 'sweetalert2';
 import moment from 'moment';
 
-const Perfil = ({ nombre, nacimiento, imagen, actividad, empresa, direccion, pais, linkedin, facebook, twitter, instagram }) => {
+const Perfil = ({ _id, nombre, nacimiento, imagen, actividad, empresa, direccion, pais, linkedin, facebook, twitter, instagram, amigos, email }, props) => {
+
+	const [auth, guardarAuth] = useContext(CRMContext);
+
+	const { credenciales } = auth;
+
+	const usuarioLogueado = _id => {
+
+		Swal.fire({
+			  title: '<i class="far fa-grin mr-2"></i> Hi you!',
+			  showClass: {
+			    popup: 'animated fadeInDown faster'
+			  },
+			  hideClass: {
+			    popup: 'animated fadeOutUp faster'
+			  },
+			  confirmButtonText:
+			    '<i class="fa fa-thumbs-up"></i> Great!',
+			  confirmButtonAriaLabel: 'Thumbs up, great!',
+		})		
+
+	}
+
+	const [ clientes, guardarClientes ] = useState([]);
+	const [miembroLogueado, guardarMiembroLogueado] = useState([]);
+
+	useEffect( () => {
+		// Query a la API
+		const consultarAPI = async () => {
+
+		const clientesConsulta = await clienteAxios.get('/clientes');
+			// colocar el resultado en el state
+			guardarClientes(clientesConsulta.data);
+		}
+		consultarAPI();
+	}, [clientes]);
+
+	const clienteId = clientes.map(
+		cliente => (
+			(cliente.email === credenciales.email) ? cliente._id : ''
+		));
+
+	const id = clienteId.filter(Boolean); // id del que estoy loguaada
+
+	useEffect( () => {
+		// Query a la API
+		const consultarAPI = async () => {
+
+		const miembroConsulta = await clienteAxios.get(`/clientes/${id}`);
+			// colocar el resultado en el state
+			guardarMiembroLogueado(miembroConsulta.data);
+		}
+		consultarAPI();
+	}, [id, miembroLogueado]);
+
+	const agregarContacto = _id => {
+
+		if( email ) {
+			miembroLogueado.amigos.push(_id);
+
+				guardarMiembroLogueado({
+					miembroLogueado
+				})
+
+			const resultado = clienteAxios.put(`/clientes/editar/${id}`, miembroLogueado);
+
+	        // leer resultado
+	        if(resultado.status === 200) {
+	            // alerta de todo bien
+	            Swal.fire({
+	                type: 'success',
+	                title: 'Correcto',
+	                text: resultado.data.mensaje
+	            })
+	        } else {
+	            // alerta de error
+	            Swal.fire({
+	                type: 'success',
+	                title: 'Contact added',
+	                text: 'Pls, go to you contact link'
+	            })
+	        }
+		}
+	}
+
+	const removerContacto = _id => {
+
+		let pos_Id = miembroLogueado.amigos.indexOf(_id); // Case sensitive, muestra la posición de Metroid
+		//console.log({pos_Id});
+	}
 
 	return(
 		<div className="col-md-4 col-sm-6 col-xs-12 mb-1">
@@ -49,7 +141,7 @@ const Perfil = ({ nombre, nacimiento, imagen, actividad, empresa, direccion, pai
 							<i class="fas fa-thumbtack mr-2"></i> Social Networks
 						</small>
 					</div>
-					<div className="row pt-1">
+					<div className="row justify-content-center pt-1">
 						{ linkedin ? ( 
 							<a className="btn btn-sm btn-primary rounded-circle mx-1" href={`https://www.linkedin.com/in/${linkedin}`} target="_blanck"><i className="fab fa-linkedin-in"></i></a>
 						) : null }
@@ -62,6 +154,35 @@ const Perfil = ({ nombre, nacimiento, imagen, actividad, empresa, direccion, pai
 						{ instagram ? (
 							<a className="btn btn-sm btn-danger rounded-circle mx-1" href={`https://www.instagram.com/${instagram}`} target="_blanck"><i className="fab fa-instagram"></i></a>
 						) : null }
+					</div>
+					<div className="row justify-content-center">
+
+						{ ( email === credenciales.email ) ? 
+							( <button 
+									className="btn btn-sm mt-2 btn-outline-success rounded-circle"
+									type="button"
+									onClick={() => usuarioLogueado(_id)}
+								>
+									<i className="fas fa-smile"></i>
+							   </button>
+							) :
+							( _id.includes(amigos) ) ?
+								( <button
+										className="btn btn-sm mt-2 btn-outline-primary"
+										type="button"
+										onClick={() => agregarContacto(_id)}
+									> 
+										<i className="fas fa-plus mr-1"></i> contact 
+								  </button>) :
+								( <button
+									className="btn btn-sm mt-2 btn-outline-danger"
+									type="button"
+									onClick={() => removerContacto(_id)}
+								> 
+									<i className="fas fa-minus mr-1"></i> contact 
+								  </button>
+						)}						
+
 					</div>
 				</div>
 
