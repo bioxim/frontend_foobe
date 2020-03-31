@@ -1,83 +1,135 @@
-import React, { Fragment, useContext } from 'react';
-import { Link, withRouter } from 'react-router-dom';
+import React, { useState, useEffect, useContext } from 'react';
 import '../Dashboard.css';
 import '../../layout/auth/Header.css';
 import Header from '../../layout/auth/Header';
 import Navegacion from '../../layout/auth/Navegacion';
+import Bienvenida from '../navbar/Bienvenida';
+import clienteAxios from '../../../config/axios';
+import AmigosListado from './AmigosListado';
 
 import { CRMContext } from '../../../context/CRMContext';
 
 const Amigos = (props) => {
 
-	const [auth] = useContext(CRMContext);
+	const [auth, guardarAuth] = useContext(CRMContext);
 
 	if(!auth.auth) {
 		props.history.push('/login');
 	}
 
+	const { credenciales } = auth;
+	const { email } = credenciales;
+
+	const [ clientes, guardarClientes ] = useState([]); //Mapeo todos los miembros y comparo
+	const [ usuarioLogueado, guardarUsuarioLogueado ] = useState([]); //Obtengo el objeto usario logueado para tener sus amigos
+
+	useEffect( () => {
+		const consultarAPI = async () => {
+
+		const clientesConsulta = await clienteAxios.get('/clientes');
+			guardarClientes(clientesConsulta.data);
+		}
+		consultarAPI();
+	}, [clientes, guardarAuth]);
+
+	const clienteId = clientes.map(
+		cliente => (
+			(cliente.email === email) ? cliente._id : ''
+		));
+
+	const id = clienteId.filter(Boolean); //id del usuario logueado
+
+	useEffect(() => {
+    	
+	        const consultarAPI = async () => {
+	            const usuarioConsulta = await clienteAxios.get(`/clientes/${id}`);
+	            guardarUsuarioLogueado(usuarioConsulta.data);
+	        }
+
+	        consultarAPI();
+    }, [id, usuarioLogueado]);
+	
+	const contactos = usuarioLogueado.amigos;
+
+	let total;
+
+	if( contactos !== undefined ) {
+		total = contactos.length;
+	}
+
 	return (
-		<Fragment>
+		<div className="wrapper  bg-light">
+			<Header />
+			<div className="main">
+				<Navegacion />
+				<div className="content">
+					<div className="container-fluid">
+						<div className="header">
+							<Bienvenida />
+						</div>
 
-			<div className="splash">
-				<div className="splash-icon">
+						<div className="row mb-3">
+							
+							<div className="col">
+								<div className="card">
+									<div className="card-header d-flex justify-content-between">
+										<h6 className="card-title mb-0">
+											Contacts
+										</h6>
+									</div>
+									
+									<div className="dataTables_filter text-right pr-3">
+										<label className="text-muted">
+											<input 
+												type="search" 
+												className="form-control form-control-sm" 
+												placeholder="Search" 
+												aria-controls="datatables-clients" 
+											/>
+										</label>
+									</div>
+
+									<div className="card-body">
+										<div className="col">
+											<table className="table table-striped dataTable no-footer dtr-inline">
+												<thead>
+													<tr>
+														<th className="d-none d-sm-block">
+															<i className="fas fa-camera-retro"></i>
+														</th>
+														<th colspan="2">
+															Name
+														</th>
+														<th colspan="2" className="d-none d-sm-block">
+															Email
+														</th>
+														<th>
+															Detail
+														</th>
+													</tr>
+												</thead>
+												<tbody>
+													{
+														(contactos !== undefined ) ?
+															contactos.map(contacto => (
+																<AmigosListado
+																	contacto={contacto}
+																/>
+															)): null
+													}
+												</tbody>
+											</table>
+										</div>
+									</div>
+								</div>
+							</div>
+
+						</div>
+
+					</div>
 				</div>
 			</div>
-
-			<div className="wrapper  bg-light">
-				<Header />
-				<div className="main">
-					<Navegacion />
-					<div className="content">
-						<section className="section-border border-primary">
-					      	<div className="container d-flex flex-column">
-					        	<div className="row align-items-center justify-content-center no-gutters min-vh-100">
-					          		<div className="col-8 col-md-6 col-lg-7 offset-md-1 order-md-2 mt-auto mt-md-0 pt-8 pb-4 py-md-11">
-
-					            		<img src="img/illustration-1.png" alt="not yet" className="img-fluid" />
-
-					          		</div>
-					          		<div className="col-12 col-md-5 col-lg-4 order-md-1 mb-auto mb-md-0 pb-8 py-md-11">
-					            
-					            		<h1 className="display-3 font-weight-bold text-center">
-					              			Uh Oh.
-					            		</h1>
-
-					            		<p className="mb-5 text-center text-muted">
-					              			We ran into an issue, but don’t worry, we’ll take care of it for sure.
-					            		</p>
-
-					            		<div className="text-center">
-					              			<Link to={"/dashboard"} className="btn btn-primary" >
-					                			Back to dashboard
-					              			</Link>
-					            		</div>
-
-					          		</div>
-					        	</div>
-					      	</div> 
-				    	</section>
-				    </div>
-				</div>
-			</div>
-
-	    	<div className="redux-toastr" aria-live="assertive">
-				<div>
-					<div className="top-left">
-					</div>
-					<div className="top-right">
-					</div>
-					<div className="top-center">
-					</div>
-					<div className="bottom-left">
-					</div>
-					<div className="bottom-right">
-					</div>
-					<div className="bottom-center">
-					</div>
-				</div>
-			</div>		
-
-		</Fragment>
+		</div>
 	)
 }
-export default withRouter(Amigos);
+export default Amigos;

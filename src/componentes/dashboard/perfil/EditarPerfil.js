@@ -25,7 +25,7 @@ function EditarPerfil({miembros}, props) {
         const formData = new FormData();
         formData.append('nombre', miembro.nombre);
         formData.append('tagline', miembro.tagline);
-        formData.append('nacimiento', miembro.nacimiento);
+        formData.append('nacimiento', moment(miembro.nacimiento));
         formData.append('actividad', miembro.actividad);
         formData.append('imagen', archivo);
 

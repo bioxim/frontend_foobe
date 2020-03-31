@@ -1906,3 +1906,16 @@ a:not([href]):not([tabindex]) {
   top:1rem;
   right:1rem;
 }
+div.dataTables_filter {
+  text-align:right;
+}
+div.dataTables_filter label {
+  font-weight:400;
+  white-space:nowrap;
+  text-align:left;
+}
+div.dataTables_filter input {
+  margin-left:.5em;
+  display:inline-block;
+  width:auto
+}

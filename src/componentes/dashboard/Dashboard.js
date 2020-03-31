@@ -1,4 +1,4 @@
-import React, { useContext, useState, useEffect, Fragment } from 'react';
+import React, { useContext, useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import clienteAxios from '../../config/axios';
 import './Dashboard.css';
@@ -9,6 +9,7 @@ import Bienvenida from './navbar/Bienvenida';
 import moment from 'moment';
 
 import Currenciesw from './Currenciesw';
+import Estadisticas from './Estadisticas';
 
 // importar el Context
 import { CRMContext } from '../../context/CRMContext';
@@ -36,11 +37,6 @@ const Dashboard = (props) => {
 	}
 	
 	return (
-		<Fragment>
-			<div className="splash">
-				<div className="splash-icon">
-				</div>
-			</div>
 			<div className="wrapper">
 				<Header />
 				<div className="main">
@@ -121,28 +117,13 @@ const Dashboard = (props) => {
 							</div>
 							
 							<Currenciesw />
+
+							<Estadisticas />
 							
 						</div>
 					</div>
 				</div>
 			</div>
-			<div className="redux-toastr" aria-live="assertive">
-				<div>
-					<div className="top-left">
-					</div>
-					<div className="top-right">
-					</div>
-					<div className="top-center">
-					</div>
-					<div className="bottom-left">
-					</div>
-					<div className="bottom-right">
-					</div>
-					<div className="bottom-center">
-					</div>
-				</div>
-			</div>		
-		</Fragment>
 	)
 }
 
