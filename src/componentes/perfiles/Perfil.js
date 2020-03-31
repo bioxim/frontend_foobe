@@ -57,6 +57,7 @@ const Perfil = ({ _id, nombre, nacimiento, imagen, actividad, empresa, direccion
 			guardarMiembroLogueado(miembroConsulta.data);
 		}
 		consultarAPI();
+
 	}, [id, miembroLogueado]);
 
 	const agregarContacto = _id => {
@@ -93,6 +94,33 @@ const Perfil = ({ _id, nombre, nacimiento, imagen, actividad, empresa, direccion
 
 		let pos_Id = miembroLogueado.amigos.indexOf(_id); // Case sensitive, muestra la posición de Metroid
 		//console.log({pos_Id});
+
+		miembroLogueado.amigos.splice(pos_Id, 1);
+
+		guardarMiembroLogueado({
+			...miembroLogueado
+		})
+
+		const res= clienteAxios.put(`/clientes/editar/${id}`, miembroLogueado);
+
+	        // leer resultado
+	        if(res.status === 200) {
+	            // alerta de todo bien
+	            Swal.fire({
+	                type: 'success',
+	                title: 'Remove',
+	                text: res.data.mensaje
+	            })
+
+	        } else {
+	            // alerta de error
+	            Swal.fire({
+	                type: 'success',
+	                title: 'Contact removed',
+	                text: 'Member remove from your contact list'
+	            })
+	        }
+
 	}
 
 	return(
@@ -165,23 +193,24 @@ const Perfil = ({ _id, nombre, nacimiento, imagen, actividad, empresa, direccion
 								>
 									<i className="fas fa-smile"></i>
 							   </button>
-							) :
-							( _id.includes(amigos) ) ?
-								( <button
-										className="btn btn-sm mt-2 btn-outline-primary"
-										type="button"
-										onClick={() => agregarContacto(_id)}
-									> 
-										<i className="fas fa-plus mr-1"></i> contact 
-								  </button>) :
-								( <button
-									className="btn btn-sm mt-2 btn-outline-danger"
-									type="button"
-									onClick={() => removerContacto(_id)}
-								> 
-									<i className="fas fa-minus mr-1"></i> contact 
-								  </button>
-						)}						
+							) : 
+							miembroLogueado.amigos !== undefined && miembroLogueado.amigos.includes(_id) ?
+							<button
+								className="btn btn-sm mt-2 btn-outline-danger"
+								type="button"
+								onClick={() => removerContacto(_id)}
+							> 
+								- contact 
+							</button>
+							:
+							<button
+								className="btn btn-sm mt-2 btn-outline-primary"
+								type="button"
+								onClick={() => agregarContacto(_id)}
+							> 
+								+ contact 
+							</button>
+						}					
 
 					</div>
 				</div>
