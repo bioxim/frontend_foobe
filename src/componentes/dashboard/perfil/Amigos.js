@@ -53,7 +53,7 @@ const Amigos = (props) => {
 
 	let total;
 
-	if( contactos !== undefined ) {
+	if(contactos !== undefined) {
 		total = contactos.length;
 	}
 
@@ -77,17 +77,6 @@ const Amigos = (props) => {
 											Contacts
 										</h6>
 									</div>
-									
-									<div className="dataTables_filter text-right pr-3">
-										<label className="text-muted">
-											<input 
-												type="search" 
-												className="form-control form-control-sm" 
-												placeholder="Search" 
-												aria-controls="datatables-clients" 
-											/>
-										</label>
-									</div>
 
 									<div className="card-body">
 										<div className="col">
@@ -108,16 +97,17 @@ const Amigos = (props) => {
 														</th>
 													</tr>
 												</thead>
-												<tbody>
-													{
-														(contactos !== undefined ) ?
-															contactos.map(contacto => (
+												{
+													(contactos !== undefined ) ?
+														contactos.map(contacto => (
+															<tbody>
 																<AmigosListado
 																	contacto={contacto}
 																/>
-															)): null
-													}
-												</tbody>
+															</tbody> 													
+													)): null
+												}
+												
 											</table>
 										</div>
 									</div>
