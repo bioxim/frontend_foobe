@@ -1,4 +1,5 @@
 import React from 'react';
+import Parser from 'html-react-parser';
 
 const GuidePaginated = ({docs}) => {
 	return(
@@ -15,7 +16,7 @@ const GuidePaginated = ({docs}) => {
 			                  		<img 
 			                  			src={`${process.env.REACT_APP_BACKEND_URL}/${doc.imagen}`} 
 			                  			alt={doc.titulo} 
-			                  			class="img-fluid" 
+			                  			class="img-fluid"
 			                  		/>
 			                  		) : null
 			                	}
@@ -35,7 +36,7 @@ const GuidePaginated = ({docs}) => {
 			                    </h4>
 
 			                    <p class="text-muted">
-			                      {doc.texto}
+			                      {Parser(doc.texto)}
 			                    </p>
 
 			                  </div>
