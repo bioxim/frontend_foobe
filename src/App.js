@@ -1,59 +1,26 @@
 import React, { Fragment, useContext } from 'react';
 
-/* LAYOUT NO AUTH*/
-import Header from './componentes/layout/notauth/Header';
-import Main from './componentes/layout/notauth/Main';
-import Footer from './componentes/layout/notauth/Footer';
+/* RUTAS WEB */
+import { Header, Main, Footer } from './componentes/layout/notauth';
+import { Contacto, Terminos, FormasPago, Signup, Logs, Guide, Calendario, Success, Cancelation, Login, Productores, ProductoresSuccess } from './componentes/views';
 
-/* VISTAS WEB */
-import Contacto from './componentes/views/Contacto';
-import Terminos from './componentes/views/Terminos';
-import FormasPago from './componentes/views/FormasPago';
-import Signup from './componentes/views/Signup';
-import Logs from './componentes/views/Logs';
-import Guide from './componentes/views/Guide';
-import Productores from './componentes/productores/Productores';
-import ProductoresSuccess from './componentes/productores/ProductoresSuccess';
-import Calendario from './componentes/views/Calendario';
-
-/* VISTAS PARA PLATAFORMA DE PAGOS */
-import Success from './componentes/views/Success';
-import Cancelation from './componentes/views/Cancelation';
-
-/* PAGINA LOGIN */
-import Login from './componentes/views/Login';
-
-/* DASHBOARD */
-import Dashboard from './componentes/dashboard/Dashboard';
+/* DASHBOARD MAIN */
+import { Dashboard, Perfil, Mensajeria, Setting, Amigos } from './componentes/dashboard';
 
 /* TARJETAS */
-import TarjetasFE from './componentes/tarjetas/TarjetasFE';
-import TarjetasPaises from './componentes/tarjetas/TarjetasPaises';
-import TarjetasEmails from './componentes/tarjetas/TarjetasEmails';
+import { TarjetasFE, TarjetasPaises, TarjetasEmails } from './componentes/tarjetas';
 
 /* LIBROS */
 import Libros from './componentes/libros/Libros';
 
 /* LIBROS EN PDF DE PRODUCTORES Y TODOS */
-import Librosf from './componentes/librosf/Librosf';
-import LibrosfProducts from './componentes/librosf/LibrosfProducts';
-import LibrosfPaises from './componentes/librosf/LibrosfPaises';
-
-/* MANEJO DE PERFILES DE CLIENTES */
-import Perfil from './componentes/dashboard/perfil/Perfil';
-import Mensajeria from './componentes/dashboard/perfil/Mensajeria';
-import Settings from './componentes/dashboard/perfil/Settings';
-import Amigos from './componentes/dashboard/perfil/Amigos';
+import { Librosf, LibrosfProducts, LibrosfPaises } from './componentes/librosf';
 
 /* FILTROS DE FILTRAR PERFILES - BUSQUEDAS */
-import Perfiles from './componentes/perfiles/Perfiles';
-import Pais from './componentes/perfiles/Pais';
-import Tipo from './componentes/perfiles/Tipo';
+import { Perfiles, Pais, Tipo } from './componentes/perfiles';
 
 /* APIS DE QUANDL DE MERCADOS FINANCIEROS */
-import Wiki from './componentes/quandl/Wiki';
-import Eurex from './componentes/quandl/Eurex';
-import Dalian from './componentes/quandl/Dalian';
+import { Wiki, Eurex, Dalian } from './componentes/quandl';
 
 /* CONVERSOR DE MONEDAS TOOL */
 import Currencies from './componentes/converter/Currencies';
@@ -64,11 +31,7 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 // AUTH
 import { CRMContext, CRMProvider } from './context/CRMContext';
 
-
-
 function App() {
-
-    // utilizar context en el componente
     const [ auth, guardarAuth ] = useContext(CRMContext);
 
   return (
@@ -99,7 +62,7 @@ function App() {
                         <Route exact path="/dashboard" component={Dashboard} />
                         <Route exact path="/profile" component={Perfil} />
                         <Route exact path="/contacts" component={Amigos} />
-                        <Route exact path="/settings" component={Settings} />
+                        <Route exact path="/settings" component={Setting} />
                         <Route exact path="/messages" component={Mensajeria} />
 
                         <Route exact path="/all-cards" component={TarjetasFE} />

@@ -7,7 +7,7 @@ import Navegacion from '../../layout/auth/Navegacion';
 
 import { CRMContext } from '../../../context/CRMContext';
 
-const Settings = (props) => {
+const Setting = (props) => {
 
 	const [auth] = useContext(CRMContext);
 
@@ -80,4 +80,4 @@ const Settings = (props) => {
 		</Fragment>
 	)
 }
-export default withRouter(Settings);
+export default withRouter(Setting);
