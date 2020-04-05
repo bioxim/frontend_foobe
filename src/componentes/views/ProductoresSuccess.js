@@ -1,10 +1,7 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
 
-import '../views/Styles.css';
-
 const ProductoresSuccess = () => (
-	<Fragment>
 		<section className="py-10 py-md-14 overlay overlay-black overlay-60 bg-cover background-invitation-image">
 		      <div className="container">
 		        <div className="row justify-content-center">
@@ -29,7 +26,6 @@ const ProductoresSuccess = () => (
 		        </div> 
 		      </div> 
 	    	</section>
-	</Fragment>
 )
 
 export default ProductoresSuccess;

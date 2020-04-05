@@ -16,7 +16,7 @@ const GuidePaginated = ({docs}) => {
 			                  		<img 
 			                  			src={`${process.env.REACT_APP_BACKEND_URL}/${doc.imagen}`} 
 			                  			alt={doc.titulo} 
-			                  			class="img-fluid"
+			                  			class="img-fluid my-1"
 			                  		/>
 			                  		) : null
 			                	}

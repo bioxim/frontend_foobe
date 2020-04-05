@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import clienteAxios from '../../config/axios';
-import Spinner from '../layout/Spinner';
 import Pagination from '../Pagination';
 import LogsPaginated from './LogsPaginated';
 
@@ -36,9 +35,6 @@ const Logs = () => {
 
 	  // Change page
 	  const paginate = pageNumber => setCurrentPage(pageNumber);
-
-	// spinner de carga
-	if(!logs.length) return <Spinner />
 
 	return (
 		<div className="col pb-3">

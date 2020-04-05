@@ -2,8 +2,6 @@ import React, { useState, useEffect, Fragment } from 'react';
 import clienteAxios from '../../config/axios';
 import moment from 'moment';
 
-import './Styles.css';
-
 const Calendario = ({history}) => {
 
 	const [ eventos, guardarEventos ] = useState([]);
@@ -62,7 +60,7 @@ const Calendario = ({history}) => {
 			        	<div className="row justify-content-center mb-3">
 				        	<div className="row align-items-center">
 				        		<div className="col-12 m-3">
-			            			<img src={`${process.env.REACT_APP_BACKEND_URL}/${evento.imagen}`} className="img-fluid" width="400" alt={evento.nombre} />
+			            			<img src={`${process.env.REACT_APP_BACKEND_URL}/${evento.imagen}`} className="img-fluid" width="300" alt={evento.nombre} />
 			          			</div>
 				        	</div>
 				        	<div className="row">

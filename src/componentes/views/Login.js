@@ -1,4 +1,4 @@
-import React, { useState, useContext, Fragment } from 'react';
+import React, { useState, useContext } from 'react';
 import { Link } from 'react-router-dom';
 import Swal from 'sweetalert2';
 import clienteAxios from '../../config/axios';
@@ -16,18 +16,13 @@ function Login(props) {
 	// iniciar sesión en el servidor
 	const iniciarSesion = async e => {
 		e.preventDefault();
-
-		// autenticar el usuario
 		try {
 
 			const respuesta = await clienteAxios.post('/login', credenciales);
-			//console.log(respuesta);
 
-			// extraer el token y colocarlo en el localstorage
 			const { token } = respuesta.data;
 			localStorage.setItem('token', token);
 
-			// colocarlo en el state
 			guardarAuth({
 				token,
 				auth: true,
@@ -73,11 +68,7 @@ function Login(props) {
 	}
 
 	return (
-		<Fragment>
 			<div className="color-fondo">
-				<div className="splash">
-					<div className="splash-icon"></div>
-				</div>
 				<div id="root">
 					<div className="main h-100 w-100">
 						<div className="h-100 container">
@@ -96,7 +87,7 @@ function Login(props) {
 											<div className="card-body">
 												<div className="m-sm-4">
 													<div className="text-center">
-														<img src="img/foobe-avatar.png" alt="Linda Miller" className="img-fluid rounded-circle" width="132" height="132" />
+														<img src="img/avatar-static.jpg" alt="Login" className="img-fluid rounded-circle" width="132" height="132" />
 													</div>
 													<form>
 														<div className="form-group">
@@ -141,10 +132,7 @@ function Login(props) {
 						</div>
 					</div>
 				</div>
-				<section className="pt-9 pt-md-12 bg-gray-login contenedor-vacio">
-		    	</section>  
 			</div>
-		</Fragment>
 	)
 }
 

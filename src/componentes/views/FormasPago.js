@@ -1,7 +1,5 @@
 import React, { Fragment } from 'react';
 
-import './Styles.css';
-
 const FormasPago = () => (
 	<Fragment>
 		<section className="pt-8 pt-md-11 pb-8 pb-md-14">

@@ -1,7 +1,7 @@
 import React from 'react';
-import moment from 'moment';
+import moment from 'moment'; 
 
-const LogsPaginated = ({logs}) => {
+const LogsPaginated = ({logs}) => { 
 	return(
 		<div>
 			{logs.map(log => (

@@ -1,7 +1,5 @@
 import React, { Fragment } from 'react';
 
-import './Styles.css';
-
 const Cancelation = () => (
 	<Fragment>
 		<section className="py-10 py-md-14 overlay overlay-black overlay-60 bg-cover background-cancel-image">

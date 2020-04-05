@@ -1,13 +1,10 @@
 import React, { Fragment, useState, useEffect } from 'react';
 import Swal from 'sweetalert2';
 import { withRouter } from 'react-router-dom';
-import useRecaptcha, { Badge } from 'react-recaptcha-hook';
+import useRecaptcha, { Badge, action, sitekey, onToken } from 'react-recaptcha-hook';
 import clienteAxios from '../../config/axios';
 
-import '../views/Styles.css';
-
-const Productores = (props, { action, sitekey, onToken }) => {
-
+const Productores = (props) => {
 	const [productor, guardarProductor] = useState({
 		nombre: '',
 		apellido: '',
@@ -77,10 +74,8 @@ const Productores = (props, { action, sitekey, onToken }) => {
 
     }
 
-    // leer los datos del formulario
     const leerInformacionProductor = e => {
         guardarProductor({
-                //obtener una copia del state y agregar el nuevo
                 ...productor,
                 [e.target.name]: e.target.value
         })

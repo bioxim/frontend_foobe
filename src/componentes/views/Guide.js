@@ -1,9 +1,7 @@
 import React, { useEffect, useState, Fragment } from 'react';
 import clienteAxios from '../../config/axios';
 
-import '../layout/notauth/addons/noauth.css';
 import GuidePaginated from './GuidePaginated';
-import Spinner from '../layout/Spinner';
 import Pagination from '../Pagination';
 
 const Guide = () => {
@@ -39,9 +37,6 @@ const Guide = () => {
 	  // Change page
 	  const paginate = pageNumber => setCurrentPage(pageNumber);
 
-	// spinner de carga
-	if(!docs.length) return <Spinner />
-
 	return (
 		<Fragment>
 			<div className="col-12 col-md py-3 px-5">
@@ -64,7 +59,6 @@ const Guide = () => {
 					paginate={paginate}
 				/>
 			</div>
-
 		</Fragment>
 	)
 }
