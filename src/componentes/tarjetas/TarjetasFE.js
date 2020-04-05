@@ -1,11 +1,6 @@
-import React, { useEffect, useState, useContext, Fragment } from 'react';
+import React, { useEffect, useState, useContext } from 'react';
 import clienteAxios from '../../config/axios';
-import Spinner from '../layout/Spinner';
-
-import '../dashboard/Dashboard.css';
-import '../layout/auth/Header.css';
-import Header from '../layout/auth/Header';
-import Navegacion from '../layout/auth/Navegacion';
+import { Header, Navegacion } from '../layout/auth'; 
 
 import Search from './Search';
 import TarjetasLista from './TarjetasLista';
@@ -26,8 +21,6 @@ const TarjetasFE = (props) => {
 	// utilizar valores del context
 	const [auth, guardarAuth] = useContext(CRMContext);
 	
-	
-
 	useEffect( () => {
 		
 		const consultarAPI = async () => {
@@ -62,16 +55,7 @@ const TarjetasFE = (props) => {
 
     const paginate = pageNumber => setCurrentPage(pageNumber);
 
-	// spinner de carga
-	if(!tarjetas.length) return <Spinner />
-
 	return (
-		<Fragment>
-			<div className="splash">
-				<div className="splash-icon">
-				</div>
-			</div>
-
 			<div className="wrapper">
 				<Header />
 				<div className="main">
@@ -105,24 +89,6 @@ const TarjetasFE = (props) => {
 					</div>
 				</div>
 			</div>
-
-			<div className="redux-toastr" aria-live="assertive">
-				<div>
-					<div className="top-left">
-					</div>
-					<div className="top-right">
-					</div>
-					<div className="top-center">
-					</div>
-					<div className="bottom-left">
-					</div>
-					<div className="bottom-right">
-					</div>
-					<div className="bottom-center">
-					</div>
-				</div>
-			</div>	
-		</Fragment>
 	)
 }
 export default TarjetasFE;

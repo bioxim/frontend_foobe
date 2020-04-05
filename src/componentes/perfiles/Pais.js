@@ -2,16 +2,16 @@ import React, { useEffect, useState, useContext, Fragment } from 'react';
 import { withRouter } from 'react-router-dom';
 import clienteAxios from '../../config/axios';
 
-import '../dashboard/Dashboard.css';
-import '../layout/auth/Header.css';
-import Header from '../layout/auth/Header';
-import Navegacion from '../layout/auth/Navegacion';
+import { Header, Navegacion } from '../layout/auth';
 
 import Search from './Search';
 import Pagination from '../Pagination';
 import PaisLista from './PaisLista';
 
 import { CRMContext } from '../../context/CRMContext';
+
+import Loader from 'react-loader-spinner';
+import '../../../node_modules/react-loader-spinner/dist/loader/css/react-spinner-loader.css';
 
 const Pais = (props) => {
 
@@ -58,13 +58,6 @@ const Pais = (props) => {
 	}
 
 	return (
-		<Fragment>
-
-			<div className="splash">
-				<div className="splash-icon">
-				</div>
-			</div>
-
 			<div className="wrapper  bg-light">
 				<Header />
 				<div className="main">
@@ -85,9 +78,20 @@ const Pais = (props) => {
 								onChangeSearch={onChangeSearch}
 							/>
 
-							<PaisLista
-								items={currentPosts}
-							/>
+							{ items ?
+								<PaisLista
+									items={currentPosts}
+								/> :
+								<div className="row d-flex w-100 justify-content-center py-5">
+									<Loader
+										type="BallTriangle"
+										color="#38cd"
+										height={80}
+										width={80}
+
+									/>
+								</div>
+							}
 
 							<div className="row mb-3">
 								<Pagination
@@ -103,25 +107,6 @@ const Pais = (props) => {
 				
 				</div>
 			</div>
-
-	    	<div className="redux-toastr" aria-live="assertive">
-				<div>
-					<div className="top-left">
-					</div>
-					<div className="top-right">
-					</div>
-					<div className="top-center">
-					</div>
-					<div className="bottom-left">
-					</div>
-					<div className="bottom-right">
-					</div>
-					<div className="bottom-center">
-					</div>
-				</div>
-			</div>		
-
-		</Fragment>
 	)
 }
 export default withRouter(Pais);

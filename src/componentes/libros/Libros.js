@@ -2,9 +2,7 @@ import React, { useEffect, useState, useContext, Fragment } from 'react';
 import clienteAxios from '../../config/axios';
 
 import '../layout/auth/Header.css';
-import Header from '../layout/auth/Header';
-import Navegacion from '../layout/auth/Navegacion';
-import Spinner from '../layout/Spinner';
+import { Header, Navegacion } from '../layout/auth';
 
 import DetallesLibro from './DetallesLibro';
 
@@ -51,8 +49,6 @@ function Libros(props) {
 	if(!auth.auth) {
 		props.history.push('/login');
 	}
-
-    if(!libros.length) return <Spinner />
 
 	return (
 		<Fragment>

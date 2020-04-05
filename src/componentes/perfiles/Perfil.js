@@ -3,6 +3,8 @@ import { CRMContext } from '../../context/CRMContext';
 import clienteAxios from '../../config/axios';
 import Swal from 'sweetalert2';
 import moment from 'moment';
+import Loader from 'react-loader-spinner';
+import '../../../node_modules/react-loader-spinner/dist/loader/css/react-spinner-loader.css';
 
 const Perfil = ({ _id, nombre, nacimiento, imagen, actividad, empresa, direccion, pais, linkedin, facebook, twitter, instagram, amigos, email }, props) => {
 
@@ -194,22 +196,34 @@ const Perfil = ({ _id, nombre, nacimiento, imagen, actividad, empresa, direccion
 									<i className="fas fa-smile"></i>
 							   </button>
 							) : 
-							miembroLogueado.amigos !== undefined && miembroLogueado.amigos.includes(_id) ?
-							<button
-								className="btn btn-sm mt-2 btn-outline-danger"
-								type="button"
-								onClick={() => removerContacto(_id)}
-							> 
-								- contact 
-							</button>
-							:
-							<button
-								className="btn btn-sm mt-2 btn-outline-primary"
-								type="button"
-								onClick={() => agregarContacto(_id)}
-							> 
-								+ contact 
-							</button>
+							miembroLogueado.amigos ?
+								miembroLogueado.amigos.includes(_id) ?
+									<button
+										className="btn btn-sm mt-2 btn-outline-danger"
+										type="button"
+										onClick={() => removerContacto(_id)}
+									> 
+										- contact 
+									</button>
+									:
+									<button
+										className="btn btn-sm mt-2 btn-outline-primary"
+										type="button"
+										onClick={() => agregarContacto(_id)}
+									> 
+										+ contact 
+									</button>
+								:
+								<div className="row d-flex w-100 justify-content-center py-5">
+									<Loader
+										type="BallTriangle"
+										color="#38cd"
+										height={30}
+										width={30}
+
+									/>
+								</div>
+								
 						}					
 
 					</div>

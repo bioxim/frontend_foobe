@@ -1,11 +1,7 @@
 import React, { Fragment, useContext, useEffect, useState } from 'react';
 import Swal from 'sweetalert2';
 import { Link, withRouter } from 'react-router-dom';
-import '../Dashboard.css';
-import '../../layout/auth/Header.css';
-import Header from '../../layout/auth/Header';
-import Navegacion from '../../layout/auth/Navegacion';
-import Bienvenida from '../navbar/Bienvenida';
+import { Header, Navegacion } from '../../layout/auth'; 
 
 import clienteAxios from '../../../config/axios';
 import { CRMContext } from '../../../context/CRMContext';
@@ -16,6 +12,10 @@ import EditarPerfil from './EditarPerfil';
 import EditarSocial from './EditarSocial';
 import EditarEmpleo from './EditarEmpleo';
 import VerPerfil from './VerPerfil';
+
+import Loader from 'react-loader-spinner';
+import '../../../../node_modules/react-loader-spinner/dist/loader/css/react-spinner-loader.css';
+
 
 function Perfil(props) {
 
@@ -61,22 +61,12 @@ function Perfil(props) {
 	}
 
 	return (
-		<Fragment>
-
-			<div className="splash">
-				<div className="splash-icon">
-				</div>
-			</div>
-
 			<div className="wrapper  bg-light">
 				<Header />
 				<div className="main">
 					<Navegacion />
 					<div className="content">
 						<div className="container-fluid">
-							<div className="header">
-								<Bienvenida />
-							</div>
 							<div className="row mb-3">
 
 								<div className="col-md-3 col-xl-2">
@@ -110,19 +100,38 @@ function Perfil(props) {
 											<div className="tab-content">
 												
 												<div className="tab-pane fade show active" id="account" role="tabpanel">
-													
 													<div className="card">
 														<div className="card-header d-flex justify-content-between">
 															<h6 className="card-title mb-0">
 																Public profile
 															</h6>
 															<h6 className="text-primary">
-																Member since  {moment(`${miembros.registro}`).format('l')}
+																	{ miembros.registro ? 
+																			moment(`${miembros.registro}`).format('l') : 
+																			<Loader
+																				    type="BallTriangle"
+																				    color="#38cd"
+																				    height={20}
+																				    width={20}
+
+																			/>
+																	}
 															</h6>
 														</div>
-														<EditarPerfil
-															miembros={miembros}
-														/>
+														{ miembros.registro ? 
+															<EditarPerfil
+																miembros={miembros}
+															/> :
+															<div className="row d-flex w-100 justify-content-center py-5">
+																<Loader
+																	type="BallTriangle"
+																	color="#38cd"
+																	height={80}
+																	width={80}
+
+																/>
+															</div>
+														}
 													</div>
 
 												</div>
@@ -135,9 +144,20 @@ function Perfil(props) {
 																Social Networks
 															</h6>
 														</div>
-														<EditarSocial
-															miembros={miembros}
-														/>
+														{ miembros.registro ? 
+															<EditarSocial
+																miembros={miembros}
+															/> :
+															<div className="row d-flex w-100 justify-content-center py-5">
+																<Loader
+																	type="BallTriangle"
+																	color="#38cd"
+																	height={80}
+																	width={80}
+
+																/>
+															</div>
+														}
 													</div>
 
 												</div>
@@ -150,9 +170,20 @@ function Perfil(props) {
 																Job Profile
 															</h6>
 														</div>
-														<EditarEmpleo
-															miembros={miembros}
-														/>
+														{ miembros.registro ? 
+															<EditarEmpleo
+																miembros={miembros}
+															/> :
+															<div className="row d-flex w-100 justify-content-center py-5">
+																<Loader
+																	type="BallTriangle"
+																	color="#38cd"
+																	height={80}
+																	width={80}
+
+																/>
+															</div>
+														}
 													</div>
 
 												</div>
@@ -167,9 +198,20 @@ function Perfil(props) {
 															<p><small className="text-muted">How your profile is shown to other members in search section</small></p>
 															<hr />
 														</div>
-														<VerPerfil
-															miembros={miembros}
-														/>
+														{ miembros.registro ? 
+															<VerPerfil
+																miembros={miembros}
+															/> :
+															<div className="row d-flex w-100 justify-content-center py-5">
+																<Loader
+																	type="BallTriangle"
+																	color="#38cd"
+																	height={80}
+																	width={80}
+
+																/>
+															</div>
+														}
 													</div>
 
 												</div>
@@ -182,25 +224,6 @@ function Perfil(props) {
 				    </div>
 				</div>
 			</div>
-
-	    	<div className="redux-toastr" aria-live="assertive">
-				<div>
-					<div className="top-left">
-					</div>
-					<div className="top-right">
-					</div>
-					<div className="top-center">
-					</div>
-					<div className="bottom-left">
-					</div>
-					<div className="bottom-right">
-					</div>
-					<div className="bottom-center">
-					</div>
-				</div>
-			</div>		
-
-		</Fragment>
 	)
 }
 export default withRouter(Perfil);
