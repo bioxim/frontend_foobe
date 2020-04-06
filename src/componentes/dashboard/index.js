@@ -13,6 +13,7 @@ import Mensajeria from './perfil/Mensajeria';
 import Setting from './perfil/Setting';
 import Perfil from './perfil/Perfil';
 import VerPerfil from './perfil/VerPerfil';
+import AmigoDetalle from './perfil/AmigoDetalle';
 
 export {
 	Dashboard,
@@ -29,5 +30,6 @@ export {
 	Mensajeria,
 	Setting,
 	Perfil,
-	VerPerfil
+	VerPerfil,
+	AmigoDetalle
 }

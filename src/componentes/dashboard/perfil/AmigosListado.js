@@ -20,7 +20,7 @@ const AmigosListado = ({contacto}) => {
 
 	return (
 		<tr>
-			<td className="d-none d-sm-block">
+			<td className="d-none d-sm-block b-0">
 				{ usuario.imagen ? (
 					<img src={`${process.env.REACT_APP_BACKEND_URL}/${usuario.imagen}`} alt="imagen" width="40" className="img-fluid rounded-circle" />
 				) : null }
@@ -28,7 +28,7 @@ const AmigosListado = ({contacto}) => {
 			<td colspan="2">
 				{usuario.nombre}
 			</td>
-			<td colspan="2" className="d-none d-sm-block">
+			<td colspan="2" className="d-none d-sm-block b-0">
 				{usuario.email}
 			</td>
 			<td>

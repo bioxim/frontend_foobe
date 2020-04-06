@@ -1,5 +1,7 @@
 import React, { useEffect, useState, Fragment } from 'react';
 import clienteAxios from '../../../config/axios';
+import Loader from 'react-loader-spinner';
+import '../../../../node_modules/react-loader-spinner/dist/loader/css/react-spinner-loader.css';
 
 const MembershipFE = ({history}) => {
 
@@ -22,6 +24,7 @@ const MembershipFE = ({history}) => {
 		<Fragment>
 			<ul className="list-group">
 	        {contenidos.map(contenido => (
+	        	contenido ?
 				<li 
 					className="list-unstyled d-flex"
 				>	
@@ -29,7 +32,14 @@ const MembershipFE = ({history}) => {
 				          <i className="fas fa-check"></i>
 				        </div>
 				    	<p>{contenido.tagline}</p>
-				</li>
+				</li> :
+				<Loader
+					type="BallTriangle"
+					color="#38cd"
+					height={30}
+					width={30}
+
+				/>
 			))}
 			</ul>
 		</Fragment>

@@ -1,13 +1,12 @@
 import React, { useState, useEffect, useContext } from 'react';
-import '../Dashboard.css';
-import '../../layout/auth/Header.css';
-import Header from '../../layout/auth/Header';
-import Navegacion from '../../layout/auth/Navegacion';
-import Bienvenida from '../navbar/Bienvenida';
+import { Header, Navegacion } from '../../layout/auth';
 import clienteAxios from '../../../config/axios';
 import AmigosListado from './AmigosListado';
 
 import { CRMContext } from '../../../context/CRMContext';
+
+import Loader from 'react-loader-spinner';
+import '../../../../node_modules/react-loader-spinner/dist/loader/css/react-spinner-loader.css';
 
 const Amigos = (props) => {
 
@@ -51,12 +50,6 @@ const Amigos = (props) => {
 	
 	const contactos = usuarioLogueado.amigos;
 
-	let total;
-
-	if(contactos !== undefined) {
-		total = contactos.length;
-	}
-
 	return (
 		<div className="wrapper  bg-light">
 			<Header />
@@ -64,10 +57,6 @@ const Amigos = (props) => {
 				<Navegacion />
 				<div className="content">
 					<div className="container-fluid">
-						<div className="header">
-							<Bienvenida />
-						</div>
-
 						<div className="row mb-3">
 							
 							<div className="col">
@@ -98,14 +87,27 @@ const Amigos = (props) => {
 													</tr>
 												</thead>
 												{
-													(contactos !== undefined ) ?
+													contactos ?
 														contactos.map(contacto => (
 															<tbody>
 																<AmigosListado
 																	contacto={contacto}
 																/>
 															</tbody> 													
-													)): null
+													)):
+													<tbody>
+														<tr>
+															<td colspan="6" className="text-center">
+																<Loader
+																	type="BallTriangle"
+																	color="#38cd"
+																	height={40}
+																	width={40}
+
+																/>
+															</td>
+														</tr>
+													</tbody>
 												}
 												
 											</table>
