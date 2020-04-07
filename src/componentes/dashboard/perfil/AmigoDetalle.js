@@ -5,9 +5,6 @@ import clienteAxios from '../../../config/axios';
 
 import { CRMContext } from '../../../context/CRMContext';
 
-import Loader from 'react-loader-spinner';
-import '../../../../node_modules/react-loader-spinner/dist/loader/css/react-spinner-loader.css';
-
 const AmigoDetalle = (props) => {
 
 	const { id } = props.match.params;
@@ -78,7 +75,7 @@ const AmigoDetalle = (props) => {
 															href={`https://www.linkedin.com/in/${amigo.linkedin}`} 
 															target="_blanck"
 														>
-															<i className="fab fa-linkedin-in"></i>
+															<i className="fab fa-linkedin-in text-white"></i>
 														</a> :
 														<a 
 															className="btn btn-light rounded-circle mx-3 my-1" 
@@ -93,7 +90,7 @@ const AmigoDetalle = (props) => {
 															href={`https://www.twitter.com/${amigo.twitter}`} 
 															target="_blanck"
 														>
-															<i className="fab fa-twitter"></i>
+															<i className="fab fa-twitter text-white"></i>
 														</a> :
 														<a 
 															className="btn btn-light rounded-circle mx-3 my-1" 
@@ -108,7 +105,7 @@ const AmigoDetalle = (props) => {
 															href={`https://www.facebook.com/${amigo.facebook}`} 
 															target="_blanck"
 														>
-															<i className="fab fa-facebook-f"></i>
+															<i className="fab fa-facebook-f text-white"></i>
 														</a> :
 														<a 
 															className="btn btn-light rounded-circle mx-3 my-1" 
@@ -123,7 +120,7 @@ const AmigoDetalle = (props) => {
 															href={`https://www.instagram.com/${amigo.instagram}`} 
 															target="_blanck"
 														>
-															<i className="fab fa-instagram"></i>
+															<i className="fab fa-instagram text-white"></i>
 														</a> :
 														<a 
 															className="btn btn-light rounded-circle mx-3 my-1" 
