@@ -10,6 +10,7 @@ import EditarEmpleo from './perfil/EditarEmpleo';
 import EditarPerfil from './perfil/EditarPerfil';
 import EditarSocial from './perfil/EditarSocial';
 import Mensajeria from './perfil/Mensajeria';
+import MensajeriaDetalle from './perfil/MensajeriaDetalle';
 import Setting from './perfil/Setting';
 import Perfil from './perfil/Perfil';
 import VerPerfil from './perfil/VerPerfil';
@@ -28,6 +29,7 @@ export {
 	EditarPerfil,
 	EditarSocial,
 	Mensajeria,
+	MensajeriaDetalle,
 	Setting,
 	Perfil,
 	VerPerfil,

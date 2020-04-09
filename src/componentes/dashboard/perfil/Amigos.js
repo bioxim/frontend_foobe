@@ -31,12 +31,13 @@ const Amigos = (props) => {
 		consultarAPI();
 	}, [clientes, guardarAuth]);
 
-	const clienteId = clientes.map(
-		cliente => (
-			(cliente.email === email) ? cliente._id : ''
-		));
+	let id = '';
 
-	const id = clienteId.filter(Boolean); //id del usuario logueado
+	for( let cliente of clientes ) {
+		if(cliente.email === credenciales.email) { 
+				id = cliente._id; // id del que estoy loguaada
+		}
+	}
 
 	useEffect(() => {
     	
@@ -78,11 +79,14 @@ const Amigos = (props) => {
 														<th colspan="2">
 															Name
 														</th>
-														<th colspan="2" className="d-none d-sm-block">
-															Email
+														<th colspan="2">
+															Company
 														</th>
 														<th>
 															Detail
+														</th>
+														<th>
+															Msg
 														</th>
 													</tr>
 												</thead>

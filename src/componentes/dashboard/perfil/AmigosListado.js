@@ -28,15 +28,26 @@ const AmigosListado = ({contacto}) => {
 			<td colspan="2">
 				{usuario.nombre}
 			</td>
-			<td colspan="2" className="d-none d-sm-block b-0">
-				{usuario.email}
+			<td colspan="2">
+				{usuario.empresa}
 			</td>
 			<td>
 				<Link 
 					to={`/contact-details/${usuario._id}`}
-					className="btn btn-info rounded-circle"
+					className="btn"
 				>
-					<i className="fas fa-search-plus"></i>
+					<i className="fas fa-search-plus text-info"></i>
+				</Link>
+			</td>
+			<td>
+				<Link 
+					to={`/messages/${usuario._id}`}
+					className="btn"
+					data-toggle="tooltip" 
+					data-placement="top" 
+					title="Send private msg"
+				>
+					<i class="fas fa-envelope text-success"></i>
 				</Link>
 			</td>
 		</tr>

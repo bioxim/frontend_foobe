@@ -1,4 +1,5 @@
 import React, { useContext, useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import { CRMContext } from '../../context/CRMContext';
 import clienteAxios from '../../config/axios';
 import Swal from 'sweetalert2';
@@ -11,23 +12,6 @@ const Perfil = ({ _id, nombre, nacimiento, imagen, actividad, empresa, direccion
 	const [auth, guardarAuth] = useContext(CRMContext);
 
 	const { credenciales } = auth;
-
-	const usuarioLogueado = _id => {
-
-		Swal.fire({
-			  title: '<i class="far fa-grin mr-2"></i> Hi you!',
-			  showClass: {
-			    popup: 'animated fadeInDown faster'
-			  },
-			  hideClass: {
-			    popup: 'animated fadeOutUp faster'
-			  },
-			  confirmButtonText:
-			    '<i class="fa fa-thumbs-up"></i> Great!',
-			  confirmButtonAriaLabel: 'Thumbs up, great!',
-		})		
-
-	}
 
 	const [ clientes, guardarClientes ] = useState([]);
 	const [miembroLogueado, guardarMiembroLogueado] = useState([]);
@@ -43,12 +27,13 @@ const Perfil = ({ _id, nombre, nacimiento, imagen, actividad, empresa, direccion
 		consultarAPI();
 	}, [clientes]);
 
-	const clienteId = clientes.map(
-		cliente => (
-			(cliente.email === credenciales.email) ? cliente._id : ''
-		));
+	let id = '';
 
-	const id = clienteId.filter(Boolean); // id del que estoy loguaada
+	for( let cliente of clientes ) {
+		if(cliente.email === credenciales.email) { 
+				id = cliente._id; // id del que estoy loguaada
+		}
+	}
 
 	useEffect( () => {
 		// Query a la API
@@ -132,18 +117,33 @@ const Perfil = ({ _id, nombre, nacimiento, imagen, actividad, empresa, direccion
 				<div className="row p-3 bg bg-muted rounded">
 					
 					<div className="col col-md-6 pr-0 text-center">
-					{ imagen ? (
-						<img src={`${process.env.REACT_APP_BACKEND_URL}/${imagen}`} alt="imagen" width="60" className="img-fluid rounded-circle" />
-						) : null }
-					<p className="text-uppercase text-dark pt-3 mb-0 font-weight-bold">{nombre}</p>
-					<p className="text-uppercase text-dark mb-0 font-weight-bold"><small>b-day: {moment(`${nacimiento}`).format('MMMM Do')}</small></p>
-					<label className="text-muted">{actividad ? (
-						<span class="badge badge-secondary-soft">
-							<h5 className="m-0">{actividad}</h5>
-						</span>
-						) : 'Work Activity Here'}
-					</label>
-				</div>
+						{ imagen ? (
+							<img src={`${process.env.REACT_APP_BACKEND_URL}/${imagen}`} alt="imagen" width="60" className="img-fluid rounded-circle" />
+							) : null }
+						<p className="text-uppercase text-dark pt-3 mb-0 font-weight-bold">{nombre}</p>
+						<p className="text-uppercase text-dark mb-0 font-weight-bold"><small>b-day: {moment(`${nacimiento}`).format('MMMM Do')}</small></p>
+						<label className="text-muted">{actividad ? (
+							<span class="badge badge-secondary-soft">
+								<h5 className="m-0">{actividad}</h5>
+							</span>
+							) : 'Work Activity Here'}
+						</label>
+						<div className="row w-100 text-center">
+							{
+								(id !== _id) ?
+									<Link 
+										to={`/messages/${_id}`}
+										className="btn"
+										data-toggle="tooltip" 
+										data-placement="top" 
+										title="Send private msg"
+									>
+										<i class="fas fa-envelope text-success"></i>
+									</Link> : null
+							}
+						</div>
+						
+					</div>
 				<div className="col col-md-6">
 					<div className="row">
 						<h6>
@@ -199,15 +199,8 @@ const Perfil = ({ _id, nombre, nacimiento, imagen, actividad, empresa, direccion
 					</div>
 					<div className="row justify-content-center">
 
-						{ ( email === credenciales.email ) ? 
-							( <button 
-									className="btn btn-sm mt-2 btn-outline-success rounded-circle"
-									type="button"
-									onClick={() => usuarioLogueado(_id)}
-								>
-									<i className="fas fa-smile"></i>
-							   </button>
-							) : 
+						{ ( id === _id ) ? 
+							null : 
 							miembroLogueado.amigos ?
 								miembroLogueado.amigos.includes(_id) ?
 									<button

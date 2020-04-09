@@ -39,12 +39,13 @@ function Perfil(props) {
 		consultarAPI();
 	}, [clientes, guardarAuth]);
 
-	const clienteId = clientes.map(
-		cliente => (
-			(cliente.email === email) ? cliente._id : ''
-		));
+	let id = '';
 
-	const id = clienteId.filter(Boolean);
+	for( let cliente of clientes ) {
+		if(cliente.email === credenciales.email) { 
+				id = cliente._id; // id del que estoy loguaada
+		}
+	}
 
 	useEffect(() => {
     	
