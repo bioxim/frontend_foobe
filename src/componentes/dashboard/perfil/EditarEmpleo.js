@@ -11,6 +11,7 @@ function EditarEmpleo({miembros}, props) {
 
 	const [miembro, guardarMiembro] = useState({
 		empresa: '',
+		website: '',
 		direccion: '',
 		pais: ''
 	});
@@ -63,7 +64,7 @@ function EditarEmpleo({miembros}, props) {
 				onSubmit={editarMiembro}
 			>
 				<div className="row mb-3">
-					<div className="col col-md-6">
+					<div className="col col-md-4">
 						<div className="form-row">
 							<label className="text-uppercase text-muted">
 								Company name
@@ -78,10 +79,10 @@ function EditarEmpleo({miembros}, props) {
 							/>
 						</div>
 					</div>
-					<div className="col col-md-6">
+					<div className="col col-md-4">
 						<div className="form-row">
 							<label className="text-uppercase text-muted">
-								Country
+								Country - { miembros.pais ? miembros.pais : null }
 							</label>
 							<select 
 								name="pais" 
@@ -93,6 +94,21 @@ function EditarEmpleo({miembros}, props) {
 									<option value={pais.name}>{pais.name}</option>
 								))}
 							</select>
+						</div>
+					</div>
+					<div className="col col-md-4">
+						<div className="form-row">
+							<label className="text-uppercase text-muted">
+								Url website
+							</label>
+							<input 
+								name="website" 
+								placeholder="your website" 
+								type="text" 
+								className="form-control"
+								onChange={leerInformacionMiembro}
+								defaultValue={miembros.website}		
+							/>
 						</div>
 					</div>
 				</div>

@@ -6,7 +6,7 @@ import moment from 'moment';
 import Loader from 'react-loader-spinner';
 import '../../../node_modules/react-loader-spinner/dist/loader/css/react-spinner-loader.css';
 
-const Perfil = ({ _id, nombre, nacimiento, imagen, actividad, empresa, direccion, pais, linkedin, facebook, twitter, instagram, amigos, email }, props) => {
+const Perfil = ({ _id, nombre, nacimiento, imagen, actividad, empresa, direccion, pais, linkedin, facebook, twitter, instagram, amigos, email, website }, props) => {
 
 	const [auth, guardarAuth] = useContext(CRMContext);
 
@@ -153,6 +153,18 @@ const Perfil = ({ _id, nombre, nacimiento, imagen, actividad, empresa, direccion
 								</span>
 							) : 'Company - name'}
 						</h6>
+					</div>
+					<div className="row pt-1">
+						<small className="text-muted">
+							<i class="fas fa-link"></i> Website
+						</small>
+					</div>
+					<div className="row">
+						<small className="text-dark">
+							{ website ? (
+								website
+							) : 'Company - website not found' }
+						</small>
 					</div>
 					<div className="row pt-1">
 						<small className="text-muted">

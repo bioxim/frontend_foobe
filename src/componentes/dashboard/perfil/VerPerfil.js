@@ -4,7 +4,7 @@ import moment from 'moment';
 
 function VerPerfil({miembros}, props) {
 
-	const { nombre, nacimiento, imagen, actividad, empresa, direccion, pais, linkedin, facebook, twitter, instagram } = miembros;
+	const { nombre, nacimiento, imagen, actividad, empresa, direccion, pais, linkedin, facebook, twitter, instagram, website } = miembros;
 
 	return(
 		<div className="card-body">
@@ -43,6 +43,18 @@ function VerPerfil({miembros}, props) {
 							{ direccion ? (
 								direccion
 							) : 'Company - address and country' }
+						</small>
+					</div>
+					<div className="row">
+						<small className="text-muted">
+							<i class="fas fa-link"></i> Website
+						</small>
+					</div>
+					<div className="row p-3">
+						<small className="text-dark">
+							{ website ? (
+								website
+							) : 'Company - website' }
 						</small>
 					</div>
 					<div className="row">

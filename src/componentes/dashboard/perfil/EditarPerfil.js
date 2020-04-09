@@ -45,8 +45,6 @@ function EditarPerfil({miembros}, props) {
                     'success'
                 )
             }
-            // redireccionar
-            //props.history.push('/profile');
 
         } catch (error) {
             console.log(error);
@@ -139,7 +137,6 @@ function EditarPerfil({miembros}, props) {
 								name="actividad" 
 								className="custom-select"
 								onChange={leerInformacionMiembro}
-                        		defaultValue={miembros.actividad}
 							>
 								<option value="" selected disabled>-- What it defines you better --</option>
 								<option value="Agriculture">Agriculture</option>
