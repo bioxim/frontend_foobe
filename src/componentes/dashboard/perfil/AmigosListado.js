@@ -47,7 +47,7 @@ const AmigosListado = ({contacto}) => {
 					data-placement="top" 
 					title="Send private msg"
 				>
-					<i class="fas fa-envelope text-success"></i>
+					<i className="fas fa-envelope text-success"></i>
 				</Link>
 			</td>
 		</tr>

@@ -8,6 +8,8 @@ import moment from 'moment';
 import Loader from 'react-loader-spinner';
 import '../../../../node_modules/react-loader-spinner/dist/loader/css/react-spinner-loader.css';
 import ContactosTodos from './ContactosTodos';
+import DirectorioMenu from './DirectorioMenu';
+import Directorio from './Directorio';
 
 function Mensajeria(props) {
 
@@ -17,9 +19,6 @@ function Mensajeria(props) {
 
 	const [ clientes, guardarClientes ] = useState([]);
 	const [ miembro, guardarMiembro ] = useState([]);  // miembro logueado (id)
-
-	//Listado alfabetico
-	const alfabeto = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","U","V","W","X","Y","Z"];
 
 	useEffect( () => {
 		// Query a la API
@@ -68,14 +67,8 @@ function Mensajeria(props) {
 										
 										<div className="list-group list-group-flush" role="tablist">
 
-											<a className="list-group-item list-group-item-action py-0 text-center active" data-toggle="list" href="#all" role="tab">
-							                    All
-							                </a>
-							                { alfabeto.map(letra => (
-								                <a className="list-group-item list-group-item-action py-0 text-center" data-toggle="list" href={`#${letra}`} role="tab">
-								                    {letra}
-								                </a>
-											))}
+											<DirectorioMenu />
+
 										</div>
 									
 									</div>
@@ -95,40 +88,32 @@ function Mensajeria(props) {
 														<div className="card-body">
 															<div className="col">
 																<table className="table table-striped dataTable no-footer dtr-inline">
-																	{
-																		miembro.amigos ?
-																			miembro.amigos.map(amigo =>(
-																				<ContactosTodos
-																					key = {amigo}
-																					id = {amigo}
-																				/>
-																			)) :
-																			<Loader
-																				type="BallTriangle"
-																				color="#38cd"
-																				height={40}
-																				width={40}
+																	<tbody>
+																			{
+																				miembro.amigos ?
+																					miembro.amigos.map(amigo =>(
+																						<ContactosTodos
+																							key = {amigo}
+																							id = {amigo}
+																						/>
+																					)) :
+																				<Loader
+																					type="BallTriangle"
+																					color="#38cd"
+																					height={40}
+																					width={40}
 
-																			/>
-																	}
+																				/>
+																			}
+																	</tbody>
 																</table>
 															</div>
 														</div>
 													</div>
 												</div>
-												{ alfabeto.map(letra => (
-													<div className="tab-pane fade" id={`${letra}`} role="tabpanel">
-														
-														<div className="card">
-															<div className="card-header d-flex justify-content-between">
-																<h6 className="card-title mb-0">
-																	{letra} List
-																</h6>
-															</div>
-														</div>
-
-													</div>
-												))}
+												
+												<Directorio />
+												
 											</div>
 										</div>
 
