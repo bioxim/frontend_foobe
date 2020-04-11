@@ -15,6 +15,7 @@ import Setting from './perfil/Setting';
 import Perfil from './perfil/Perfil';
 import VerPerfil from './perfil/VerPerfil';
 import AmigoDetalle from './perfil/AmigoDetalle';
+import ContactosTodos from './perfil/ContactosTodos'
 
 export {
 	Dashboard,
@@ -33,5 +34,6 @@ export {
 	Setting,
 	Perfil,
 	VerPerfil,
-	AmigoDetalle
+	AmigoDetalle,
+	ContactosTodos
 }
