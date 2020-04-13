@@ -14,10 +14,12 @@ import MensajeriaDetalle from './perfil/MensajeriaDetalle';
 import Setting from './perfil/Setting';
 import Perfil from './perfil/Perfil';
 import VerPerfil from './perfil/VerPerfil';
+import VerMensaje from './perfil/VerMensaje';
 import AmigoDetalle from './perfil/AmigoDetalle';
 import ContactosTodos from './perfil/ContactosTodos';
 import Directorio from './perfil/Directorio';
 import DirectorioMenu from './perfil/DirectorioMenu';
+import NuevoMensaje from './perfil/NuevoMensaje';
 
 export {
 	Dashboard,
@@ -39,5 +41,7 @@ export {
 	AmigoDetalle,
 	ContactosTodos,
 	Directorio,
-	DirectorioMenu
+	DirectorioMenu,
+	VerMensaje,
+	NuevoMensaje
 }

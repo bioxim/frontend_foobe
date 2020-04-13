@@ -1,4 +1,6 @@
 import React, { useState, useEffect, useContext } from 'react';
+import { Link } from 'react-router-dom';
+import Swal from 'sweetalert2';
 import { Header, Navegacion } from '../../layout/auth';
 import clienteAxios from '../../../config/axios';
 import { CRMContext } from '../../../context/CRMContext';
@@ -66,6 +68,33 @@ function MensajeriaDetalle(props) {
 	        consultarAPI();
     }, [escritor, miembro]);
 
+    const eliminarMensaje = mnsj => {
+		Swal.fire({
+		  title: 'Are you sure?',
+		  text: "You are going to loose this message",
+		  icon: 'warning',
+		  showCancelButton: true,
+		  confirmButtonColor: '#3085d6',
+		  cancelButtonColor: '#d33',
+		  confirmButtonText: 'Yes, delete it!',
+		  cancelButtonText: 'No, cancel it'
+		}).then((result) => {
+		  if (result.value) {
+		    // Eliminar en la rest api
+		    clienteAxios.delete(`/msg/${mnsj}`)
+		    	.then(res => {
+		    		if(res.status === 200) {
+		    			Swal.fire(
+					      'Eliminado!',
+					      res.data.mensaje,
+					      'success'
+					    )
+		    		}
+		    	})
+		  }
+		})
+	}
+
 	if(!auth.auth) {
 		props.history.push('/login');
 	}
@@ -103,9 +132,14 @@ function MensajeriaDetalle(props) {
 												<h6 className="card-title mb-0">
 													Messages to (lector) 
 												</h6>
-												<h4>
-													<i className="fas fa-feather text-success mr-2"></i>
-												</h4>
+												<Link 
+													to={`/messages/new/${lector}`}
+													className="btn"
+												>
+													<h4>
+														<i className="fas fa-feather text-success mr-2"></i>
+													</h4>
+												</Link>
 											</div>
 											<div className="card-body">
 												{ mensajes.map(mensaje =>(
@@ -113,10 +147,25 @@ function MensajeriaDetalle(props) {
 														{ ( (mensaje.lector === lector) && (mensaje.escritor === escritor) ) ?
 															<li className="list-group-item border-bottom py-0">
 																<div className="row d-flex w-100 justify-content-between">
-																	<h6 className="text-muted my-1">{mensaje.titulo}</h6>
-																	<h6 className="text-muted my-1"><i className="far fa-clock mr-1"></i> <small>{moment(`${mensaje.fecha}`).format('MMMM Do YYYY')}</small></h6>
-																	<h6 className="text-muted my-1"><i class="fas fa-envelope mr-1 text-primary"></i></h6>
-																	<h6 className="my-1"><i className="fas fa-trash mr-1 text-danger"></i></h6>
+																	<h6 className="text-muted pt-2 mb-0">{mensaje.titulo}</h6>
+																	<h6 className="text-muted pt-2 mb-0"><i className="far fa-clock mr-1"></i> <small>{moment(`${mensaje.fecha}`).format('MMMM Do YYYY')}</small></h6>
+																	<Link 
+																		to={`/messages/open/${mensaje._id}`}
+																		className="btn"
+																	>
+																		<h6 className="text-muted my-1">
+																			<i className="fas fa-envelope mr-1 text-primary"></i>
+																		</h6>
+																	</Link>
+																	<button
+																		className="btn"
+																		type="button"
+																		onClick={() => eliminarMensaje(mensaje._id)}
+																	>
+																		<h6 className="my-1">
+																			<i className="fas fa-trash mr-1 text-danger"></i>
+																		</h6>
+																	</button>
 																</div>
 															</li>
 															: 'No messages yet' 

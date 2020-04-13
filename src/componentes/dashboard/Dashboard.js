@@ -3,9 +3,8 @@ import { Link } from 'react-router-dom';
 import clienteAxios from '../../config/axios';
 import './Dashboard.css';
 import '../layout/auth/Header.css';
-import Header from '../layout/auth/Header';
-import Navegacion from '../layout/auth/Navegacion';
-import Bienvenida from './navbar/Bienvenida';
+import { Header, Navegacion } from '../layout/auth';
+import { Bienvenida } from './'
 import moment from 'moment';
 
 import Currenciesw from './Currenciesw';

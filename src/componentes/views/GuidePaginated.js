@@ -7,35 +7,35 @@ const GuidePaginated = ({docs}) => {
 				
 				{docs.map(doc => (
 
-					<div class="col-12 col-lg-11 col-xl-10 mb-1 px-5">
+					<div className="col-12 col-lg-11 col-xl-10 mb-1 px-5">
 
-			            <div class="card card-row shadow-light-lg">
-			              <div class="row no-gutters">
-			                <div class="col-12 col-md-6 bg-cover card-img-left">
+			            <div className="card card-row shadow-light-lg">
+			              <div className="row no-gutters">
+			                <div className="col-12 col-md-6 bg-cover card-img-left">
 			                	{ doc.imagen ? (
 			                  		<img 
 			                  			src={`${process.env.REACT_APP_BACKEND_URL}/${doc.imagen}`} 
 			                  			alt={doc.titulo} 
-			                  			class="img-fluid my-1"
+			                  			className="img-fluid my-1"
 			                  		/>
 			                  		) : null
 			                	}
 
-			                  <div class="shape shape-right shape-fluid-y svg-shim text-white d-none d-md-block">
+			                  <div className="shape shape-right shape-fluid-y svg-shim text-white d-none d-md-block">
 			                    <svg viewBox="0 0 112 690" fill="none" xmlns="http://www.w3.org/2000/svg">
 			                      <path d="M116 0H51V172C76 384 0 517 0 517V690H116V0Z" fill="currentColor"></path>
 			                    </svg>
 			                  </div>
 
 			                </div>
-			                <div class="col-12 col-md-6">
-			                  <div class="card-body">
+			                <div className="col-12 col-md-6">
+			                  <div className="card-body">
 
 			                    <h4>
 			                      {doc.titulo}
 			                    </h4>
 
-			                    <p class="text-muted">
+			                    <p className="text-muted">
 			                      {Parser(doc.texto)}
 			                    </p>
 

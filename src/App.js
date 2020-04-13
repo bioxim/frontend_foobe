@@ -5,7 +5,7 @@ import { Header, Main, Footer } from './componentes/layout/notauth';
 import { Contacto, Terminos, FormasPago, Signup, Logs, Guide, Calendario, Success, Cancelation, Login, Productores, ProductoresSuccess } from './componentes/views';
 
 /* DASHBOARD MAIN */
-import { Dashboard, Perfil, Mensajeria, Setting, Amigos, AmigoDetalle, MensajeriaDetalle } from './componentes/dashboard';
+import { Dashboard, Perfil, Mensajeria, Setting, Amigos, AmigoDetalle, MensajeriaDetalle, VerMensaje, NuevoMensaje } from './componentes/dashboard';
 
 /* TARJETAS */
 import { TarjetasFE, TarjetasPaises, TarjetasEmails } from './componentes/tarjetas';
@@ -66,6 +66,8 @@ function App() {
                         <Route exact path="/settings" component={Setting} />
                         <Route exact path="/messages" component={Mensajeria} />
                         <Route exact path="/messages/:id" component={MensajeriaDetalle} />
+                        <Route exact path="/messages/open/:id" component={VerMensaje} />
+                        <Route exact path="/messages/new/:id" component={NuevoMensaje} />
 
                         <Route exact path="/all-cards" component={TarjetasFE} />
                         <Route exact path="/all-cards-countries" component={TarjetasPaises} />
