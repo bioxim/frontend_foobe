@@ -26,6 +26,8 @@ function MensajeriaDetalle(props) {
 
 	const [ miembro, guardarMiembro ] = useState([]); //Para el listado de amigos
 
+	const [ lectorDatos, guardarLectorDatos ] = useState([]);
+
 	useEffect( () => {
 		// Query a la API
 		const consultarAPI = async () => {
@@ -63,10 +65,13 @@ function MensajeriaDetalle(props) {
 	        const consultarAPI = async () => {
 	            const miembroConsulta = await clienteAxios.get(`/clientes/${escritor}`);
 	            guardarMiembro(miembroConsulta.data);
+
+	            const lectorDatosConsulta = await clienteAxios.get(`/clientes/${lector}`);
+	            guardarLectorDatos(lectorDatosConsulta.data);
 	        }
 
 	        consultarAPI();
-    }, [escritor, miembro]);
+    }, [escritor, miembro, lectorDatos]);
 
     const eliminarMensaje = mnsj => {
 		Swal.fire({
@@ -130,7 +135,18 @@ function MensajeriaDetalle(props) {
 										<div className="card">
 											<div className="card-header d-flex justify-content-between">
 												<h6 className="card-title mb-0">
-													Messages to (lector) 
+													Messages to 
+													{
+														lectorDatos.nombre ?
+														<span className="mr-1 font-italic">{`${lectorDatos.nombre}`}</span> :
+														<Loader
+															type="BallTriangle"
+															color="#38cd"
+															height={20}
+															width={20}
+
+														/>
+													} 
 												</h6>
 												<Link 
 													to={`/messages/new/${lector}`}
@@ -144,7 +160,7 @@ function MensajeriaDetalle(props) {
 											<div className="card-body">
 												{ mensajes.map(mensaje =>(
 													<ul className="list-group list-group-flush">
-														{ ( (mensaje.lector === lector) && (mensaje.escritor === escritor) ) ?
+														{ ( (mensaje.lector === lector) || (mensaje.lector === escritor) ) ?
 															<li className="list-group-item border-bottom py-0">
 																<div className="row d-flex w-100 justify-content-between">
 																	<h6 className="text-muted pt-2 mb-0">{mensaje.titulo}</h6>
@@ -168,7 +184,7 @@ function MensajeriaDetalle(props) {
 																	</button>
 																</div>
 															</li>
-															: 'No messages yet' 
+															: null 
 														} 
 													</ul>
 												))}

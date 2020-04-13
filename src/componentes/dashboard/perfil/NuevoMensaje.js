@@ -67,6 +67,7 @@ function NuevoMensaje(props) {
         e.preventDefault();
 
         doc.escritor = escritorLogueado;
+        doc.mensaje = texto;
 
         // almacenarlo en la BD
         try {
@@ -110,23 +111,6 @@ function NuevoMensaje(props) {
     if(!auth.auth) {
 		props.history.push('/login');
 	}
-
-	/*
-
-<div className="form-row">
-												<div className="col-12" height="1000">
-													<div className="form-group">
-														<label>Message</label>
-														<ReactQuill 
-															theme="snow"
-															value={texto}
-															onChange={leerTexto}
-														/>
-													</div>
-												</div>
-											</div>
-
-	*/
 
 	return (
 		<div className="wrapper  bg-light">
@@ -181,6 +165,19 @@ function NuevoMensaje(props) {
 															type="text" 
 															className="form-control"
 															onChange={leerInformacionDoc}
+														/>
+													</div>
+												</div>
+											</div>
+
+											<div className="form-row">
+												<div className="col-12" height="1000">
+													<div className="form-group">
+														<label>Message</label>
+														<ReactQuill 
+															theme="snow"
+															value={texto}
+															onChange={leerTexto}
 														/>
 													</div>
 												</div>

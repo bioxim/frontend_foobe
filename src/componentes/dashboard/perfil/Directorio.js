@@ -16,6 +16,15 @@ const Directorio = (props) => {
 							{letra} List
 						</h6>
 					</div>
+					<div className="card-body">
+						<div className="row w-100">
+							<img 
+								src="/img/illustration-1.png" 
+								className="img-fluid"
+								alt="we are working in this"
+							/>
+						</div>
+					</div>
 				</div>
 
 			</div>

@@ -130,7 +130,7 @@ const Perfil = ({ _id, nombre, nacimiento, imagen, actividad, empresa, direccion
 						</label>
 						<div className="row w-100 text-center">
 							{
-								(id !== _id) ?
+								( (id !== _id) && (miembroLogueado.amigos) && (miembroLogueado.amigos.includes(_id)) ) ?
 									<Link 
 										to={`/messages/${_id}`}
 										className="btn"
