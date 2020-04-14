@@ -13,6 +13,8 @@ import { CRMContext } from '../../context/CRMContext';
 import Loader from 'react-loader-spinner';
 import '../../../node_modules/react-loader-spinner/dist/loader/css/react-spinner-loader.css';
 
+import { Estadisticas } from '../dashboard';
+
 const Pais = (props) => {
 
 	const [ clientes, guardarClientes ] = useState([]);
@@ -92,6 +94,8 @@ const Pais = (props) => {
 									/>
 								</div>
 							}
+
+							<Estadisticas />
 
 							<div className="row mb-3">
 								<Pagination

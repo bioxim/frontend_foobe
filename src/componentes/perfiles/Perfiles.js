@@ -1,4 +1,4 @@
-import React, { Fragment, useContext } from 'react';
+import React, {  useContext } from 'react';
 import { Link, withRouter } from 'react-router-dom';
 import '../dashboard/Dashboard.css';
 import '../layout/auth/Header.css';
@@ -16,13 +16,6 @@ const Amigos = (props) => {
 	}
 
 	return (
-		<Fragment>
-
-			<div className="splash">
-				<div className="splash-icon">
-				</div>
-			</div>
-
 			<div className="wrapper  bg-light">
 				<Header />
 				<div className="main">
@@ -59,25 +52,6 @@ const Amigos = (props) => {
 				    </div>
 				</div>
 			</div>
-
-	    	<div className="redux-toastr" aria-live="assertive">
-				<div>
-					<div className="top-left">
-					</div>
-					<div className="top-right">
-					</div>
-					<div className="top-center">
-					</div>
-					<div className="bottom-left">
-					</div>
-					<div className="bottom-right">
-					</div>
-					<div className="bottom-center">
-					</div>
-				</div>
-			</div>		
-
-		</Fragment>
 	)
 }
 export default withRouter(Amigos);

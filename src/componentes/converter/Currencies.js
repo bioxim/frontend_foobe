@@ -244,12 +244,6 @@ function Currencies(props) {
 	}
 
 	return (
-		<Fragment>
-			<div className="splash">
-				<div className="splash-icon">
-				</div>
-			</div>
-
 			<div className="wrapper">
 				<Header />
 				<div className="main">
@@ -280,6 +274,10 @@ function Currencies(props) {
 									<div className="tab tab-vertical tab-primary">
 
 										<ul className="nav nav-tabs pb-3" role="tablist">
+											<li className="nav-item">
+													<a className="nav-link p-0 mx-2" href="#EUR" data-toggle="tab" role="tab">
+													</a>
+											</li>
 											{monedas.map(codigo =>(		
 												<li className="nav-item">
 													<a className="nav-link p-0 mx-2" href={`#${codigo.code}`} data-toggle="tab" role="tab">
@@ -290,9 +288,34 @@ function Currencies(props) {
 										</ul>
 
 										<div className="tab-content tab-primary">
-											{monedas.map(codigo =>(	
-												<div className="tab-pane" id={codigo.code} role="tabpanel">
-													<h4 className="tab-title">{codigo.name} - {codigo.code} </h4>
+
+											<div className="tab-pane active" id="#EUR" role="tabpanel">
+														<h4 className="tab-title">Euro - EUR </h4>
+														
+														<div className="row">
+															
+															{monedas.map(codigo =>(	
+																(codigo.code === 'EUR') ? 
+																	monedas.map(mon =>(
+																			<div className="col-6 col-sm-4 col-md-3 mb-1">
+																				<div className="card flex-fill w-100 bg-light">
+																					<div className=" pt-1 text-center">
+																						<h5 className="text-uppercase font-weight-bold text-dark">
+																							{mon.code}
+																						</h5>
+																						<h6 className="text-uppercase text-muted">
+																							{mon.symbol} {eur[mon.code]}
+																						</h6>
+																					</div>
+																				</div>
+																			</div>
+																	)) : null ))}
+														</div>
+											</div>
+
+												{monedas.map(codigo =>(	 
+													<div className="tab-pane" id={codigo.code} role="tabpanel">
+														<h4 className="tab-title">{codigo.name} - {codigo.code} </h4>
 														<div className="row">
 															{ (codigo.code === 'EUR') ? 
 																	monedas.map(mon =>(
@@ -760,7 +783,7 @@ function Currencies(props) {
 																			</div>
 																	)) : 
 															  (codigo.code === 'MYR') ?
-															  		monedas.map(mon =>(
+															  			monedas.map(mon =>(
 																			<div className="col-6 col-sm-4 col-md-3 mb-1">
 																				<div className="card flex-fill w-100 bg-light">
 																					<div className=" pt-1 text-center">
@@ -773,12 +796,12 @@ function Currencies(props) {
 																					</div>
 																				</div>
 																			</div>
-																	)) : null }
+																		)) : null }
 														</div>
-												</div>
+													</div>
 											))}
 										</div>
-
+										<Conversor />
 									</div>
 								
 								</div>
@@ -789,29 +812,10 @@ function Currencies(props) {
 					</div>
 				</div>
 			</div>
-
-			<div className="redux-toastr" aria-live="assertive">
-				<div>
-					<div className="top-left">
-					</div>
-					<div className="top-right">
-					</div>
-					<div className="top-center">
-					</div>
-					<div className="bottom-left">
-					</div>
-					<div className="bottom-right">
-					</div>
-					<div className="bottom-center">
-					</div>
-				</div>
-			</div>		
-		</Fragment>
 	)
 
 }
 export default Currencies;
 
-//Conversor de monedas
 //Histórico de las monedas
 //Gráficos por ej. usd vs eur
