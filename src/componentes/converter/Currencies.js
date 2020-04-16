@@ -2,8 +2,7 @@ import React, { useContext, useState, useEffect, Fragment } from 'react';
 import clienteAxios from '../../config/axios';
 
 import '../layout/auth/Header.css';
-import Header from '../layout/auth/Header';
-import Navegacion from '../layout/auth/Navegacion';
+import { Header, Navegacion } from '../layout/auth';
 import Bienvenida from '../dashboard/navbar/Bienvenida';
 import { CRMContext } from '../../context/CRMContext';
 
@@ -275,7 +274,7 @@ function Currencies(props) {
 
 										<ul className="nav nav-tabs pb-3" role="tablist">
 											<li className="nav-item">
-													<a className="nav-link p-0 mx-2" href="#EUR" data-toggle="tab" role="tab">
+													<a className="nav-link p-0 mx-2" href="#conversores" data-toggle="tab" role="tab">
 													</a>
 											</li>
 											{monedas.map(codigo =>(		
@@ -289,28 +288,8 @@ function Currencies(props) {
 
 										<div className="tab-content tab-primary">
 
-											<div className="tab-pane active" id="#EUR" role="tabpanel">
-														<h4 className="tab-title">Euro - EUR </h4>
-														
-														<div className="row">
-															
-															{monedas.map(codigo =>(	
-																(codigo.code === 'EUR') ? 
-																	monedas.map(mon =>(
-																			<div className="col-6 col-sm-4 col-md-3 mb-1">
-																				<div className="card flex-fill w-100 bg-light">
-																					<div className=" pt-1 text-center">
-																						<h5 className="text-uppercase font-weight-bold text-dark">
-																							{mon.code}
-																						</h5>
-																						<h6 className="text-uppercase text-muted">
-																							{mon.symbol} {eur[mon.code]}
-																						</h6>
-																					</div>
-																				</div>
-																			</div>
-																	)) : null ))}
-														</div>
+											<div className="tab-pane active" id="#conversores" role="tabpanel">
+												<Conversor />
 											</div>
 
 												{monedas.map(codigo =>(	 
@@ -801,7 +780,6 @@ function Currencies(props) {
 													</div>
 											))}
 										</div>
-										<Conversor />
 									</div>
 								
 								</div>
