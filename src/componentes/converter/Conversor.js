@@ -3,7 +3,8 @@ import clienteAxios from '../../config/axios';
 
 const Conversor = () => {
 
-	let cantidad, monedaTo, monedaFrom;
+//Estalla el código
+	let cantidad, monedaTo, monedaFrom, resultado;
 
 	const [conversor, guardarConversor] = useState({
 		cantidad: '',
@@ -20,22 +21,26 @@ const Conversor = () => {
             })
     }
 
-    const validarBoton = () => {
+    /* const validarBoton = () => {
 		// Destructuring
 		const { cantidad, monedaTo, monedaFrom } = conversor;
 
 		let valido = !cantidad.length && !monedaFrom && !monedaTo;
 		return valido;
-	}
+	} */
 
     const convertidor = async () => {
     	//console.log(conversor); Me toma perfecto el objeto conversor
     	//llamar a el par de bases
     	const consulta = await clienteAxios.get(`https://api.exchangeratesapi.io/latest?symbols=${conversor.monedaFrom},${conversor.monedaTo}`);
 			guardarConsulta(consulta.data);
+
+			if (!conversor.cantidad) {
+				const resultado = consulta * (conversor.cantidad); 
+			}
 		}
 
-    console.log({con});
+    console.log({resultado});
 
 	return (
 		<Fragment>
@@ -100,7 +105,7 @@ const Conversor = () => {
 											<button
 												className="btn btn-dark text-white text-uppercase"
 												type="submit"
-												disabled={ validarBoton() }
+												disabled
 												onClick={() => convertidor()}
 											>
 												convert
