@@ -2,8 +2,6 @@ import React, { useContext, useState, useEffect, Fragment } from 'react';
 import clienteAxios from '../../config/axios';
 
 const Conversor = () => {
-	
-	const [mon, guardarMon] = useState([]);
 
 	let cantidad, monedaTo, monedaFrom;
 
@@ -13,15 +11,7 @@ const Conversor = () => {
 		monedaTo: ''
 	});
 
-	useEffect( () => {
-		// Query a la API
-		const consultarAPI = async () => {
-			//console.log('Consultando...');
-		const monConsulta = await clienteAxios.get('/monedas');
-			guardarMon(monConsulta.data);
-		}
-		consultarAPI();
-	}, [mon]);
+	const [con, guardarConsulta] = useState([]);
 
 	const calcularMoneda = e => {
             guardarConversor({
@@ -29,6 +19,23 @@ const Conversor = () => {
                 [e.target.name]: e.target.value
             })
     }
+
+    const validarBoton = () => {
+		// Destructuring
+		const { cantidad, monedaTo, monedaFrom } = conversor;
+
+		let valido = !cantidad.length && !monedaFrom && !monedaTo;
+		return valido;
+	}
+
+    const convertidor = async () => {
+    	//console.log(conversor); Me toma perfecto el objeto conversor
+    	//llamar a el par de bases
+    	const consulta = await clienteAxios.get(`https://api.exchangeratesapi.io/latest?symbols=${conversor.monedaFrom},${conversor.monedaTo}`);
+			guardarConsulta(consulta.data);
+		}
+
+    console.log({con});
 
 	return (
 		<Fragment>
@@ -52,7 +59,8 @@ const Conversor = () => {
 											<label>Quantity</label>
 												<input 
 													name="cantidad"
-													type="number" 
+													type="number"
+													min="0" 
 													className="form-control" 
 													placeholder="to convert"
 													onChange={calcularMoneda}
@@ -67,10 +75,9 @@ const Conversor = () => {
 													className="custom-select"
 													onChange={calcularMoneda}
 												>
-													<option selected disabled></option>
-													{mon.map(moneda =>(
-														<option value={moneda.code}>{moneda.code}</option>
-													))}
+													<option value=""></option>
+													<option value="EUR">EUR</option>
+													<option value="USD">USD</option>
 												</select>
 			              				</div>
 									</div>
@@ -82,10 +89,9 @@ const Conversor = () => {
 													className="custom-select"
 													onChange={calcularMoneda}
 												>
-													<option selected disabled></option>
-													{mon.map(moneda =>(
-														<option value={moneda.code}>{moneda.code}</option>
-													))}
+													<option value=""></option>
+													<option value="EUR">EUR</option>
+													<option value="USD">USD</option>
 												</select>
 			              				</div>
 									</div>
@@ -94,6 +100,8 @@ const Conversor = () => {
 											<button
 												className="btn btn-dark text-white text-uppercase"
 												type="submit"
+												disabled={ validarBoton() }
+												onClick={() => convertidor()}
 											>
 												convert
 											</button>

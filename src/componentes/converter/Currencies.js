@@ -292,7 +292,7 @@ function Currencies(props) {
 												<Conversor />
 											</div>
 
-												{monedas.map(codigo =>(	 
+											{monedas.map(codigo =>(	 
 													<div className="tab-pane" id={codigo.code} role="tabpanel">
 														<h4 className="tab-title">{codigo.name} - {codigo.code} </h4>
 														<div className="row">
@@ -310,8 +310,8 @@ function Currencies(props) {
 																					</div>
 																				</div>
 																			</div>
-																	)) : 
-															  (codigo.code === 'USD') ?
+																	)) : null }
+															  { (codigo.code === 'USD') ?
 															  		monedas.map(mon =>(
 																			<div className="col-6 col-sm-4 col-md-3 mb-1">
 																				<div className="card flex-fill w-100 bg-light">
@@ -325,8 +325,8 @@ function Currencies(props) {
 																					</div>
 																				</div>
 																			</div>
-																	)) : 
-															  (codigo.code === 'CAD') ?
+																	)) : null }
+															  { (codigo.code === 'CAD') ?
 															  		monedas.map(mon =>(
 																			<div className="col-6 col-sm-4 col-md-3 mb-1">
 																				<div className="card flex-fill w-100 bg-light">
@@ -340,8 +340,8 @@ function Currencies(props) {
 																					</div>
 																				</div>
 																			</div>
-																	)) : 
-															  (codigo.code === 'HKD') ?
+																	)) : null }
+															  { (codigo.code === 'HKD') ?
 															  		monedas.map(mon =>(
 																			<div className="col-6 col-sm-4 col-md-3 mb-1">
 																				<div className="card flex-fill w-100 bg-light">
@@ -355,8 +355,8 @@ function Currencies(props) {
 																					</div>
 																				</div>
 																			</div>
-																	)) : 
-															  (codigo.code === 'ISK') ?
+																	)) : null }
+															  { (codigo.code === 'ISK') ?
 															  		monedas.map(mon =>(
 																			<div className="col-6 col-sm-4 col-md-3 mb-1">
 																				<div className="card flex-fill w-100 bg-light">
@@ -370,8 +370,8 @@ function Currencies(props) {
 																					</div>
 																				</div>
 																			</div>
-																	)) : 
-															  (codigo.code === 'PHP') ?
+																	)) : null }
+															  { (codigo.code === 'PHP') ?
 															  		monedas.map(mon =>(
 																			<div className="col-6 col-sm-4 col-md-3 mb-1">
 																				<div className="card flex-fill w-100 bg-light">
@@ -385,8 +385,8 @@ function Currencies(props) {
 																					</div>
 																				</div>
 																			</div>
-																	)) :
-															  (codigo.code === 'HUF') ?
+																	)) : null }
+															  { (codigo.code === 'HUF') ?
 															  		monedas.map(mon =>(
 																			<div className="col-6 col-sm-4 col-md-3 mb-1">
 																				<div className="card flex-fill w-100 bg-light">
@@ -400,8 +400,8 @@ function Currencies(props) {
 																					</div>
 																				</div>
 																			</div>
-																	)) :
-															  (codigo.code === 'CZK') ?
+																	)) : null }
+															  { (codigo.code === 'CZK') ?
 															  		monedas.map(mon =>(
 																			<div className="col-6 col-sm-4 col-md-3 mb-1">
 																				<div className="card flex-fill w-100 bg-light">
@@ -415,8 +415,8 @@ function Currencies(props) {
 																					</div>
 																				</div>
 																			</div>
-																	)) :
-															  (codigo.code === 'AUD') ?
+																	)) : null }
+															  { (codigo.code === 'AUD') ?
 															  		monedas.map(mon =>(
 																			<div className="col-6 col-sm-4 col-md-3 mb-1">
 																				<div className="card flex-fill w-100 bg-light">
@@ -430,8 +430,8 @@ function Currencies(props) {
 																					</div>
 																				</div>
 																			</div>
-																	)) : 
-															  (codigo.code === 'RON') ?
+																	)) : null } 
+															  { (codigo.code === 'RON') ?
 															  		monedas.map(mon =>(
 																			<div className="col-6 col-sm-4 col-md-3 mb-1">
 																				<div className="card flex-fill w-100 bg-light">
@@ -445,8 +445,8 @@ function Currencies(props) {
 																					</div>
 																				</div>
 																			</div>
-																	)) :
-															  (codigo.code === 'SEK') ?
+																	)) : null }
+															  { (codigo.code === 'SEK') ?
 															  		monedas.map(mon =>(
 																			<div className="col-6 col-sm-4 col-md-3 mb-1">
 																				<div className="card flex-fill w-100 bg-light">
@@ -460,8 +460,8 @@ function Currencies(props) {
 																					</div>
 																				</div>
 																			</div>
-																	)) : 
-															  (codigo.code === 'IDR') ?
+																	)) : null }
+															  { (codigo.code === 'IDR') ?
 															  		monedas.map(mon =>(
 																			<div className="col-6 col-sm-4 col-md-3 mb-1">
 																				<div className="card flex-fill w-100 bg-light">
@@ -475,8 +475,8 @@ function Currencies(props) {
 																					</div>
 																				</div>
 																			</div>
-																	)) : 
-															  (codigo.code === 'INR') ?
+																	)) : null }
+															  { (codigo.code === 'INR') ?
 															  		monedas.map(mon =>(
 																			<div className="col-6 col-sm-4 col-md-3 mb-1">
 																				<div className="card flex-fill w-100 bg-light">
@@ -490,8 +490,8 @@ function Currencies(props) {
 																					</div>
 																				</div>
 																			</div>
-																	)) : 
-															  (codigo.code === 'BRL') ?
+																	)) : null }
+															  { (codigo.code === 'BRL') ?
 															  		monedas.map(mon =>(
 																			<div className="col-6 col-sm-4 col-md-3 mb-1">
 																				<div className="card flex-fill w-100 bg-light">
@@ -505,8 +505,8 @@ function Currencies(props) {
 																					</div>
 																				</div>
 																			</div>
-																	)) : 
-															  (codigo.code === 'RUB') ?
+																	)) : null }
+															  { (codigo.code === 'RUB') ?
 															  		monedas.map(mon =>(
 																			<div className="col-6 col-sm-4 col-md-3 mb-1">
 																				<div className="card flex-fill w-100 bg-light">
@@ -520,8 +520,8 @@ function Currencies(props) {
 																					</div>
 																				</div>
 																			</div>
-																	)) :
-															  (codigo.code === 'HRK') ?
+																	)) : null }
+															  { (codigo.code === 'HRK') ?
 															  		monedas.map(mon =>(
 																			<div className="col-6 col-sm-4 col-md-3 mb-1">
 																				<div className="card flex-fill w-100 bg-light">
@@ -535,8 +535,8 @@ function Currencies(props) {
 																					</div>
 																				</div>
 																			</div>
-																	)) :
-															  (codigo.code === 'JPY') ?
+																	)) : null }
+															  { (codigo.code === 'JPY') ?
 															  		monedas.map(mon =>(
 																			<div className="col-6 col-sm-4 col-md-3 mb-1">
 																				<div className="card flex-fill w-100 bg-light">
@@ -550,8 +550,8 @@ function Currencies(props) {
 																					</div>
 																				</div>
 																			</div>
-																	)) :
-															  (codigo.code === 'THB') ?
+																	)) : null }
+															  { (codigo.code === 'THB') ?
 															  		monedas.map(mon =>(
 																			<div className="col-6 col-sm-4 col-md-3 mb-1">
 																				<div className="card flex-fill w-100 bg-light">
@@ -565,8 +565,8 @@ function Currencies(props) {
 																					</div>
 																				</div>
 																			</div>
-																	)) : 
-															  (codigo.code === 'CHF') ?
+																	)) : null }
+															  { (codigo.code === 'CHF') ?
 															  		monedas.map(mon =>(
 																			<div className="col-6 col-sm-4 col-md-3 mb-1">
 																				<div className="card flex-fill w-100 bg-light">
@@ -580,8 +580,8 @@ function Currencies(props) {
 																					</div>
 																				</div>
 																			</div>
-																	)) : 
-															  (codigo.code === 'SGD') ?
+																	)) : null }
+															  { (codigo.code === 'SGD') ?
 															  		monedas.map(mon =>(
 																			<div className="col-6 col-sm-4 col-md-3 mb-1">
 																				<div className="card flex-fill w-100 bg-light">
@@ -595,8 +595,8 @@ function Currencies(props) {
 																					</div>
 																				</div>
 																			</div>
-																	)) :
-															  (codigo.code === 'PLN') ?
+																	)) : null }
+															  { (codigo.code === 'PLN') ?
 															  		monedas.map(mon =>(
 																			<div className="col-6 col-sm-4 col-md-3 mb-1">
 																				<div className="card flex-fill w-100 bg-light">
@@ -610,8 +610,8 @@ function Currencies(props) {
 																					</div>
 																				</div>
 																			</div>
-																	)) : 
-															  (codigo.code === 'BGN') ?
+																	)) : null }
+															  { (codigo.code === 'BGN') ?
 															  		monedas.map(mon =>(
 																			<div className="col-6 col-sm-4 col-md-3 mb-1">
 																				<div className="card flex-fill w-100 bg-light">
@@ -625,8 +625,8 @@ function Currencies(props) {
 																					</div>
 																				</div>
 																			</div>
-																	)) : 
-															  (codigo.code === 'TRY') ?
+																	)) : null }
+															  { (codigo.code === 'TRY') ?
 															  		monedas.map(mon =>(
 																			<div className="col-6 col-sm-4 col-md-3 mb-1">
 																				<div className="card flex-fill w-100 bg-light">
@@ -640,8 +640,8 @@ function Currencies(props) {
 																					</div>
 																				</div>
 																			</div>
-																	)) : 
-															  (codigo.code === 'CNY') ?
+																	)) : null } 
+															  { (codigo.code === 'CNY') ?
 															  		monedas.map(mon =>(
 																			<div className="col-6 col-sm-4 col-md-3 mb-1">
 																				<div className="card flex-fill w-100 bg-light">
@@ -655,8 +655,8 @@ function Currencies(props) {
 																					</div>
 																				</div>
 																			</div>
-																	)) : 
-															  (codigo.code === 'NOK') ?
+																	)) : null }
+															  { (codigo.code === 'NOK') ?
 															  		monedas.map(mon =>(
 																			<div className="col-6 col-sm-4 col-md-3 mb-1">
 																				<div className="card flex-fill w-100 bg-light">
@@ -670,8 +670,8 @@ function Currencies(props) {
 																					</div>
 																				</div>
 																			</div>
-																	)) : 
-															  (codigo.code === 'NZD') ?
+																	)) : null } 
+															  { (codigo.code === 'NZD') ?
 															  		monedas.map(mon =>(
 																			<div className="col-6 col-sm-4 col-md-3 mb-1">
 																				<div className="card flex-fill w-100 bg-light">
@@ -685,8 +685,8 @@ function Currencies(props) {
 																					</div>
 																				</div>
 																			</div>
-																	)) : 
-															  (codigo.code === 'ZAR') ?
+																	)) : null }
+															  { (codigo.code === 'ZAR') ?
 															  		monedas.map(mon =>(
 																			<div className="col-6 col-sm-4 col-md-3 mb-1">
 																				<div className="card flex-fill w-100 bg-light">
@@ -700,8 +700,8 @@ function Currencies(props) {
 																					</div>
 																				</div>
 																			</div>
-																	)) :
-															  (codigo.code === 'MXN') ?
+																	)) : null }
+															  { (codigo.code === 'MXN') ?
 															  		monedas.map(mon =>(
 																			<div className="col-6 col-sm-4 col-md-3 mb-1">
 																				<div className="card flex-fill w-100 bg-light">
@@ -715,8 +715,8 @@ function Currencies(props) {
 																					</div>
 																				</div>
 																			</div>
-																	)) :
-															  (codigo.code === 'ILS') ?
+																	)) : null }
+															  { (codigo.code === 'ILS') ?
 															  		monedas.map(mon =>(
 																			<div className="col-6 col-sm-4 col-md-3 mb-1">
 																				<div className="card flex-fill w-100 bg-light">
@@ -730,8 +730,8 @@ function Currencies(props) {
 																					</div>
 																				</div>
 																			</div>
-																	)) :
-															  (codigo.code === 'GBP') ?
+																	)) : null }
+															  { (codigo.code === 'GBP') ?
 															  		monedas.map(mon =>(
 																			<div className="col-6 col-sm-4 col-md-3 mb-1">
 																				<div className="card flex-fill w-100 bg-light">
@@ -745,8 +745,8 @@ function Currencies(props) {
 																					</div>
 																				</div>
 																			</div>
-																	)) : 
-															  (codigo.code === 'KRW') ?
+																	)) : null }
+															  { (codigo.code === 'KRW') ?
 															  		monedas.map(mon =>(
 																			<div className="col-6 col-sm-4 col-md-3 mb-1">
 																				<div className="card flex-fill w-100 bg-light">
@@ -760,8 +760,8 @@ function Currencies(props) {
 																					</div>
 																				</div>
 																			</div>
-																	)) : 
-															  (codigo.code === 'MYR') ?
+																	)) : null }
+															  { (codigo.code === 'MYR') ?
 															  			monedas.map(mon =>(
 																			<div className="col-6 col-sm-4 col-md-3 mb-1">
 																				<div className="card flex-fill w-100 bg-light">
