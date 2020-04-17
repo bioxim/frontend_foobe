@@ -12,9 +12,6 @@ const MembershipFE = ({history}) => {
 		const consultarAPI = async () => {
 			//console.log('Consultando...');
 		const contenidosConsulta = await clienteAxios.get('/contenidos');
-			//console.log(contenidosConsulta.data);
-
-			// colocar el resultado en el state
 			guardarContenidos(contenidosConsulta.data);
 		}
 		consultarAPI();

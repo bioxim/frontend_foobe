@@ -65,11 +65,11 @@ const Newsletter = (props) => {
 		          <div className="col-12 col-md">
 		            
 		            <h3 className="mb-1 text-dark">
-		              Get our updates delivered
+		              { !localStorage.getItem('button', 'esp') ? 'Get our updates delivered' : 'Reciba nuestras novedades' }
 		            </h3>
 
 		            <p className="font-size-lg text-muted mb-6 mb-md-0">
-		              From us to your inbox.
+		              { !localStorage.getItem('button', 'esp') ? 'From us to your inbox.' : 'De Foobe a su inbox.' }
 		            </p>
 
 		          </div>
@@ -86,7 +86,7 @@ const Newsletter = (props) => {
 		                  	type="email" 
 		                  	required
 		                  	className="form-control" 
-		                  	placeholder="Enter your email"
+		                  	placeholder={ !localStorage.getItem('button', 'esp') ? 'Enter your email' : 'Ingrese su correo' }
 		                  	onChange={actualizarState}  
 		                  />
 
@@ -96,7 +96,7 @@ const Newsletter = (props) => {
 		                  <input 
 		                  		className="btn btn-primary" 
 		                  		type="submit"
-		                    	value="Subscribe"
+		                    	value={ !localStorage.getItem('button', 'esp') ? 'Subscribe' : 'Suscribirse' }
 		                    	disabled={validarSuscriptor()}
 		                  />
 

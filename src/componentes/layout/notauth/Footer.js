@@ -23,7 +23,7 @@ const Footer = () => (
               <img src="img/foobe.png" className="img-fluid w-50" alt="Foobe logo protected by law" />
 
               <p className="text-gray-700 mb-2">
-                Community for food traders.
+                { !localStorage.getItem('button', 'esp') ? 'Community for food traders.' : 'Comunidad para traders de alimentos' }
               </p>
 
               <ul className="list-unstyled list-inline list-social mb-6 mb-md-0">
@@ -58,12 +58,12 @@ const Footer = () => (
               <ul className="list-unstyled text-muted mb-6 mb-md-8 mb-lg-0">
                 <li className="mb-3">
                   <Link to={"/privacy-policy"} className="text-reset">
-                    Privacy Policy
+                    { !localStorage.getItem('button', 'esp') ? 'Privacy Policy' : 'Política de Privacidad' }
                   </Link>
                 </li>
                 <li className="mb-3">
                   <Link to={"/terms-conditions"} className="text-reset">
-                    Terms & Conditions
+                    { !localStorage.getItem('button', 'esp') ? 'Terms & Conditions' : 'Términos y Condiciones' }
                   </Link>
                 </li>
               </ul>
@@ -72,17 +72,17 @@ const Footer = () => (
             <div className="col-12 col-sm-6 col-md-3 px-1 alinear">
           
               <h6 className="font-weight-bold text-uppercase text-gray-700">
-                Community
+                { !localStorage.getItem('button', 'esp') ? 'Community' : 'Comunidad' }
               </h6>
               <ul className="list-unstyled text-muted mb-6 mb-md-8 mb-lg-0">
                 <li className="mb-3">
                   <Link to={"/users-guide"} className="text-reset">
-                    Documentation
+                    { !localStorage.getItem('button', 'esp') ? 'Documentation' : 'Guia de Usuario' }
                   </Link>
                 </li>
                 <li className="mb-3">
                   <Link to={"/logs"} className="text-reset">
-                    Changelog
+                    { !localStorage.getItem('button', 'esp') ? 'Changelog' : 'Actualizaciones' }
                   </Link>
                 </li>
               </ul>
@@ -91,17 +91,17 @@ const Footer = () => (
             <div className="col-12 col-sm-6 col-md-3 px-1 alinear">
           
               <h6 className="font-weight-bold text-uppercase text-gray-700">
-                Help (Faq)
+                { !localStorage.getItem('button', 'esp') ? 'Help (Faq)' : 'Ayuda(Faq)' }
               </h6>
               <ul className="list-unstyled text-muted mb-0">
                 <li className="mb-3">
                   <Link to={"/contact-details"} className="text-reset">
-                    Contact us
+                    { !localStorage.getItem('button', 'esp') ? 'Contact us' : 'Contacto' }
                   </Link>
                 </li>
                 <li className="mb-3">
                   <Link to={"/payment-methods"} className="text-reset">
-                    Payment methods
+                    { !localStorage.getItem('button', 'esp') ? 'Payment methods' : 'Medios de Pago' }
                   </Link>
                  </li>
               </ul>
@@ -109,7 +109,7 @@ const Footer = () => (
             </div>
           </div> 
 
-          <p className="small text-muted text-center">© Foobe.  {(new Date().getFullYear())}. All rights reserved.</p>
+          <p className="small text-muted text-center">© Foobe.  {(new Date().getFullYear())}. { !localStorage.getItem('button', 'esp') ? 'All rights reserved.' : 'Todos los derechos reservados' } </p>
         
         </div> 
     </footer>

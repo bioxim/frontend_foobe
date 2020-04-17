@@ -22,6 +22,17 @@ const Header = (props) => {
 		props.history.push('/');
 	}
 
+	const guardarIdioma = () => {
+		localStorage.setItem('button', 'esp');
+		window.location.reload(true);
+	}
+
+	const volverOriginal = () => {
+		localStorage.removeItem('button', 'esp');
+		window.location.reload(true);
+		
+	}
+
 	return (
 		<header>
 	        <nav className="navbar navbar-expand-lg navbar-light bg-white">
@@ -39,42 +50,57 @@ const Header = (props) => {
 		          <ul className="navbar-nav ml-auto">
 		            <li className="nav-item dropdown hovered">
 		              <Link to={"/events"} className="nav-link font-weight-bold" id="navbarLandings">
-		                Tradeshows
+		                { !localStorage.getItem('button', 'esp') ? 'Tradeshows' : 'Ferias' }
 		              </Link>
 		            </li>
 		            { auth.auth ? (
 		            <li className="nav-item dropdown hovered">
 		              <Link to={"/dashboard"} className="nav-link font-weight-bold text-primary" id="navbarLandings">
-		                Community
+		                { !localStorage.getItem('button', 'esp') ? 'Community' : 'Comunidad' }
 		              </Link>
 		            </li>
 		            ) : (
 		            	<li className="nav-item dropdown hovered">
 		              <Link to={"/login"} className="nav-link font-weight-bold" id="navbarLandings">
-		                Community
+		                { !localStorage.getItem('button', 'esp') ? 'Community' : 'Comunidad' }
 		              </Link>
 		            </li>
 		            )}
 		            { auth.auth ? null : (
 		            	<li className="nav-item dropdown hovered">
 		              <Link to={"/data"} className="nav-link font-weight-bold" id="navbarLandings">
-		                Database
+		                { !localStorage.getItem('button', 'esp') ? 'Database' : 'Productores' }
 		              </Link>
 		            </li>
 		            )}
 		            <li className="nav-item dropdown hovered">
 		              <Link to={"/contact-details"} className="nav-link font-weight-bold" id="navbarDocumentation">
-		                Support
+		                { !localStorage.getItem('button', 'esp') ? 'Support' : 'Soporte' }
 		              </Link>
+		            </li>
+		            <li className="nav-item dropdown hovered">
+		              	{ !localStorage.getItem('button', 'esp') ?
+			              <button 
+			              	className="navbar-btn btn btn-outline-warning ml-auto text-uppercase" 
+			              	onClick={guardarIdioma}
+			              >
+			              	ESP
+			              </button> : 
+						  <button 
+			              	className="navbar-btn btn btn-outline-dark ml-auto text-uppercase"
+			              	onClick={volverOriginal}
+			              >
+			              	ENG
+			              </button> }
 		            </li>
 		          </ul>
 		         { !auth.auth ? (
 					<Fragment>
 						<Link to={"/login"} className="navbar-btn btn btn-success ml-auto text-uppercase">
-			              <i className="fas fa-sign-in-alt"></i>  Log-In
+			              <i className="fas fa-sign-in-alt"></i> { !localStorage.getItem('button', 'esp') ? 'Log-In' : 'Iniciar Sesión' }
 			            </Link>
 				        <Link to={"/buy-now"} className="navbar-btn btn btn-primary ml-auto text-uppercase margen">
-				           <i className="fas fa-shopping-cart"></i> Be a Member
+				           <i className="fas fa-shopping-cart"></i> { !localStorage.getItem('button', 'esp') ? 'Be a Member' : 'Sea Miembro' }
 				        </Link>
 					</Fragment>
 		         ) : null }
@@ -85,7 +111,7 @@ const Header = (props) => {
 		            		onClick={cerrarSesion}
 		            	>
 		            		<i className="mr-2 fas fa-times"></i> 
-		            		Sign Out
+		            		{ !localStorage.getItem('button', 'esp') ? 'Sign Out' : 'Cerrar Sesión' }
 		            	</button>
 					) : null }
 		        </div>
