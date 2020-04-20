@@ -28,7 +28,9 @@ const MembershipFE = ({history}) => {
 						<div className="badge badge-rounded-circle badge-success mt-1 mr-4">
 				          <i className="fas fa-check"></i>
 				        </div>
-				    	<p>{contenido.tagline}</p>
+				    	{ !localStorage.getItem('button', 'esp') ? 
+				    		<p>{contenido.tagline}</p> : 
+				    		<p>{contenido.taglineEsp}</p> }
 				</li> :
 				<Loader
 					type="BallTriangle"

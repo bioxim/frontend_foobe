@@ -76,8 +76,8 @@ function Login(props) {
 								<div className="mx-auto d-table h-100 col-sm-10 col-md-8 col-lg-6">
 									<div className="d-table-cell align-middle">
 										<div className="text-center mt-4">
-											<h2>Welcome back to Foobe</h2>
-												<p className="lead">Sign in to your account to continue
+											<h2>{ !localStorage.getItem('button', 'esp') ? 'Welcome back to Foobe' : 'Bienvenido a Foobe' }</h2>
+												<p className="lead">{ !localStorage.getItem('button', 'esp') ? 'Sign in to your account to continue' : 'Ingresar a su cuenta para continuar' }
 												</p>
 										</div>
 										<form 
@@ -93,7 +93,7 @@ function Login(props) {
 														<div className="form-group">
 															<label>Email</label>
 															<input 	name="email" 
-																	placeholder="Enter your email" 
+																	placeholder="email" 
 																	type="text" 
 																	className="form-control-lg form-control" 
 																	required
@@ -101,9 +101,9 @@ function Login(props) {
 															/>
 														</div>
 														<div className="form-group">
-															<label>Password</label>
+															<label>{ !localStorage.getItem('button', 'esp') ? 'Password' : 'Clave de acceso' }</label>
 															<input 	name="password" 
-																	placeholder="Enter your password"
+																	placeholder={ !localStorage.getItem('button', 'esp') ? 'Enter your password' : 'Ingrese su clave' }
 																	type="password"
 																	className="form-control-lg form-control" 
 																	required
@@ -111,7 +111,7 @@ function Login(props) {
 															/>
 															<small>
 																<Link to={"/contact-details"}>
-																	Forgot password?
+																	{ !localStorage.getItem('button', 'esp') ? 'Forgot password?' : 'Olvidó su clave?' }
 																</Link>
 															</small>
 														</div>
@@ -119,7 +119,7 @@ function Login(props) {
 															<input 
 																className="btn btn-primary btn-lg"
 																type="submit"
-																value="Login"
+																value={ !localStorage.getItem('button', 'esp') ? 'Login' : 'Iniciar Sesión' }
 															/>
 														</div>
 													</form>

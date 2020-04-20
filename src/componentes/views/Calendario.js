@@ -24,11 +24,11 @@ const Calendario = ({history}) => {
 		          <div className="col-12 col-md-10 col-lg-8 text-center">
 		            
 		            <h1 className="display-3 font-weight-bold text-white">
-		              Upcoming events.
+		              { !localStorage.getItem('button', 'esp') ? 'Upcoming events.' : 'Próximos eventos.' }
 		            </h1>
 
 		            <p className="lead text-white-75 mb-0">
-		              Foobe will be in these international events listed below, where we can promote your food products making it possible to do the best business for you.
+		              { !localStorage.getItem('button', 'esp') ? 'Foobe will be in these international events listed below, where we can promote your food products making it possible to do the best business for you.' : 'Foobe asistirá a éstos eventos, donde podrá promocionar los productos de sus miembros registrados, generando increíbles negocios para usted.' }
 		            </p>
 
 		          </div>
@@ -78,16 +78,16 @@ const Calendario = ({history}) => {
 						                  <div className="list-group list-group-flush">
 						                    <a className="list-group-item text-reset text-decoration-none" href="#!">  
 						                      <p className="font-weight-bold text-dark mb-1">
-						                        Date
+						                        { !localStorage.getItem('button', 'esp') ? 'Date' : 'Fecha' }
 						                      </p>
 						                      <p className="font-size-sm text-muted mb-0">
-						                        from {moment(`${evento.fechainicial}`).format('MMMM Do YYYY')} to {moment(`${evento.fechafin}`).format('MMMM Do YYYY')}
+						                        { !localStorage.getItem('button', 'esp') ? 'from' : 'desde' } {moment(`${evento.fechainicial}`).format('MMMM Do YYYY')} { !localStorage.getItem('button', 'esp') ? 'to' : 'al' } {moment(`${evento.fechafin}`).format('MMMM Do YYYY')}
 						                      </p>
 						                    </a>
 						                    <a className="list-group-item text-reset text-decoration-none" href="#!">
 
 						                      <p className="font-weight-bold text-dark mb-1">
-						                        Address
+						                        { !localStorage.getItem('button', 'esp') ? 'Address' : 'Dirección' }
 						                      </p>
 						                      <p className="font-size-sm text-muted mb-0">
 						                        {evento.direccion}
@@ -96,7 +96,7 @@ const Calendario = ({history}) => {
 						                    </a>
 						                    <a className="list-group-item text-reset text-decoration-none" href="#!">
 						                      <p className="font-weight-bold text-dark mb-1">
-						                        Country
+						                        { !localStorage.getItem('button', 'esp') ? 'Country' : 'País' }
 						                      </p>
 						                      <p className="font-size-sm text-muted mb-0">
 						                       {evento.pais}
@@ -112,7 +112,7 @@ const Calendario = ({history}) => {
 		        	</Fragment>
           		))}
           		<div className="row p-3">
-					<h4>Being a member now! Contact us for further details:</h4>
+					<h4>{ !localStorage.getItem('button', 'esp') ? 'Be a member now! Contact us for further details:' : 'Sea parte de Foobe! Contáctenos para más detalles:' }</h4>
           		</div>
 		        <div className="row">
 		          <div className="col-12 col-md-4 text-center border-right border-gray-300">
@@ -131,7 +131,7 @@ const Calendario = ({history}) => {
 		          <div className="col-12 col-md-4 text-center border-right border-gray-300">
 		            
 		            <h6 className="text-uppercase text-gray-700 mb-1">
-		              Call anytime
+		              { !localStorage.getItem('button', 'esp') ? 'Call anytime' : 'Llama en cualquier momento' }
 		            </h6>
 
 		            <div className="mb-5 mb-md-0">
@@ -144,7 +144,7 @@ const Calendario = ({history}) => {
 		          <div className="col-12 col-md-4 text-center">
 		            
 		            <h6 className="text-uppercase text-gray-700 mb-1">
-		              Email us
+		              { !localStorage.getItem('button', 'esp') ? 'Email us' : 'Email' }
 		            </h6>
 
 		            <h4 class="text-primary font-italic">

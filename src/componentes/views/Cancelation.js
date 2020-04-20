@@ -8,7 +8,7 @@ const Cancelation = () => (
 	          <div className="col-12 col-md-10 col-lg-8 text-center">
 	            
 	            <h1 className="display-3 font-weight-bold text-white">
-	              Oh Sorry!.
+	              { !localStorage.getItem('button', 'esp') ? 'Oh Sorry!.' : 'Lo siento mucho!.' }
 	            </h1>
 
 	            <p className="lead text-white-75 mb-0">
