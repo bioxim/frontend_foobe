@@ -5,6 +5,8 @@ import { CRMContext } from '../../../context/CRMContext';
 
 import './addons/noauth.css';
 
+import { Estadisticas } from '../../dashboard';
+
 const Header = (props) => {
 
 	const [auth, guardarAuth] = useContext(CRMContext);
@@ -117,7 +119,11 @@ const Header = (props) => {
 		        </div>
 		      </div>
 		  </nav>
+		  <div className="pr-3">
+		  	<Estadisticas />
+		  </div>
 	    </header>
+
 	)
 }
  export default withRouter(Header); 

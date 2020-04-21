@@ -9,27 +9,27 @@ const Signup = () => (
           <div className="col-12 col-md-6 col-lg-4 py-8 py-md-11">
             
             <h1 className="mb-0 font-weight-bold">
-              Be A Member
+              { !localStorage.getItem('button', 'esp') ? 'Be A Member' : 'Únase a Foobe' }
             </h1>
 
             <p className="mb-6 text-muted">
-              Buy now for once in a lifetime membership and simplify your workflow for ever.
+              { !localStorage.getItem('button', 'esp') ? 'Buy now for once in a lifetime membership and simplify your workflow for ever.' : 'Adquiera ahora y de por vida una membresía, simplificando su trabajo para siempre' }
             </p>
 
             <form className="mb-6">
 
               <div className="form-group">
                 <label className="mr-2">
-                  Argentina Purchases
+                  { !localStorage.getItem('button', 'esp') ? 'Argentina Purchases' : 'Para Argentina' }
                 </label>
                 <a mp-mode="dftl" href="https://www.mercadopago.com.ar/checkout/v1/redirect?pref_id=457801573-6042f9ec-6723-4431-abe5-026e688f15f9" name="MP-payButton" class='blue-ar-l-rn-none' target="_blank">
-                  Pagar
+                  { !localStorage.getItem('button', 'esp') ? 'Pay' : 'Pagar' }
                 </a>
               </div>
 
               <div class="form-group mb-5">
                 <label className="mr-2">
-                  International Purchases PayPal
+                  { !localStorage.getItem('button', 'esp') ? 'International Purchases PayPal' : 'Pagos Internacionales con Paypal' }
                 </label>
                 <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
                   <input type="hidden" name="cmd" value="_s-xclick" />
@@ -41,9 +41,9 @@ const Signup = () => (
             </form>
 
             <p className="mb-0 font-size-sm text-muted">
-              Already have an account? 
+              { !localStorage.getItem('button', 'esp') ? 'Already have an account?' : 'Ya tiene una cuenta?' }
               <Link className="pl-2 font-weight-bold" to={"/login"}>
-              Log in
+              { !localStorage.getItem('button', 'esp') ? 'Log in' : 'Ingresar'}
               </Link>
             </p>
           </div>

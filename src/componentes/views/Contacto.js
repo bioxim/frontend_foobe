@@ -8,11 +8,11 @@ const Contacto = () => (
 	          <div className="col-12 col-md-10 col-lg-8 text-center">
 	            
 	            <h1 className="display-3 font-weight-bold text-white">
-	              We’re Here to Help.
+	              { !localStorage.getItem('button', 'esp') ? 'We’re Here to Help.' : 'Estamos para ayudarle.' }
 	            </h1>
 
 	            <p className="lead text-white-75 mb-0">
-	              We always want to hear from you! Let us know how we can best help you and we'll do our very best.
+	              { !localStorage.getItem('button', 'esp') ? 'We always want to hear from you! Let us know how we can best help you and we will do our very best.' : 'Siempre queremos saber de usted! Déjenos saber como podemos hacer lo mejor para ayudarle.' }
 	            </p>
 
 	          </div>
@@ -56,7 +56,7 @@ const Contacto = () => (
 	          <div className="col-12 col-md-4 text-center border-right border-gray-300">
 	            
 	            <h6 className="text-uppercase text-gray-700 mb-1">
-	              Call anytime
+	              { !localStorage.getItem('button', 'esp') ? 'Call anytime' : 'Llámenos' }
 	            </h6>
 
 	            <div className="mb-5 mb-md-0">
@@ -69,7 +69,7 @@ const Contacto = () => (
 	          <div className="col-12 col-md-4 text-center">
 	            
 	            <h6 className="text-uppercase text-gray-700 mb-1">
-	              Email us
+	              { !localStorage.getItem('button', 'esp') ? 'Email us' : 'Email' }
 	            </h6>
 
 	            <h4 class="text-primary font-italic">

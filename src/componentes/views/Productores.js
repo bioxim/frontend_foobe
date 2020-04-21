@@ -89,11 +89,11 @@ const Productores = (props) => {
 		          <div className="col-12 col-md-10 col-lg-8 text-center">
 		            
 		            <h1 className="display-3 font-weight-bold text-white">
-		              Be part of Foobe.
+		              { !localStorage.getItem('button', 'esp') ? 'Be part of Foobe.' : 'Sea parte de Foobe' }
 		            </h1>
 
 		            <p className="lead text-white-75 mb-0">
-		              Please send us your contact information by filling out this form and you will appear with your product in our database, which reaches all our members, free of cost.
+		              { !localStorage.getItem('button', 'esp') ? 'Please send us your contact information by filling out this form and you will appear with your product in our database, which reaches all our members, free of cost.' : 'Por favor, complete el formulario con sus información y aparecerá en la base de datos, que alcanza a todos nuestros miembros, sin costo.' }
 		            </p>
 
 		          </div>
@@ -125,9 +125,10 @@ const Productores = (props) => {
 		        	<div className="card col-12">
 		        		<div className="card-header">
 		        			<h5 className="card-title text-uppercase">
-								Please fill in your contact information
+								{ !localStorage.getItem('button', 'esp') ? 'Please fill in your contact information' : 'Por favor, complete el formulario' }
 							</h5>
-							<h6 className="card-subtitle text-muted"> If you are a producer, manufacturer, trader or provide services of any kind, related to food and beverages, fill this form and be able to get to the members of the Foobe community for free.
+							<h6 className="card-subtitle text-muted"> 
+								{ !localStorage.getItem('button', 'esp') ? 'If you are a producer, manufacturer, trader or provide services of any kind, related to food and beverages, fill this form and be able to get to the members of the Foobe community for free.' : 'Si usted es productor, fabricante o provee servicios relacionados a la industria de alimentos y bebidas, complete el formulario para ingresar a la comunidad Foobe sin costo.' }
 							</h6>
 		        		</div>
 		        		<div className="card-body">
@@ -138,11 +139,11 @@ const Productores = (props) => {
 		        				<div className="form-row">
 		        					<div className="col-md-3">
 		        						<label className="text-uppercase text-muted">
-											Name
+											{ !localStorage.getItem('button', 'esp') ? 'Name' : 'Nombre' }
 										</label>
 										<input 
 											name="nombre" 
-											placeholder="Nombre" 
+											placeholder={ !localStorage.getItem('button', 'esp') ? 'Name' : 'Nombre' } 
 											type="text" 
 											className="form-control"
 											required
@@ -151,11 +152,11 @@ const Productores = (props) => {
 		        					</div>
 		        					<div className="col-md-3">
 		        						<label className="text-uppercase text-muted">
-											Surname
+											{ !localStorage.getItem('button', 'esp') ? 'Surname' : 'Apellido' }
 										</label>
 										<input 
 											name="apellido" 
-											placeholder="Apellido" 
+											placeholder={ !localStorage.getItem('button', 'esp') ? 'Surname' : 'Apellido' } 
 											type="text" 
 											className="form-control"
 											required
@@ -164,11 +165,11 @@ const Productores = (props) => {
 		        					</div>
 		        					<div className="col-md-3">
 		        						<label className="text-uppercase text-muted">
-											<i class="fas fa-phone-alt mr-2"></i> Phone
+											<i class="fas fa-phone-alt mr-2"></i> { !localStorage.getItem('button', 'esp') ? 'Phone' : 'Teléfono' }
 										</label>
 										<input 
 											name="telefono" 
-											placeholder="Teléfono" 
+											placeholder={ !localStorage.getItem('button', 'esp') ? 'Phone' : 'Teléfono' } 
 											type="text" 
 											className="form-control"
 											required
@@ -192,11 +193,11 @@ const Productores = (props) => {
 		        				<div className="form-row pt-3">
 		        					<div className="col-md-6">
 		        						<label className="text-uppercase text-muted">
-											Product(s)
+											{ !localStorage.getItem('button', 'esp') ? 'Product(s)' : 'Producto(s)' }
 										</label>
 										<input 
 											name="producto" 
-											placeholder="Producto" 
+											placeholder={ !localStorage.getItem('button', 'esp') ? 'Product(s)' : 'Producto(s)' }
 											type="text" 
 											className="form-control"
 											required
@@ -205,11 +206,11 @@ const Productores = (props) => {
 		        					</div>
 		        					<div className="col-md-6">
 		        						<label className="text-uppercase text-muted">
-											<i class="fas fa-map-marked mr-2"></i> Production Area
+											<i class="fas fa-map-marked mr-2"></i> { !localStorage.getItem('button', 'esp') ? 'Production Area' : 'Zona de producción' }
 										</label>
 										<input 
 											name="zona" 
-											placeholder="Área de Producción" 
+											placeholder={ !localStorage.getItem('button', 'esp') ? 'Production Area' : 'Zona de producción' }
 											type="text" 
 											className="form-control"
 											required
@@ -220,7 +221,7 @@ const Productores = (props) => {
 		        				<div className="form-row pt-3">
 		        					<div className="col-md-2">
 		        						<label className="text-uppercase text-muted">
-											Country
+											{ !localStorage.getItem('button', 'esp') ? 'Country' : 'País' }
 										</label>
 										<select 
 											name="pais" 
@@ -228,7 +229,7 @@ const Productores = (props) => {
 											required
 											onChange={leerInformacionProductor}
 										>
-											<option selected disabled>-- Elige un país --</option>
+											<option selected disabled>{ !localStorage.getItem('button', 'esp') ? '-- Country --' : '-- País --' }</option>
 											{paises.map(pais =>(
 												<option value={pais.name}>{pais.name}</option>
 											))}
@@ -236,11 +237,11 @@ const Productores = (props) => {
 		        					</div>
 		        					<div className="col-md-2">
 		        						<label className="text-uppercase text-muted">
-											City
+											{ !localStorage.getItem('button', 'esp') ? 'City' : 'Ciudad' }
 										</label>
 										<input 
 											name="ciudad" 
-											placeholder="Ciudad" 
+											placeholder={ !localStorage.getItem('button', 'esp') ? 'City' : 'Ciudad' }
 											type="text" 
 											className="form-control"
 											required
@@ -249,11 +250,11 @@ const Productores = (props) => {
 		        					</div>
 		        					<div className="col-md-2">
 		        						<label className="text-uppercase text-muted">
-											State
+											{ !localStorage.getItem('button', 'esp') ? 'State' : 'Estado/Provincia' }
 										</label>
 										<input 
 											name="estado" 
-											placeholder="Estado / Provincia" 
+											placeholder={ !localStorage.getItem('button', 'esp') ? 'State' : 'Estado/Provincia' }
 											type="text" 
 											className="form-control"
 											onChange={leerInformacionProductor}
@@ -261,11 +262,11 @@ const Productores = (props) => {
 		        					</div>
 		        					<div className="col-md-6">
 		        						<label className="text-uppercase text-muted">
-											Address
+											{ !localStorage.getItem('button', 'esp') ? 'Address' : 'Dirección' }
 										</label>
 										<input 
 											name="direccion" 
-											placeholder="Dirección" 
+											placeholder={ !localStorage.getItem('button', 'esp') ? 'Address' : 'Dirección' } 
 											type="text" 
 											className="form-control"
 											required
@@ -285,7 +286,7 @@ const Productores = (props) => {
 		        					<div className="col-md-3 text-center">
 			        					<input 
 											className="btn btn-primary my-3 text-uppercase font-weight-bold" 
-											value="Save changes" 
+											value={ !localStorage.getItem('button', 'esp') ? 'Send' : 'Enviar' } 
 											type="submit"
 										/>
 									</div>
@@ -312,7 +313,7 @@ const Productores = (props) => {
 		          <div className="col-12 col-md-4 text-center border-right border-gray-300">
 		            
 		            <h6 className="text-uppercase text-gray-700 mb-1">
-		              Call anytime
+		              { !localStorage.getItem('button', 'esp') ? 'Call anytime' : 'Llámenos' }
 		            </h6>
 
 		            <div className="mb-5 mb-md-0">
@@ -325,7 +326,7 @@ const Productores = (props) => {
 		          <div className="col-12 col-md-4 text-center">
 		            
 		            <h6 className="text-uppercase text-gray-700 mb-1">
-		              Email us
+		              { !localStorage.getItem('button', 'esp') ? 'Email us' : 'Email' }
 		            </h6>
 
 		            <h4 class="text-primary font-italic">
