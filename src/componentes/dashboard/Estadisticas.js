@@ -23,7 +23,7 @@ const Estadisticas = (props) => {
 					<div className="w-100 text-right">
 						<h6 className="text-muted p-3">
 							<i className="fas fa-street-view mr-2"></i> 
-							Members: {clientes.length}
+							{ !localStorage.getItem('button', 'esp') ? 'Members:' : 'Miembros:' } {clientes.length}
 						</h6>
 					</div>
 				</div>

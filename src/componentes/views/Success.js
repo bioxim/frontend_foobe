@@ -10,11 +10,11 @@ const Success = () => (
 	          <div className="col-12 col-md-10 col-lg-8 text-center">
 	            
 	            <h1 className="display-3 font-weight-bold text-white">
-	              Thank you!.
+	              { !localStorage.getItem('button', 'esp') ? 'Thank you!.' : 'Muchas gracias!.' }
 	            </h1>
 
 	            <p className="lead text-white-75 mb-0">
-	              Welcome to Foobe! now we are going to email very soon with you login in details.
+	              { !localStorage.getItem('button', 'esp') ? 'Welcome to Foobe! now we are going to email very soon with you login in details.' : 'Bienvenidos a Foobe! en unos minutos le llegará un email con los detalles de registro.' }
 	            </p>
 
 	          </div>
@@ -58,7 +58,7 @@ const Success = () => (
 	          <div className="col-12 col-md-4 text-center border-right border-gray-300">
 	            
 	            <h6 className="text-uppercase text-gray-700 mb-1">
-	              Call anytime
+	              { !localStorage.getItem('button', 'esp') ? 'Call anytime' : 'Llámenos' }
 	            </h6>
 
 	            <div className="mb-5 mb-md-0">
@@ -71,7 +71,7 @@ const Success = () => (
 	          <div className="col-12 col-md-4 text-center">
 	            
 	            <h6 className="text-uppercase text-gray-700 mb-1">
-	              Email us
+	              { !localStorage.getItem('button', 'esp') ? 'Email us' : 'Email' }
 	            </h6>
 
 	            <h4 class="text-primary font-italic">
