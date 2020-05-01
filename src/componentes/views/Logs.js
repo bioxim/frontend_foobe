@@ -39,7 +39,7 @@ const Logs = () => {
 	return (
 		<div className="col pb-3">
 			<h1 className="mt-3 ml-5">Changelog</h1>
-			<h4 className="mb-5 mt-3 ml-5">Keep track of changes in Foobe Community.</h4>
+			<h4 className="mb-5 mt-3 ml-5">{ !localStorage.getItem('button', 'esp') ? 'Keep track of changes in Foobe Community.' : 'Lleve un registro de los cambios en la comunidad de Foobe.' }</h4>
 			<LogsPaginated
 				logs={currentPosts}
 			/>

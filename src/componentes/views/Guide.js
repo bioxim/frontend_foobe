@@ -41,10 +41,10 @@ const Guide = () => {
 		<Fragment>
 			<div className="col-12 col-md py-3 px-5">
 	            <h3 className="mb-0">
-	              Users's Guide
+	              { !localStorage.getItem('button', 'esp') ? 'Users Guide' : 'Guía para el Usuario' }
 	            </h3>
 	            <p className="mb-3 text-muted">
-	              Foobe Functionalities and updates explained.
+	              { !localStorage.getItem('button', 'esp') ? 'Foobe Functionalities and updates explained.' : 'Las funcionalidades y actualizaciones de Foobe explicadas.' }
 	            </p>
           	</div>
 

@@ -31,14 +31,23 @@ const GuidePaginated = ({docs}) => {
 			                <div className="col-12 col-md-6">
 			                  <div className="card-body">
 
-			                    <h4>
-			                      {doc.titulo}
-			                    </h4>
+			                    { !localStorage.getItem('button', 'esp') ? 
+				                    <h4>
+				                      {doc.titulo}
+				                    </h4> :
+				                    <h4>
+				                      {doc.tituloEsp}
+				                    </h4>
+				                }
 
-			                    <p className="text-muted">
-			                      {Parser(doc.texto)}
-			                    </p>
-
+				                { !localStorage.getItem('button', 'esp') ?
+				                    <p className="text-muted">
+				                      {Parser(doc.texto)}
+				                    </p> :
+				                    <p className="text-muted">
+				                      {Parser(doc.textoEsp)}
+				                    </p>
+				                }
 			                  </div>
 			                </div>
 
